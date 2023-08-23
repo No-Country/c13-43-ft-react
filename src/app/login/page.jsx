@@ -4,11 +4,9 @@ import React from 'react';
 export const login = () => {
     return (
         <>
-            <Navbar/>
             <div className='inicio'>
-                {/* <div className='titulo'> Iniciar Sesión </div> */}
                 <div className='login'>
-                    <title className='tituloLogin'> Iniciar Sesión </title>
+                <div className='tituloLogin'> Iniciar Sesión </div>
                     <form action="">
                         <div className='styleInput'>
                             <label> Email </label>
