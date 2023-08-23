@@ -1,4 +1,3 @@
-import Navbar from '@/components/Navbar';
 import React from 'react';
 
 export const login = () => {
@@ -10,12 +9,12 @@ export const login = () => {
                     <form action="">
                         <div className='styleInput'>
                             <label> Email </label>
-                            <input class="inputLogin" type="text" name="name"/>
+                            <input className="inputLogin" type="text" name="name"/>
                         </div>
                         
                         <div className='styleInput'>
-                            <label class='labelLogin'> Contraseña </label>
-                            <input class="inputLogin" type="text" name="name"/>
+                            <label className='labelLogin'> Contraseña </label>
+                            <input className="inputLogin" type="text" name="name"/>
                         </div>
 
                         <button className='buttonLogin'> Ingresar </button>
