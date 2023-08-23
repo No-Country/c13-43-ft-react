@@ -2,4 +2,101 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100&display=swap');
+:root{
+    --violeta: #6009AE;
+    --blanco: #F8F8F8;
+}
+
+.inicio{
+    display: flex;
+    gap: 10rem;
+    padding-top: 3rem;
+    padding-left: 8rem;
+    padding-right: 8rem;
+    color: var(--violeta);
+}
+
+.tituloLogin{
+    width: 40rem;
+    display: flex;
+    justify-content: center;
+}
+
+.login{
+    display: flex;
+    flex-direction: column;
+    width: 35rem;
+    justify-content: center;
+}
+
+/* Inputs Login */
+
+.styleInput{
+    margin-top: 2rem;
+    color: var(--violeta);
+}
+
+.inputLogin{
+    border: none;
+    border-bottom:1px solid var(--violeta) ;
+    outline: none;
+    width: 100%;
+    padding-top: 5px;
+}
+
+/* Separador */
+
+.separator{
+    display: flex;
+    width: 100%;
+    gap: 15px;
+}
+
+.separator hr{
+    flex-grow: 1;
+    border: none;
+    border-top: 1px solid var(--violeta);
+    margin-top: 0.7rem;
+}
+
+.separator span{
+    color: var(--violeta);
+}
+
+/* Botones login */
+
+.buttonLogin{
+    background-color: var(--violeta);
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    width: 100%;
+    border-radius: 2rem;
+    padding: 0.5rem;
+    color: var(--blanco);
+}
+
+.buttonGoogle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    background-color: var(--blanco);
+    color: var(--violeta);
+    border: 1px solid var(--violeta);
+    border-radius: 2rem;
+    width: 100%;
+    gap: 1rem;
+}
+
+.buttonGoogle picture{
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonGoogle picture img{
+    width: 75%;
+}
+
