@@ -1,10 +1,8 @@
-import Init from '@/customPages/init'
-import React from 'react'
+import Init from "@/customPages/init";
+import React from "react";
 
 const Home = () => {
-    return (
-        <Init/>
-    )
-}
+  return <Init />;
+};
 
-export default Home
+export default Home;
