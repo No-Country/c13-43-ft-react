@@ -3,17 +3,17 @@ import React from 'react';
 export const login = () => {
     return (
         <>
-            <div className='inicio'>
+            <div className='inicio flex gap-40 py-12 px-32'>
                 <div className='login'>
-                <div className='tituloLogin'> Iniciar Sesión </div>
+                    <div className='text-secondaryBlack text-5xl font-bold font-dmsans flex justify-center'> Iniciar Sesión </div>
                     <form action="">
                         <div className='styleInput'>
-                            <label> Email </label>
+                            <label className='font-dmsans'> Email </label>
                             <input className="inputLogin" type="text" name="name"/>
                         </div>
                         
                         <div className='styleInput'>
-                            <label className='labelLogin'> Contraseña </label>
+                            <label className='labelLogin font-zendots'> Contraseña </label>
                             <input className="inputLogin" type="text" name="name"/>
                         </div>
 
