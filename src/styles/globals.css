@@ -8,6 +8,10 @@
     --blanco: #F8F8F8;
 }
 
+/* body {
+    background-color: var(--blanco);
+} */
+
 .inicio{
     /* display: flex; */
     /* gap: 10rem; */
@@ -35,6 +39,10 @@
 .styleInput{
     margin-top: 2rem;
     color: var(--violeta);
+}
+
+.roundedimg {
+    border-radius: 15% 0 0 15%;
 }
 
 .inputLogin{
