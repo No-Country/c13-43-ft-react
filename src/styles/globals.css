@@ -3,4 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-
+.container-global {
+    margin-inline: auto;
+    width: min(90%,70.5rem);
+}
