@@ -98,14 +98,14 @@
 }
 
 .buttonGoogle picture{
-    width: 35px;
-    height: 35px;
-    display: flex;
+    /* width: 35px;
+    height: 35px; */
+    /* display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
 }
 
 .buttonGoogle picture img{
-    width: 75%;
+    /* width: 75%; */
 }
 
