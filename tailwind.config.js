@@ -12,7 +12,7 @@ module.exports = {
         secondaryWhite: '#F8F8F8'
       },
       fontFamily: {
-        'texts': ['DM Sans', 'sans-serif']
+        'dmsans': ['DM Sans', 'sans-serif'],
       }
     },
   },
