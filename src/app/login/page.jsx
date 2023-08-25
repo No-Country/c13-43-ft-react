@@ -3,40 +3,40 @@ import React from 'react';
 export const login = () => {
     return (
         <>
-            <div className='inicio flex gap-40 py-12 px-32'>
-                <div className='login'>
-                    <div className='text-secondaryBlack text-5xl font-bold font-dmsans flex justify-center'> Iniciar Sesión </div>
+            <div className='flex gap-40 p-16'>
+                <div className='flex-colum justify-center w-1/2'>
+                    <h1 className='text-secondaryBlack text-5xl font-bold font-dmsans flex justify-center'> Iniciar Sesión </h1>
                     <form action="">
-                        <div className='styleInput'>
-                            <label className='font-dmsans'> Email </label>
-                            <input className="inputLogin" type="text" name="name"/>
+                        <div className='my-8'>
+                            <label className='text-secondaryBlack font-dmsans font-medium'> Email </label>
+                            <input className="pt-1 w-full border-b border-secondaryBlack outline-none " type="text" name="name"/>
                         </div>
                         
-                        <div className='styleInput'>
-                            <label className='labelLogin font-zendots'> Contraseña </label>
-                            <input className="inputLogin" type="text" name="name"/>
+                        <div className='my-8'>
+                            <label className='text-secondaryBlack font-dmsans font-medium'> Contraseña </label>
+                            <input className="pt-1 w-full border-b border-secondaryBlack outline-none " type="password" name="name"/>
                         </div>
 
-                        <button className='buttonLogin'> Ingresar </button>
+                        <button className='bg-primaryPurple text-secondaryWhite font-dmsans font-medium w-full mb-8 py-2 rounded-full'> Ingresar </button>
 
-                        <div className='separator'>
-                            <hr/>
-                                <span>Or</span>
-                            <hr/>
+                        <div className='separator flex gap-4 mb-8'>
+                            <hr className='flex-grow border-secondaryBlack mt-3'/>
+                                <span className='text-secondaryBlack font-dmsans font-medium'>Or</span>
+                            <hr className='flex-grow border-secondaryBlack mt-3'/>
                         </div>
 
-                        <button className='buttonGoogle'> 
+                        <button className='buttonGoogle text-secondaryBlack font-dmsans font-medium border-primaryPurple border rounded-full gap-2 m-auto px-4 py-2 flex items-center justify-center'> 
                             <picture>
-                                <img src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png" alt="logoGoogle"/>
+                                <img src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png" alt="logoGoogle" className='w-8 h-8 justify-center'/>
                             </picture>
-                            Entrar con google 
+                            Entrar con google
                         </button>
                     </form>
                 </div>
 
                 <div>
                     <p>imagen</p>
-                    <img src="" alt="" />
+                    <img src="" alt="" className='absolute rounded-b' />
                 </div>
             </div>
         </>
