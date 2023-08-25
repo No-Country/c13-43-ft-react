@@ -8,6 +8,12 @@
     --blanco: #F8F8F8;
 }
 
+/* Container para envolver el contenido de cada componente */
+.container-global {
+    margin-inline: auto;
+    width: min(90%,70.5rem);
+}
+
 /* body {
     background-color: var(--blanco);
 } */
