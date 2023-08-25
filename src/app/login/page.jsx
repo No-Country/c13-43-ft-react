@@ -3,7 +3,7 @@ import React from 'react';
 export const login = () => {
     return (
         <>
-            <div className='flex gap-40 p-16'>
+            <div className='flex gap-40 pt-16 pl-32'>
                 <div className='flex-colum justify-center w-1/2'>
                     <h1 className='text-secondaryBlack text-5xl font-bold font-dmsans flex justify-center'> Iniciar Sesión </h1>
                     <form action="">
@@ -19,13 +19,13 @@ export const login = () => {
 
                         <button className='bg-primaryPurple text-secondaryWhite font-dmsans font-medium w-full mb-8 py-2 rounded-full'> Ingresar </button>
 
-                        <div className='separator flex gap-4 mb-8'>
+                        <div className='flex gap-4 mb-8'>
                             <hr className='flex-grow border-secondaryBlack mt-3'/>
                                 <span className='text-secondaryBlack font-dmsans font-medium'>Or</span>
                             <hr className='flex-grow border-secondaryBlack mt-3'/>
                         </div>
 
-                        <button className='buttonGoogle text-secondaryBlack font-dmsans font-medium border-primaryPurple border rounded-full gap-2 m-auto px-4 py-2 flex items-center justify-center'> 
+                        <button className='text-secondaryBlack font-dmsans font-medium border-primaryPurple border rounded-full gap-2 m-auto px-4 py-2 flex items-center justify-center'> 
                             <picture>
                                 <img src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png" alt="logoGoogle" className='w-8 h-8 justify-center'/>
                             </picture>
