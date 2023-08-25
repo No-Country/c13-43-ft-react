@@ -3,8 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 body {
     background-color: #F8F8F8;
 }
@@ -13,3 +11,4 @@ body {
     margin-inline: auto;
     width: min(90%,70.5rem);
 }
+
