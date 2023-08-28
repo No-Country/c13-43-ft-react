@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root{
+    --violeta: #6009AE; 
+}
+
 body {
     background-color: #F8F8F8;
 }
@@ -12,3 +16,20 @@ body {
     width: min(90%,70.5rem);
 }
 
+.panelLi.active{
+    background-color: #F8F8F8;
+}
+
+.panelLi.active a{
+    color: var(--violeta);
+}
+
+.open,
+.panelLi.active .close{
+    display: block;
+}
+
+.close,
+.panelLi.active .open{
+    display: none;
+}

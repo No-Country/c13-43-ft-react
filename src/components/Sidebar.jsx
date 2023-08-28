@@ -1,51 +1,75 @@
-import React from 'react'
-import Image from 'next/image'
+'use client'
+import React, { useState } from 'react';
+import Image from 'next/image';
+import { ChangeLi } from './ChangeLi';
 
 const Sidebar = () => {
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    const imgsM = {
+        panel: '/Images/panel/panelM.png',
+        sala: '/Images/panel/salaM.png',
+        votacion: '/Images/panel/votacionM.png',
+        perfil: '/Images/panel/perfilM.png',
+        logout: '/Images/panel/logoutM.png'
+    }
+
+    const imgsN = {
+        panel: '/Images/panel/panelN.png',
+        sala: '/Images/panel/salaN.png',
+        votacion: '/Images/panel/votacionN.png',
+        perfil: '/Images/panel/perfilN.png',
+        logout: '/Images/panel/logoutN.png'
+    }
+
+    const handleItemClick = (index) => {
+        setActiveIndex(index);
+    }
+
     return (
-        <div className='bg-primaryPurple h-screen absolute top-0 w-72 pl-20 rounded-tr-md'>
-            <ul>
-                <li className='p-3'>
-                    <Image src="/Images/logoPanel.png" width={ 186 } height={ 45 }/>
+        <div className='bg-primaryPurple h-screen absolute top-0 w-72 pl-14 rounded-tr-3xl'>
+            <ul className=''>
+                <li className='m-2 mb-20'>
+                    <Image src="/Images/logoPanel.png" width={ 186 } height={ 40 } className='static' alt='image'/>
                 </li>
 
-                <li className='pt-9 py-4'> 
-                    <a href="" className='flex gap-3'>
-                        <Image src="/Images/panel/panelN.png" width={ 20 } height={ 20 }/>
-                        <span className='dmsans font-medium'> Panel </span>
-                    </a>
-                </li>
+                <ChangeLi
+                    img = { activeIndex === 0  ? imgsM.panel : imgsN.panel }
+                    nombre={ 'Panel' }
+                    isActive={ activeIndex === 0 }
+                    onClick={() => handleItemClick(0)}
+                />
 
-                <li className='py-4'> 
-                    <a href="" className='flex gap-3'>
-                        <Image src="/Images/panel/salaN.png" width={ 20 } height={ 20 }/>
-                        <span className='dmsans font-medium'> Sala </span>
-                    </a>
-                </li>
+                <ChangeLi
+                    img = { activeIndex === 1 ? imgsM.sala : imgsN.sala }
+                    nombre={ 'Sala' }
+                    isActive={ activeIndex === 1 }
+                    onClick={() => handleItemClick(1)}
+                />
 
-                <li className='py-4'> 
-                    <a href="" className='flex gap-3'>
-                        <Image src="/Images/panel/votacionN.png" width={ 20 } height={ 20 }/>
-                        <span className='dmsans font-medium'> Votaciones </span>
-                    </a>
-                </li>
+                <ChangeLi
+                    img = { activeIndex === 2 ? imgsM.votacion : imgsN.votacion }
+                    nombre={ 'Votacion' }
+                    isActive={ activeIndex === 2 }
+                    onClick={() => handleItemClick(2)}
+                />
+                
+                <ChangeLi
+                    img = { activeIndex === 3 ? imgsM.perfil : imgsN.perfil }
+                    nombre={ 'Perfil' }
+                    isActive={ activeIndex === 3 }
+                    onClick={() => handleItemClick(3)}
+                />
 
-                <li className='py-4'> 
-                    <a href="" className='flex gap-3'>
-                        <Image src="/Images/panel/perfilN.png" width={ 20 } height={ 20 }/>
-                        <span className='dmsans font-medium'> Perfil </span>
-                    </a>
-                </li>
-
-                <li className='py-4'> 
-                    <a href="" className='flex gap-3'>
-                        <Image src="/Images/panel/logoutN.png" width={ 20 } height={ 20 }/>
-                        <span className='dmsans font-medium'> Salir </span>
-                    </a>
-                </li>
+                <ChangeLi
+                    img = { activeIndex === 4 ? imgsM.logout : imgsN.logout }
+                    nombre={ 'Salir' }
+                    isActive={ activeIndex === 4 }
+                    onClick={() => handleItemClick(4)}
+                />
             </ul>
         </div>
     )
 }
 
-export default Sidebar 
+export default Sidebar;

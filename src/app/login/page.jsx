@@ -9,12 +9,12 @@ export const login = () => {
                     <form action="">
                         <div className='my-8'>
                             <label className='text-secondaryBlack font-dmsans font-medium'> Email </label>
-                            <input className="pt-1 w-full border-b border-secondaryBlack outline-none " type="text" name="name"/>
+                            <input className="pt-1 w-full border-b border-secondaryBlack outline-none " type="email" name="email"/>
                         </div>
                         
                         <div className='my-8'>
                             <label className='text-secondaryBlack font-dmsans font-medium'> Contraseña </label>
-                            <input className="pt-1 w-full border-b border-secondaryBlack outline-none " type="password" name="name"/>
+                            <input className="pt-1 w-full border-b border-secondaryBlack outline-none " type="password" name="password"/>
                         </div>
 
                         <button className='bg-primaryPurple text-secondaryWhite font-dmsans font-medium w-full mb-8 py-2 rounded-full'> Ingresar </button>
