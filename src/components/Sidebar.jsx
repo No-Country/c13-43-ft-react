@@ -40,16 +40,10 @@ const Sidebar = () => {
                     onClick={() => handleItemClick(0)}
                 />
 
-                <ChangeLi
-                    img = { activeIndex === 1 ? imgsM.sala : imgsN.sala }
-                    nombre={ 'Sala' }
-                    isActive={ activeIndex === 1 }
-                    onClick={() => handleItemClick(1)}
-                />
 
                 <ChangeLi
                     img = { activeIndex === 2 ? imgsM.votacion : imgsN.votacion }
-                    nombre={ 'Votacion' }
+                    nombre={ 'Votaciones' }
                     isActive={ activeIndex === 2 }
                     onClick={() => handleItemClick(2)}
                 />
