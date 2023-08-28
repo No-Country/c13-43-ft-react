@@ -9,12 +9,12 @@ export const login = () => {
                     <form action="">
                         <div className='my-8'>
                             <label className='text-secondaryBlack font-dmsans font-medium'> Email </label>
-                            <input className="pt-1 w-full border-b border-secondaryBlack outline-none " type="email" name="email"/>
+                            <input className="pt-1 w-full border-b border-secondaryBlack bg-slate-50 outline-none " type="email" name="email"/>
                         </div>
                         
                         <div className='my-8'>
                             <label className='text-secondaryBlack font-dmsans font-medium'> Contraseña </label>
-                            <input className="pt-1 w-full border-b border-secondaryBlack outline-none " type="password" name="password"/>
+                            <input className="pt-1 w-full border-b border-secondaryBlack bg-slate-50 outline-none " type="password" name="password"/>
                         </div>
 
                         <button className='bg-primaryPurple text-secondaryWhite font-dmsans font-medium w-full mb-8 py-2 rounded-full'> Ingresar </button>
@@ -34,9 +34,13 @@ export const login = () => {
                     </form>
                 </div>
 
-                <div>
-                    <p>imagen</p>
-                    <img src="" alt="" className='absolute rounded-b' />
+                <div className="flex md:justify-end w-full md:w-1/2 justify-center h-auto">
+                    <img 
+                    src="/Images/imgLogin.png" 
+                    alt="HomeImage" 
+                    className='h-3/2'
+                    // className="object-cover md:rounded-l-3xl rounded-md md:rounded-r-none md:w-full h-96"
+                    />
                 </div>
             </div>
         </>
