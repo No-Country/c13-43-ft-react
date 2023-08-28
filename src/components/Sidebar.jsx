@@ -40,32 +40,26 @@ const Sidebar = () => {
                     onClick={() => handleItemClick(0)}
                 />
 
+
                 <ChangeLi
-                    img = { activeIndex === 1 ? imgsM.sala : imgsN.sala }
-                    nombre={ 'Sala' }
+                    img = { activeIndex === 1 ? imgsM.votacion : imgsN.votacion }
+                    nombre={ 'Votaciones' }
                     isActive={ activeIndex === 1 }
                     onClick={() => handleItemClick(1)}
                 />
-
+                
                 <ChangeLi
-                    img = { activeIndex === 2 ? imgsM.votacion : imgsN.votacion }
-                    nombre={ 'Votacion' }
+                    img = { activeIndex === 2 ? imgsM.perfil : imgsN.perfil }
+                    nombre={ 'Perfil' }
                     isActive={ activeIndex === 2 }
                     onClick={() => handleItemClick(2)}
                 />
-                
-                <ChangeLi
-                    img = { activeIndex === 3 ? imgsM.perfil : imgsN.perfil }
-                    nombre={ 'Perfil' }
-                    isActive={ activeIndex === 3 }
-                    onClick={() => handleItemClick(3)}
-                />
 
                 <ChangeLi
-                    img = { activeIndex === 4 ? imgsM.logout : imgsN.logout }
+                    img = { activeIndex === 3 ? imgsM.logout : imgsN.logout }
                     nombre={ 'Salir' }
-                    isActive={ activeIndex === 4 }
-                    onClick={() => handleItemClick(4)}
+                    isActive={ activeIndex === 3 }
+                    onClick={() => handleItemClick(3)}
                 />
             </ul>
         </div>
