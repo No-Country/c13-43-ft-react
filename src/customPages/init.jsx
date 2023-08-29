@@ -2,9 +2,9 @@ import React from 'react'
 
 const Init = () => {
     return (
-        <main className="flex justify-between flex-col md:flex-row md:py-16 md:pl-16">
-            <article className="my-10 h-auto w-full text-center md:w-1/2 md:text-left">
-                <h2 className="text-5xl font-semibold text-secondaryBlack pr-2 md:pr-10"> Votación simplificada, decisiones tomadas en conjunto </h2>
+        <main className="flex justify-between mt-10 font-dmsans flex-col md:flex-row md:py-16 md:pl-16">
+            <article className="my-10 h-auto w-full text-center md:w-1/2 md:text-left max-w-xl">
+                <h2 className="text-5xl font-bold text-secondaryBlack pr-2 md:pr-10 leading-tight"> Votación simplificada, decisiones tomadas en conjunto </h2>
                 <div className="text-secondaryBlack my-6 pr-2 md:pr-10">
                     <span className="text-lg"> 
                         Nuestra plataforma se enfoca en simplificar el proceso de 

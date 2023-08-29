@@ -29,7 +29,7 @@ const Sidebar = () => {
     return (
         <div className='bg-primaryPurple h-screen absolute top-0 w-72 pl-14 rounded-tr-3xl'>
             <ul className=''>
-                <li className='m-2 mb-20'>
+                <li className='m-2 mt-4 mb-20'>
                     <Image src="/Images/logoPanel.png" width={ 186 } height={ 40 } className='static' alt='image'/>
                 </li>
 
