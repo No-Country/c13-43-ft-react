@@ -11,16 +11,15 @@ const Navbar = () => {
     if (path !== '/login/1234') {
         return (
             <nav className="flex justify-between px-16 items-center bg-white shadow-md h-20">
-                <ul className="flex w-2/4">
+                <ul className="flex w-3/4">
                     <li>
-                        <Image src="/Images/logoColor.png" alt="choiceLogo" width={100} height={50} />
+                        <Image src="/Images/logoColor.png" alt="choiceLogo" width={120} height={70} />
                     </li>
                 </ul>
                 <ul className="flex justify-between px-16 w-2/4 items-center">
-                    <li className="text-secondaryBlack font-texts hidden md:block cursor-pointer">Home</li>
-                    <li className="text-secondaryBlack font-texts hidden md:block cursor-pointer"> About </li>
-                    <li className="text-secondaryBlack font-texts hidden md:block cursor-pointer">Contacto</li>
-                    <li className="bg-primaryPurple text-secondaryWhite font-semibold rounded-3xl px-4 py-2 hidden md:block cursor-pointer">Empezar</li>
+                    <li className="text-secondaryBlack font-semibold font-texts hidden md:block cursor-pointer">Inicio</li>
+                    <li className="text-secondaryBlack font-semibold font-texts hidden md:block cursor-pointer"> Sobre nosotros </li>
+                    <li className="bg-primaryPurple font-semibold text-secondaryWhite font-semibold rounded-3xl px-4 py-2 hidden md:block cursor-pointer">Empezar</li>
                     
                     <li className="absolute top-4 right-12 block md:hidden cursor-pointer">
                         <Image src="/menuIcon.svg" alt="MenuIcon" width={30} height={30} />
