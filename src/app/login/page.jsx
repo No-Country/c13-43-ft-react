@@ -21,7 +21,7 @@ export const login = () => {
 
                         <div className='flex gap-4 mb-8'>
                             <hr className='flex-grow border-secondaryBlack mt-3'/>
-                                <span className='text-secondaryBlack font-dmsans font-medium font-semibold'>OR</span>
+                                <span className='text-secondaryBlack font-dmsans font-semibold'>OR</span>
                             <hr className='flex-grow border-secondaryBlack mt-3'/>
                         </div>
 
