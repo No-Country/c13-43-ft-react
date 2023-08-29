@@ -6,23 +6,23 @@ export const login = () => {
         <>
             <div className='flex gap-40 pt-16 pl-32'>
                 <div className='flex-colum justify-center w-1/2'>
-                    <h1 className='text-secondaryBlack text-5xl font-bold font-dmsans flex justify-center'> Iniciar Sesión </h1>
+                    <h1 className='text-secondaryBlack text-5xl pb-6 font-bold font-dmsans flex justify-center'> Iniciar sesión </h1>
                     <form action="">
                         <div className='my-8'>
-                            <label className='text-secondaryBlack font-dmsans font-medium'> Email </label>
+                            <label className='text-secondaryBlack font-dmsans font-medium'> EMAIL </label>
                             <input className="pt-1 w-full border-b border-secondaryBlack bg-slate-50 outline-none " type="email" name="email"/>
                         </div>
                         
                         <div className='my-8'>
-                            <label className='text-secondaryBlack font-dmsans font-medium'> Contraseña </label>
+                            <label className='text-secondaryBlack font-dmsans font-medium'> CONTRASEÑA </label>
                             <input className="pt-1 w-full border-b border-secondaryBlack bg-slate-50 outline-none " type="password" name="password"/>
                         </div>
 
-                        <button className='bg-primaryPurple text-secondaryWhite font-dmsans font-medium w-full mb-8 py-2 rounded-full'> Ingresar </button>
+                        <button className='bg-primaryPurple text-secondaryWhite font-dmsans font-medium w-full mb-8 py-2 rounded-full'> INGRESAR </button>
 
                         <div className='flex gap-4 mb-8'>
                             <hr className='flex-grow border-secondaryBlack mt-3'/>
-                                <span className='text-secondaryBlack font-dmsans font-medium'>Or</span>
+                                <span className='text-secondaryBlack font-dmsans font-medium font-semibold'>OR</span>
                             <hr className='flex-grow border-secondaryBlack mt-3'/>
                         </div>
 
