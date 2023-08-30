@@ -8,12 +8,12 @@ export const NextAuthOptions = {
             clientSecret: process.env.GOOGLE_SECRET
         }),
         CredentialsProvider({
-            name: "Credentials",
+            name: "credentials",
             credentials: {
-                username: {
-                    label: "Username:",
-                    type: "text",
-                    placeholder: "your username"
+                email: {
+                    label: "Email:",
+                    type: "email",
+                    placeholder: "example@example.com"
                 },
                 password: {
                     label: "Password",
@@ -22,10 +22,9 @@ export const NextAuthOptions = {
                 },
             },
             async authorize(credentials) {
-                const user = { id: "42", name: "Martin", password: "123123" }
+                const user = { id: "42", email: "tester@test.com", password: "123123" }
 
-                if(credentials?.username === user.name && credentials?.password === user.password) {
-                    // console.log(user)
+                if(credentials?.email === user.email && credentials?.password === user.password) {
                     return user
                 }else {
                     return null
@@ -33,14 +32,17 @@ export const NextAuthOptions = {
             }
         })
     ],
-    // callbacks: {
-    //     async session({ session }) {
-    //         // console.log(session)
-    //         return session
-    //     },
-    //     async signIn({profile}) {
-    //         console.log(profile)
-    //         return true
-    //     }
-    // }
+    pages: {
+        signIn: '/login'
+    },
+    callbacks: {
+        async signIn({user}) {
+            // console.log(user)
+            return true
+        },
+        async session({ session }) {
+            // console.log(session)
+            return session
+        },
+    }
 }
