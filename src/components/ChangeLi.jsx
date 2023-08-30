@@ -14,7 +14,7 @@ export const ChangeLi = ({ img, nombre, isActive, onClick }) => {
                     <Image src={ img } width={ 20 } height={ 20 } className='open absolute hidden' alt='image'/>
                     <Image src={ img } width={ 20 } height={ 20 } className='close absolute hidden' alt='image'/>
                 </div>
-                <span className='font-dmsans font-medium '> { nombre } </span>
+                <span className='font-dmsans font-medium'> { nombre } </span>
             </Link>
         </li>
     )

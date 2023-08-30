@@ -1,5 +1,13 @@
 import React from 'react';
 import Image from 'next/image';
+import Options from './Options';
+
+const arrOptions = [
+    {opcion: 'Viernes 20 de Septiembre - 22h', votos: '5 de 10 votaron esta opcion'},
+    {opcion: 'Jueves 19 de Septiembre - 18h', votos: '2 de 10 votaron esta opcion'},
+    {opcion: 'Domingo 22 de Septiembre - 20h', votos: '0 de 10 votaron esta opcion'},
+    {opcion: 'Viernes 20 de Septiembre - 12h', votos: '3 de 10 votaron esta opcion'}
+]
 
 const Modal = () => {
 
@@ -13,52 +21,7 @@ const Modal = () => {
                     <h2 className='text-primaryPurple font-dmsans font-bold text-3xl mb-4'>Resultados</h2>
                     <p className='mb-4'>Acá los resultados de tu votación más reciente: <br/> <span className='font-semibold'>Festejo de mi cumple 🎂 Cuento con ustedes!</span></p>
                     <div className='items-center flex flex-col w-full mt-2'>
-                        {/* primera opcion */}
-                        <div className='w-full mb-5'>
-                            <div className='flex mb-3'>
-                                <p className='font-semibold'>Viernes 20 de Septiembre - 22h</p>
-                            </div>
-                            <div className="w-full h-2 border border-primaryPurple rounded mb-2">
-                                <div className="h-full bg-primaryPurple rounded" style={{ width: '50%' }}></div>
-                            </div>
-                            <p className='text-sm'>5 de 10 votaron esta opcion</p>
-                        </div>
-
-                         {/* segunda opcion */}
-                         <div className='w-full mb-5'>
-                            <div className='flex mb-3'>
-                                <p className='font-semibold'>Sabada 21 de Septiembre - 22h</p>
-                            </div>
-                            <div className="w-full h-2 border border-primaryPurple rounded mb-2">
-                                <div className="h-full bg-primaryPurple rounded" style={{ width: '30%' }}></div>
-                            </div>
-                            <p className='text-sm'>3 de 10 votaron esta opcion</p>
-                        </div>
-
-                        {/* tercera opcion */}
-                        <div className='w-full mb-5'>
-                            <div className='flex mb-3'>
-                                <p className='font-semibold'>Domingo 22 de Septiembre - 20h</p>
-                            </div>
-                            <div className="w-full h-2 border border-primaryPurple rounded mb-2">
-                                <div className="h-full bg-primaryPurple rounded" style={{ width: '0%' }}></div>
-                            </div>
-                            <p className='text-sm'>0 de 10 votaron esta opcion</p>
-                        </div>
-
-
-                        {/* cuarta opcion */}
-                        <div className='w-full'>
-                            <div className='flex mb-3'>
-                                <p className='font-semibold'>Viernes 27 de Septiembre - 23:30h</p>
-                            </div>
-                            <div className="w-full h-2 border border-primaryPurple rounded mb-2">
-                                <div className="h-full bg-primaryPurple rounded" style={{ width: '20%' }}></div>
-                            </div>
-                            <p className='text-sm'>2 de 10 votaron esta opcion</p>
-                        </div>
-
-
+                        {arrOptions.map(option => <Options opcion={option.opcion} votos={option.votos} />)}
                     </div>
                 </div>
 

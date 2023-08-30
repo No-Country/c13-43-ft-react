@@ -1,5 +1,5 @@
-import Init from "@/customPages/init";
 import React from "react";
+import Init from "@/components/Init";
 
 const Home = () => {
   return <Init />;

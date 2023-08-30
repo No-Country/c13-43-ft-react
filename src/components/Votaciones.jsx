@@ -1,6 +1,13 @@
 import React from 'react';
 import Image from 'next/image';
 
+const historial = [
+    {codigo: '01563', nombre: 'Fiesta de cumpleaños', ganador: '80% votó 20 de Marzo', isActive: true},
+    {codigo: '025884', nombre: 'Instrumento musical', ganador: '60% votó Guitarra', isActive: true},
+    {codigo: '029484', nombre: 'Viaje', ganador: '30% votó Mar del Plata', isActive: false},
+    {codigo: '079584', nombre: '¿Qué cenamos?', ganador: '70% votó Pizza', isActive: false},
+]
+
 const Votaciones = () => {
     return (
         <div className='w-2/4 font-dmsans'>
@@ -16,33 +23,21 @@ const Votaciones = () => {
                     </form>
                 </div>
                 <div className='flex gap-4 pl-10 pb-10 '>
-                    <div className='flex justify-center items-center rounded-full bg-slate-300 gap-2 w-24 h-6' >
+                    <div className='flex justify-center items-center rounded-full bg-slate-300 gap-2 w-24 h-6 cursor-pointer' >
                         <div className='w-4 h-4 bg-green-500 rounded-full'></div>
                         <button className="text-xs">Activas</button>
                     </div>
-                    <div className='flex justify-center items-center rounded-full bg-slate-300 gap-2 w-24 h-6'>
+                    <div className='flex justify-center items-center rounded-full bg-slate-300 gap-2 w-24 h-6 cursor-pointer'>
                         <div className='w-4 h-4 bg-red-500 rounded-full'></div>
                         <button className="text-xs">Inactivas</button>
                     </div>
                 </div>
                 <div className='flex flex-col gap-4 px-10 pb-10'>
+                    {historial.map(sala => 
                     <div className='flex gap-2 items-center'>
-                        <div className='w-4 h-4 bg-green-500 rounded-full'></div>
-                        <p className=''>01563 - Fiesta de cumpleaños   |   80% votó 20 de Marzo</p>
-                    </div>
-                    <div className='flex gap-2 items-center'>
-                        <div className='w-4 h-4 bg-green-500 rounded-full'></div>
-                        <p className=''>025884 - Instrumento musical   |   60% votó Guitarra</p>
-                    </div>
-                    <hr className='border-secondaryBlack'/>
-                    <div className='flex gap-2 items-center'>
-                        <div className='w-4 h-4 bg-red-500 rounded-full'></div>
-                        <p className=''>029484 - Viaje   |   30% votó Mar del Plata</p>
-                    </div>
-                    <div className='flex gap-2 items-center'>
-                        <div className='w-4 h-4 bg-red-500 rounded-full'></div>
-                        <p className=''>079584 - ¿Qué cenamos?   |   70% votó Pizza</p>
-                    </div>
+                        <div className={`w-3 h-3 ${sala.isActive ? 'bg-green-500' : 'bg-red-500'} rounded-full`}></div>
+                        <p className=''>{sala.codigo} - {sala.nombre} | {sala.ganador} </p>
+                    </div>)}
                 </div>
             </div>
         </div>
@@ -50,3 +45,7 @@ const Votaciones = () => {
 }
 
 export default Votaciones
+
+
+
+

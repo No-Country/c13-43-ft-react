@@ -1,7 +1,8 @@
 import React from 'react'
-import Sidebar from '@/components/Sidebar'
+import Sidebar from '@/containers/Sidebar'
 import Votaciones from '@/components/Votaciones'
 import Atajos from '@/components/Atajos'
+
 const votaciones = () => {
     return (
         <div className="flex mt-16">
