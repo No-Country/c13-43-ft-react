@@ -1,23 +1,25 @@
 import { NextResponse } from "next/server";
 import { firestoreDB } from "@/lib/firebaseConn";
-import { database } from "firebase-admin";
 
 export async function PUT(request) {
   const { searchParams } = new URL(request.url);
-  const voterEmail = searchParams.get("voterEmail");
   const optionID = searchParams.get("optionId");
   const roomId = searchParams.get("roomId");
-  //const body = await request.json();
+  const votantEmail = searchParams.get("voterEmail");
 
   const roomRef = firestoreDB.collection("rooms").doc(roomId);
   const currentRoomData = (await roomRef.get()).data();
   const currentOption = currentRoomData.options[optionID];
   const currentVotedBy = currentOption.votedBy;
+  const newVotedByEntry = { voterEmail: votantEmail };
+
   const updatedTimesVoted = currentOption.timesVoted + 1;
-  // Realizamos la actualización del campo timesVoted
+  const updatedVotedBy = [...currentVotedBy, newVotedByEntry];
+
   await roomRef.update({
     [`options.${optionID}.timesVoted`]: updatedTimesVoted,
+    [`options.${optionID}.votedBy`]: updatedVotedBy,
   });
 
-  return NextResponse.json(currentVotedBy);
+  return NextResponse.json(updatedVotedBy);
 }
