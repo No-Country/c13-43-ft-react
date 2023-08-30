@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 
-const Password = ({ nombre, name }) => {
+const Password = ({ nameLabel, name }) => {
     const [openEye, setOpenEye] = useState(false);
 
     const ojo = {
@@ -12,9 +12,9 @@ const Password = ({ nombre, name }) => {
 
     return (
         <div className='my-8'>
-            <label className='text-secondaryBlack font-dmsans font-medium' for={name}> { nombre } </label>
+            <label className='text-secondaryBlack font-dmsans font-medium' for={ name }> { nameLabel } </label>
             <div className='relative'>
-                <input className="w-full border-b border-secondaryBlack bg-slate-50 outline-none " type={ openEye ? "text" : "password"} name={name} id={name}/>
+                <input className="w-full border-b border-secondaryBlack bg-slate-50 outline-none " type={ openEye ? "text" : "password"} name={ name } id={ name }/>
                 <Image
                     width={ 25 }
                     height={ 25 }
