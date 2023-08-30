@@ -7,8 +7,8 @@ const OptionCard = ({ text, details, image }) => {
         <img src={image} alt="" />
       </div>
       <div className="h-20 w-3/5 flex flex-col items-center justify-center font-dmsans">
-        <h4 className="text-lg">{text}</h4>
-        <p className="text-sm">{details}</p>
+        <h4 className="text-md">{text}</h4>
+        <p className="text-xs">{details}</p>
       </div>
     </div>
   );
@@ -17,7 +17,7 @@ const OptionCard = ({ text, details, image }) => {
 const Atajos = () => {
   return (
     <div className="w-fit box-border p-4 flex-col  rounded-3x1">
-      <h2 className="font-dmsans text-secondaryBlack text-3xl mt-1.5 mb-4 font-semibold">
+      <h2 className="font-dmsans text-secondaryBlack text-2xl mt-1.5 mb-4 font-semibold">
         Atajos
       </h2>
       <div className="flex-col items-center justify-center">
