@@ -7,7 +7,7 @@ export const GoogleButton = () => {
     };
 
     return (
-        <button onClick={handleClickLogin} className='text-secondaryBlack font-dmsans font-medium border-primaryPurple border rounded-full gap-2 m-auto px-4 py-2 flex items-center justify-center'>
+        <button onClick={handleClickLogin} className='text-primaryPurple font-dmsans font-medium border-primaryPurple border rounded-full w-full gap-2 py-1 flex items-center justify-center'>
             <picture>
                 <img src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png" alt="logoGoogle" className='w-8 h-8 justify-center' />
             </picture>

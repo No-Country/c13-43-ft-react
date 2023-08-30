@@ -11,8 +11,8 @@ const Password = ({ nameLabel, name }) => {
     }
 
     return (
-        <div className='my-8'>
-            <label className='text-secondaryBlack font-dmsans font-medium' for={ name }> { nameLabel } </label>
+        <div className='mt-8'>
+            <label className='text-secondaryBlack font-dmsans font-medium' htmlFor={ name }> { nameLabel } </label>
             <div className='relative'>
                 <input className="w-full border-b border-secondaryBlack bg-slate-50 outline-none " type={ openEye ? "text" : "password"} name={ name } id={ name }/>
                 <Image
