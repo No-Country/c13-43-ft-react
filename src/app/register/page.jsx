@@ -10,15 +10,18 @@ const Register = () => {
                 <form action="">
                     <div className='my-6'>
                         <label className='text-secondaryBlack font-dmsans font-medium'> NOMBRE </label>
-                        <input className="w-full border-b border-secondaryBlack bg-slate-50 outline-none " type="text" name="email"/>
+                        <input className="w-full border-b border-secondaryBlack bg-slate-50 outline-none " type="text" name="nombre" id='nombre'/>
                     </div>
 
                     <div className='my-6'>
                         <label className='text-secondaryBlack font-dmsans font-medium'> EMAIL </label>
-                        <input className="w-full border-b border-secondaryBlack bg-slate-50 outline-none " type="email" name="email"/>
+                        <input className="w-full border-b border-secondaryBlack bg-slate-50 outline-none " type="email" name="email" id='email'/>
                     </div>
 
-                    <Password/>
+                    <Password
+                        nameLabel = 'CONTRASEÑA'
+                        name = 'password'
+                    />
 
                     <div className='flex items-center justify-center gap-8 my-5 py-2'>
                         <button className='bg-primaryPurple text-secondaryWhite font-dmsans font-medium w-1/2 py-2 rounded-full'> INGRESAR </button>
