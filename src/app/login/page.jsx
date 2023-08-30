@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 export const login = () => {
@@ -27,7 +28,13 @@ export const login = () => {
 
                         <button className='text-secondaryBlack font-dmsans font-medium border-primaryPurple border rounded-full gap-2 m-auto px-4 py-2 flex items-center justify-center'> 
                             <picture>
-                                <img src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png" alt="logoGoogle" className='w-8 h-8 justify-center'/>
+                                <img 
+                                src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png" 
+                                alt="logoGoogle" 
+                                className='w-8 h-8 justify-center'
+                                width={30}
+                                height={30}                                
+                                />
                             </picture>
                             Entrar con google
                         </button>
@@ -35,10 +42,12 @@ export const login = () => {
                 </div>
 
                 <div className="flex md:justify-end w-full md:w-1/2 justify-center h-auto">
-                    <img 
+                    <Image 
                     src="/Images/imgLogin.png" 
                     alt="HomeImage" 
-                    className='h-3/2'
+                    className='h-auto'
+                    width={800}
+                    height={400}
                     // className="object-cover md:rounded-l-3xl rounded-md md:rounded-r-none md:w-full h-96"
                     />
                 </div>

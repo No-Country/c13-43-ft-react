@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const Resultados = () => {
     return (
@@ -12,7 +13,7 @@ const Resultados = () => {
             <div className="flex justify-center sm:justify-normal">
                 <div className="flex flex-col items-start bg-primaryPurple rounded-lg px-5 py-7 gap-5 min-w-fit">
                     <div>
-                        <img className="w-1/2 md:w-9/12" src="../Images/resultados/resultados-ImagePlaceholder.png"/>
+                        <Image className="w-1/2 md:w-9/12" src="/Images/resultados/resultados-ImagePlaceholder.png" width={60} height={60} />
                     </div>
                     <span className="text-3xl md:text-4xl text-white font-bold">80%</span>
                     <p className="text-sm md:text-xl text-white font-bold">Sábado 21 de septiembre</p>

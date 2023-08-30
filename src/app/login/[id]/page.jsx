@@ -1,5 +1,5 @@
 import React from 'react'
-import Atajos from '@/components/Atajos'
+import Atajos from '@/containers/Atajos'
 import Resultados from '@/components/Resultados'
 
 const Panel = () => {
