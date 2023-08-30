@@ -17,7 +17,7 @@ const Init = () => {
             </article>
             <div className="flex md:justify-end w-full md:w-1/2 justify-center h-auto">
                 <img 
-                src="https://images.pexels.com/photos/4669141/pexels-photo-4669141.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                src="/Images/imgLogin.png" 
                 alt="HomeImage" 
                 className="object-cover md:rounded-l-3xl rounded-md md:rounded-r-none md:w-full h-96"
                 />
