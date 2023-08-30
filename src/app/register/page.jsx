@@ -1,4 +1,5 @@
 import ImagePrincipal from '@/components/ImagePrincipal'
+import Password from '@/components/Password';
 import React from 'react'
 
 const Register = () => {
@@ -16,11 +17,8 @@ const Register = () => {
                         <label className='text-secondaryBlack font-dmsans font-medium'> EMAIL </label>
                         <input className="w-full border-b border-secondaryBlack bg-slate-50 outline-none " type="email" name="email"/>
                     </div>
-                    
-                    <div className='my-6'>
-                        <label className='text-secondaryBlack font-dmsans font-medium'> CONTRASEÑA </label>
-                        <input className="w-full border-b border-secondaryBlack bg-slate-50 outline-none " type="password" name="password"/>
-                    </div>
+
+                    <Password/>
 
                     <div className='flex items-center justify-center gap-8 my-5 py-2'>
                         <button className='bg-primaryPurple text-secondaryWhite font-dmsans font-medium w-1/2 py-2 rounded-full'> INGRESAR </button>
