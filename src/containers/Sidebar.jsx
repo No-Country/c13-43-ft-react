@@ -1,8 +1,9 @@
-"use client"
+
+'use client'
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { ChangeLi } from './ChangeLi';
-import { signOut } from "next-auth/react";
+import { ChangeLi } from '../components/ChangeLi';
+import { signOut } from 'next-auth/react';
 
 const Sidebar = () => {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -26,7 +27,7 @@ const Sidebar = () => {
     const handleItemClick = (index) => {
         setActiveIndex(index);
     }
-    
+
     const handleClicksignOut = () => {
         signOut({ callbackUrl: '/'});
     };
@@ -44,7 +45,6 @@ const Sidebar = () => {
                     isActive={ activeIndex === 0 }
                     onClick={() => handleItemClick(0)}
                 />
-
 
                 <ChangeLi
                     img = { activeIndex === 1 ? imgsM.votacion : imgsN.votacion }
@@ -65,8 +65,8 @@ const Sidebar = () => {
                     nombre={ 'Salir' }
                     isActive={ activeIndex === 3 }
                     onClick={() => {
-                        handleItemClick(3);
-                        handleClicksignOut();
+                        handleItemClick(3)
+                        handleClicksignOut()
                     }}
                 />
             </ul>
