@@ -21,7 +21,7 @@ const Modal = () => {
                     <h2 className='text-primaryPurple font-dmsans font-bold text-3xl mb-4'>Resultados</h2>
                     <p className='mb-4'>Acá los resultados de tu votación más reciente: <br/> <span className='font-semibold'>Festejo de mi cumple 🎂 Cuento con ustedes!</span></p>
                     <div className='items-center flex flex-col w-full mt-2'>
-                        {arrOptions.map(option => <Options opcion={option.opcion} votos={option.votos} />)}
+                        {arrOptions.map((option, index) => <Options key={index} opcion={option.opcion} votos={option.votos} />)}
                     </div>
                 </div>
 
