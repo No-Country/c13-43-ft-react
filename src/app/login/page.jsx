@@ -6,10 +6,10 @@ import { GoogleButton } from '@/components/GoogleButton';
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import ModalGeneral from '@/components/ModalGeneral';
+import ModalGeneral from '@/containers/ModalGeneral';
 import ModalRegister from '@/components/ModalRegister';
 
-export const login = () => {
+const Login = () => {
     // const { data: session } = useSession();
   const router = useRouter();
   const [error, setError] = useState();
@@ -101,4 +101,4 @@ return (
 };
     
 
-export default login
+export default Login
