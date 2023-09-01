@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-const ModalGeneral = ({ children, state, changeState }) => {
+const ModalGeneral = ({ children, state, changeState}) => {
     return (
         <>
             { state &&
@@ -13,8 +13,10 @@ const ModalGeneral = ({ children, state, changeState }) => {
                         > 
                             <Image src='/Images/closeIcon.png' width={ 25 } height={ 25 } alt='cerrar'/>
                         </button>
-
-                        { children }
+                        {/* 'overflow-y-scroll h-full w-full' */}
+                        <div className='overflow-y-scroll h-full w-full'>
+                            { children }
+                        </div>
                     </main>
                 </div>
             }
