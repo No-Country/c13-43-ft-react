@@ -33,8 +33,8 @@ const Votaciones = () => {
                     </div>
                 </div>
                 <div className='flex flex-col gap-4 px-10 pb-10'>
-                    {historial.map(sala => 
-                    <div className='flex gap-2 items-center'>
+                    {historial.map((sala, index) => 
+                    <div className='flex gap-2 items-center' key={index}>
                         <div className={`w-3 h-3 ${sala.isActive ? 'bg-green-500' : 'bg-red-500'} rounded-full`}></div>
                         <p className=''>{sala.codigo} - {sala.nombre} | {sala.ganador} </p>
                     </div>)}
