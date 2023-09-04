@@ -33,3 +33,7 @@ body {
 .panelLi.active .open{
     display: none;
 }
+
+.modalGeneral{
+    max-height: 35rem;
+}

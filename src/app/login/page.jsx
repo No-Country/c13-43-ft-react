@@ -6,10 +6,14 @@ import { GoogleButton } from "@/components/GoogleButton";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import ModalGeneral from "@/containers/ModalGeneral";
+import ModalRegister from "@/components/ModalRegister";
 
-const Login = () => {
+export const login = () => {
+  // const { data: session } = useSession();
   const router = useRouter();
   const [error, setError] = useState();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
@@ -27,6 +31,7 @@ const Login = () => {
       setError("Tu email o contraseña es incorrecto");
     }
   };
+
   return (
     <div className="flex gap-40 pt-8 pl-32">
       <main className="flex-colum justify-center w-1/2 ">
@@ -55,7 +60,7 @@ const Login = () => {
             <div className="mt-2">
               {error && <p className="font-medium text-red-600">{error}</p>}
             </div>
-            <div className="flex justify-start items-center gap-8 mt-10">
+            <div className="flex justify-start items-center gap-8 mt-8">
               <button className="bg-primaryPurple text-secondaryWhite w-5/12 font-dmsans font-medium py-2 rounded-full">
                 {" "}
                 INGRESAR{" "}
@@ -67,7 +72,7 @@ const Login = () => {
           </div>
         </div>
 
-        <div className="flex gap-4 my-7">
+        <div className="flex gap-4 my-6">
           <hr className="flex-grow border-secondaryBlack mt-3" />
           <span className="text-secondaryBlack font-dmsans font-medium">
             OR
@@ -75,10 +80,7 @@ const Login = () => {
           <hr className="flex-grow border-secondaryBlack mt-3" />
         </div>
 
-        <button
-          className="text-primaryPurple font-dmsans font-medium border-primaryPurple border rounded-full w-full py-2"
-          onClick={() => setStateModal(!stateModal)}
-        >
+        <button className="text-primaryPurple font-dmsans font-medium border-primaryPurple border rounded-full w-full py-2">
           {" "}
           REGISTRATE{" "}
         </button>
@@ -88,4 +90,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default login;
