@@ -14,7 +14,7 @@ const ModalRegister = () => {
     }
 
     return (
-        <main >
+        <main>
             <h1 className='text-secondaryBlack text-5xl font-bold font-dmsans flex justify-center'> Registrate </h1>
             <form onSubmit={ handleSubmit }>
                 <div className='my-6'>
@@ -26,17 +26,16 @@ const ModalRegister = () => {
                     <label className='text-secondaryBlack font-dmsans font-medium'> EMAIL </label>
                     <input className="w-full border-b border-secondaryBlack bg-slate-50 outline-none " type="email" name="email" id='email'/>
                 </div>
-
+{/* 
                 <Password
                     nameLabel = 'CONTRASEÑA'
                     name = 'password'
                 />
 
-                {/* <Password
+                <Password
                     nameLabel = 'REPETIR CONTRASEÑA'
                     name = 'password2'
                 /> */}
-
                 
                 <button className='bg-primaryPurple text-secondaryWhite font-dmsans font-medium w-full py-2 rounded-full'> INGRESAR </button>
 
