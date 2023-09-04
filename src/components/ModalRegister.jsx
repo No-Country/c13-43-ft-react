@@ -36,6 +36,7 @@ const ModalRegister = () => {
                     nameLabel = 'REPETIR CONTRASEÑA'
                     name = 'password2'
                 /> */}
+
                 
                 <button className='bg-primaryPurple text-secondaryWhite font-dmsans font-medium w-full py-2 rounded-full'> INGRESAR </button>
 
