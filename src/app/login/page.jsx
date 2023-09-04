@@ -3,35 +3,35 @@ import ImagePrincipal from '@/components/ImagePrincipal';
 import Password from '@/components/Password';
 import React from 'react';
 import { GoogleButton } from '@/components/GoogleButton';
-import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { signIn } from 'next-auth/react';
 
-export const login = () => {
-    // const { data: session } = useSession();
-    const router = useRouter();
-    const [error, setError] = useState();
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const data = new FormData(e.currentTarget);
-
-        const signInResponse = await signIn("credentials", {
-            email: data.get("email"),
-            password: data.get("password"),
-            redirect: false,
-        });
+export default function Login() {
+  
+  const router = useRouter();
+  const [error, setError] = useState();
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    
+    const signInResponse = await signIn("credentials", {
+      email: data.get("email"),
+      password: data.get("password"),
+      redirect: false,
+    });
 
         if (signInResponse && !signInResponse.error) {
             router.push("/login/1234");
-        } else {
+          } else {
             console.log("Error: ", signInResponse);
             setError("Tu email o contraseña es incorrecto")
-        }
-    };
+          }
+        };
 
-    return (
-        <div className="flex gap-40 pt-8 pl-32">
+        return (
+          <div className="flex gap-40 pt-8 pl-32">
           <main className="flex-colum justify-center w-1/2 ">
             <h1 className="text-secondaryBlack text-5xl font-bold font-dmsans flex justify-center">
               {" "}
@@ -85,6 +85,3 @@ export const login = () => {
         </div>
       );
     };
-    
-
-export default login
