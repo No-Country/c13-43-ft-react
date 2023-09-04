@@ -3,13 +3,13 @@ import ImagePrincipal from "@/components/ImagePrincipal";
 import Password from "@/components/Password";
 import React from "react";
 import { GoogleButton } from "@/components/GoogleButton";
-import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { signIn } from "next-auth/react";
 import ModalGeneral from "@/containers/ModalGeneral";
 import ModalRegister from "@/components/ModalRegister";
 
-export const login = () => {
+const Login = () => {
   // const { data: session } = useSession();
   const router = useRouter();
   const [error, setError] = useState();
