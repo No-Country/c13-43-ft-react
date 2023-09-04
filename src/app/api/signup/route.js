@@ -12,12 +12,12 @@ import { NextResponse } from "next/server";
 import avatar from "../../../../public/Images/avatar/uno.png";
 export async function POST(request) {
   const body = await request.json();
-  const { email, password } = body;
+  const { email, password, name } = body;
 
   const harcodeUser = {
     email,
     password,
-    name: "User",
+    name,
     isAdmin: null,
     picture: avatar,
   };
