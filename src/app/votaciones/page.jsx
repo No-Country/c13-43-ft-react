@@ -3,7 +3,7 @@ import Sidebar from '@/containers/Sidebar'
 import Votaciones from '@/components/Votaciones'
 import Atajos from '@/components/Atajos'
 
-const votaciones = () => {
+const VotacionesPage = () => {
     return (
         <div className="flex mt-16">
             <div className="w-1/4"></div>
@@ -14,4 +14,4 @@ const votaciones = () => {
     )
 }
 
-export default votaciones
+export default VotacionesPage

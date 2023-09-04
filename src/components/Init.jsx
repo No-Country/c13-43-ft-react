@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 const Init = () => {
@@ -13,7 +14,9 @@ const Init = () => {
                     </span>
                 </div>
                 <div>
-                    <button className="bg-primaryPurple text-white font-semibold rounded-3xl px-4 py-2"> Empezar → </button>
+                    <button className="bg-primaryPurple text-white font-semibold rounded-3xl px-4 py-2">
+                        <Link href={'/login'}> Empezar → </Link>  
+                    </button>
                 </div>
             </article>
             <div className="flex md:justify-end w-full md:w-1/2 justify-center h-auto">
