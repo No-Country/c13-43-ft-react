@@ -5,11 +5,11 @@ import React from 'react';
 import { GoogleButton } from '@/components/GoogleButton';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { signIn } from 'next-auth/react';
 import ModalGeneral from '@/containers/ModalGeneral';
 import ModalRegister from '@/components/ModalRegister';
 
 const Login = () => {
-    // const { data: session } = useSession();
   const router = useRouter();
   const [error, setError] = useState();
   const [stateModal, setStateModal] = useState( false )
