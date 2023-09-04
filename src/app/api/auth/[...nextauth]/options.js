@@ -22,7 +22,7 @@ export const NextAuthOptions = {
                 },
             },
             async authorize(credentials) {
-                const user = { id: "42", email: "tester@test.com", password: "123123" }
+                const user = { id: "42", email: "tester@test.com", password: "123123", address: 'Ortiz 2111' }
 
                 if(credentials?.email === user.email && credentials?.password === user.password) {
                     return user
@@ -36,13 +36,37 @@ export const NextAuthOptions = {
         signIn: '/login'
     },
     callbacks: {
-        async signIn({user}) {
-            // console.log(user)
-            return true
+        // async signIn({user}) {
+        //     // console.log(user)
+        //     return true
+        // },
+        async jwt({ token, user, session}) {
+            // console.log("jwt callback", { token, user, session });
+            if(user) {
+                return {
+                    ...token,
+                    id: user.id,
+                    address: user.address,
+                };
+            }
+            return token;
         },
-        async session({ session }) {
-            // console.log(session)
-            return session
+        async session({ session, token, user }) {
+            // console.log("session callback", { session, token, user });
+            return {
+                ...session,
+                user: {
+                    ...session.user,
+                    id: token.id,
+                    address: token.address,
+                }
+            };
+            return session;
         },
-    }
+        
+    },
+    secret: process.env.NEXTAUTH_SECRET,
+    session: {
+        strategy: "jwt",
+    },
 }
