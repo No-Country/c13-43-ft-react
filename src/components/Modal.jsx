@@ -12,7 +12,7 @@ const arrOptions = [
 const Modal = () => {
 
     return (
-        <div className='w-screen h-screen flex justify-center items-center font-dmsans' >
+        <div className='w-screen h-screen flex justify-center items-center font-dmsans'>
             <div className='bg-secondaryGray flex flex-col min-w-fit min-h-fit items-center p-6 pb-10'>
                 <div className='self-end mb-2'>
                     <Image src="/Images/closeIcon.png" alt="closeIcon" width={32} height={32} />
@@ -24,7 +24,6 @@ const Modal = () => {
                         {arrOptions.map((option, index) => <Options key={index} opcion={option.opcion} votos={option.votos} />)}
                     </div>
                 </div>
-
             </div>
         </div>
 
