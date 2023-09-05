@@ -11,12 +11,12 @@ const Atajos = () => {
         <OptionCard
           text={"Entrar a sala"}
           details={"15 min. ago"}
-          image={"/test"}
+          image={"/Images/atajos/atajo-1.png"}
         />
         <OptionCard
           text={"Crear sala"}
           details={"15 min. ago"}
-          image={"/test"}
+          image={"/Images/atajos/atajo-2.png"}
         />
       </div>
     </div>
