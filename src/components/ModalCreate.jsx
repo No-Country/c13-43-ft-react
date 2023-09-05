@@ -92,7 +92,7 @@ const ModalCreate = (props) => {
                 <div className="border-b w-full mt-1 border-secondaryBlack"></div>
 
                 {options.map((option, index) => 
-                    <div key= {option.id} className="flex justify-between items-center px-2 text-xs rounded-lg bg-yellow-200 my-2"> 
+                    <div key= {option.id} className="flex justify-between items-center px-2 text-xs rounded-lg bg-yellow-200 my-1"> 
                         <p> {option.titulo} </p>
                         <span className="cursor-pointer" onClick= {() => deleteAnOption(index)}> x </span>
                     </div>)
