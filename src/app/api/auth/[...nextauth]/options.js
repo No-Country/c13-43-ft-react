@@ -23,23 +23,28 @@ export const NextAuthOptions = {
                 },
             },
             async authorize(credentials) {
-                //checkear si el user esta en la db
-                const userRef = await firestoreDB.collection("users").where("email", "==", credentials.email).get()
-                const userPassword = user.docs[0].data().password;
-                const user = user.docs[0].data();
-                
-                //checkear si el usuario existe o si hay contraseña
-                if (userRef.empty || !credentials.password) {
-                    console.log("Invalid email or password");
+                //checkea que los campos "email" y "password" tengan algo
+                if (!credentials.email || !credentials.password) {
+                    console.log("Both fields are required")
                     return null;
                 }
-
+                
+                const userRef = await firestoreDB.collection("users").where("email", "==", credentials.email).get()
+                //checkear si el user esta en la db
+                if (userRef.empty) {
+                    console.log("User not found");
+                    return null;
+                }
+                
+                const user = userRef.docs[0].data();
+                const userPassword = userRef.docs[0].data().password;
+                
                 //checkear si las contraseñas coinciden
                 if(userPassword !== credentials.password) {
                     console.log("Wrong password")
                     return null;
                 }
-                // console.log(user)
+                // console.log(returnUser)
                 return user;
             }
         })
