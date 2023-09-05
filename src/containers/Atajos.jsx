@@ -19,7 +19,6 @@ const Atajos = () => {
           text={"Entrar a sala"}
           details={"15 min. ago"}
           image={"/Images/atajos/atajo-1.png"}
-          action = {() => setStateModalJoin(!stateModalJoin)}
         />
         <OptionCard
           text={"Crear sala"}
@@ -30,7 +29,8 @@ const Atajos = () => {
       </div>
       <ModalGeneral
         state = { stateModalJoin }
-        changeState = { setStateModalJoin }>     {/*Reemplazar por el modal correcto*/}
+        changeState = { setStateModalJoin }>     
+        {/*Reemplazar por el modal correcto*/}
       </ModalGeneral>
       <ModalGeneral
         state = { stateModalCreate }

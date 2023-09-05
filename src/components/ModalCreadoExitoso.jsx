@@ -4,8 +4,8 @@ import Image from 'next/image'
 const ModalCreadoExitoso = () => {
     return (
         <div>
-                <Image className="mx-auto" src="/Images/CheckIcon.png" alt="CheckIcon" width={25} height={25}/>
-                <h2 className="text-center text-2xl my-4 text-primaryPurple font-bold">Sala creada con éxito! </h2>
+            <Image className="mx-auto" src="/Images/CheckIcon.png" alt="CheckIcon" width={25} height={25}/>
+            <h2 className="text-center text-2xl my-4 text-primaryPurple font-bold">Sala creada con éxito! </h2>
             <div className="flex justify-center">
                 <p>Tu código de sala es: &nbsp; </p>
                 <p className="font-bold"> 25086 &nbsp; &nbsp; </p>
