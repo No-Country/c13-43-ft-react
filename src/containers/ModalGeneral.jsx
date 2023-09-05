@@ -6,14 +6,14 @@ const ModalGeneral = ({ children, state, changeState}) => {
         <>
             { state &&
                 <div className='w-screen h-screen flex items-center justify-center fixed top-0 left-0 backdrop-blur-sm'>
-                    <main className='modalGeneral w-2/5 h-3/5 relative rounded shadow-lg bg-secondaryWhite p-12'>
+                    <main className='modalGeneral w-2/5 h-3/5 relative rounded shadow-lg bg-secondaryWhite py-12'>
                         <button 
                             className='absolute top-5 right-5 cursor-pointer'
                             onClick={() => changeState( !state )}
                         > 
                             <Image src='/Images/closeIcon.png' width={ 25 } height={ 25 } alt='cerrar'/>
                         </button>
-                        <div className='overflow-y-scroll h-full w-full'>
+                        <div className='overflow-y-scroll h-full w-full px-12'>
                             { children }
                         </div>
                     </main>

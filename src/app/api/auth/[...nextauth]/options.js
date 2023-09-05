@@ -1,5 +1,6 @@
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { firestoreDB } from "@/lib/firebaseConn";
 
 export const NextAuthOptions = {
     providers: [
@@ -22,13 +23,29 @@ export const NextAuthOptions = {
                 },
             },
             async authorize(credentials) {
-                const user = { id: "42", email: "tester@test.com", password: "123123", address: 'Ortiz 2111' }
-
-                if(credentials?.email === user.email && credentials?.password === user.password) {
-                    return user
-                }else {
-                    return null
+                //checkea que los campos "email" y "password" tengan algo
+                if (!credentials.email || !credentials.password) {
+                    console.log("Both fields are required")
+                    return null;
                 }
+                
+                const userRef = await firestoreDB.collection("users").where("email", "==", credentials.email).get()
+                //checkear si el user esta en la db
+                if (userRef.empty) {
+                    console.log("User not found");
+                    return null;
+                }
+                
+                const user = userRef.docs[0].data();
+                const userPassword = userRef.docs[0].data().password;
+                
+                //checkear si las contraseñas coinciden
+                if(userPassword !== credentials.password) {
+                    console.log("Wrong password")
+                    return null;
+                }
+                // console.log(returnUser)
+                return user;
             }
         })
     ],
@@ -46,7 +63,6 @@ export const NextAuthOptions = {
                 return {
                     ...token,
                     id: user.id,
-                    address: user.address,
                 };
             }
             return token;
@@ -58,15 +74,26 @@ export const NextAuthOptions = {
                 user: {
                     ...session.user,
                     id: token.id,
-                    address: token.address,
                 }
             };
             return session;
         },
+        //Aca lo del login de google
+        // async signIn({profile}) {
+        //     console.log(profile)
+        //     try {
+        //         // await connectDB();
+                
+        //         return true;
+        //     } catch (error) {
+        //         console.log(error);
+        //         return false;
+        //     }
+        // }
         
     },
-    secret: process.env.NEXTAUTH_SECRET,
     session: {
         strategy: "jwt",
     },
+    secret: process.env.NEXTAUTH_SECRET,
 }
