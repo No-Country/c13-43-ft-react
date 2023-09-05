@@ -1,8 +1,7 @@
 "use client"
 import React from "react";
-import OptionCard from "../components/OptionCard";
 import ModalGeneral from "./ModalGeneral";
-import ModalRegister from "@/components/ModalRegister";
+import OptionCard from "../components/OptionCard";
 import ModalCreate from "@/components/ModalCreate";
 
 const Atajos = () => {
@@ -31,8 +30,7 @@ const Atajos = () => {
       </div>
       <ModalGeneral
         state = { stateModalJoin }
-        changeState = { setStateModalJoin }>
-        <ModalRegister/>     {/*Reemplazar por el modal correcto*/}
+        changeState = { setStateModalJoin }>     {/*Reemplazar por el modal correcto*/}
       </ModalGeneral>
       <ModalGeneral
         state = { stateModalCreate }
