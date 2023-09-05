@@ -9,7 +9,7 @@ const VotacionesPage = () => {
             <div className="w-1/4"></div>
             <Sidebar />
             <Votaciones />
-            <Atajos/>
+            <Atajos />
         </div>
     )
 }
