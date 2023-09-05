@@ -1,13 +1,16 @@
-"use client"
-import React from "react";
-import ModalGeneral from "./ModalGeneral";
+'use client'
+import React, { useState } from "react";
 import OptionCard from "../components/OptionCard";
 import ModalCreate from "@/components/ModalCreate";
+import ModalGeneral from "./ModalGeneral";
+import { ModalEnterRoom } from "@/components/ModalEnterRoom";
 
 const Atajos = () => {
 
   const [stateModalJoin, setStateModalJoin] = React.useState(false);
   const [stateModalCreate, setStateModalCreate] = React.useState(false);
+
+  const [enterRoom, setEnterRoom] = useState( false );
 
   return (
     <div className="w-fit box-border p-4 flex-col  rounded-3x1">
@@ -16,6 +19,7 @@ const Atajos = () => {
       </h2>
       <div className="flex-col items-center justify-center">
         <OptionCard
+          action={() => setEnterRoom( !enterRoom )}
           text={"Entrar a sala"}
           details={"15 min. ago"}
           image={"/Images/atajos/atajo-1.png"}
@@ -28,17 +32,18 @@ const Atajos = () => {
         />
       </div>
       <ModalGeneral
-        state = { stateModalJoin }
-        changeState = { setStateModalJoin }>     
-        {/*Reemplazar por el modal correcto*/}
-      </ModalGeneral>
-      <ModalGeneral
         state = { stateModalCreate }
         changeState = { setStateModalCreate }>
         <ModalCreate 
           state = { stateModalCreate }
           changeState = { setStateModalCreate }
         />
+      </ModalGeneral>
+      <ModalGeneral
+        state = { enterRoom }
+        changeState = { setEnterRoom }
+      >
+        <ModalEnterRoom/>
       </ModalGeneral>
     </div>
   );
