@@ -9,7 +9,7 @@ const Navbar = () => {
 
     const path = usePathname()
 
-    if (path === '/' || path === '/about' || path === '/contacto') {
+    if (path === '/' || path === '/about' || path === '/contact') {
         return (
             <nav className="flex justify-between px-16 items-center bg-white shadow-md h-20">
                 <ul className="flex w-3/4">
