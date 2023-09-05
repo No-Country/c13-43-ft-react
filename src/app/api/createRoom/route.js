@@ -1,29 +1,12 @@
 import { NextResponse } from "next/server";
 import { firestoreDB } from "@/lib/firebaseConn";
-
-let options = [
-  {
-    description: "porque tengo franco",
-    timesVoted: 0,
-    title: "jueves",
-    votedBy: [],
-  },
-  {
-    description: "porque bassbs",
-    timesVoted: 0,
-    title: "viernes",
-    votedBy: [],
-  },
-  {
-    description: "porque basdsadasdasd",
-    timesVoted: 0,
-    title: "sabado",
-    votedBy: [],
-  },
-];
+//el back tiene que crear una roomID facil, y antes de proceder
+//checkear que no exista
+let roomId = 123456;
+//date-fns
 export async function POST(request) {
   const body = await request.json();
-  const { createdBy, problem, roomId, options } = body;
+  const { createdBy, problem, options } = body;
   const newRoom = {
     roomId,
     createdBy,

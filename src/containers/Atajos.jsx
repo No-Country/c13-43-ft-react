@@ -18,13 +18,13 @@ const Atajos = () => {
         <OptionCard
           text={"Entrar a sala"}
           details={"15 min. ago"}
-          image={"/Images/avatar/uno.png"}
+          image={"/Images/atajos/atajo-1.png"}
           action = {() => setStateModalJoin(!stateModalJoin)}
         />
         <OptionCard
           text={"Crear sala"}
           details={"15 min. ago"}
-          image={"/Images/sinvotaciones/sinvotaciones-ImagePlaceholder.png"}
+          image={"/Images/atajos/atajo-2.png"}
           action = {() => setStateModalCreate(!stateModalCreate)}
         />
       </div>

@@ -1,39 +1,38 @@
-"use client"
-import ImagePrincipal from '@/components/ImagePrincipal';
-import Password from '@/components/Password';
-import React from 'react';
-import { GoogleButton } from '@/components/GoogleButton';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { signIn } from 'next-auth/react';
-import ModalGeneral from '@/containers/ModalGeneral';
-import ModalRegister from '@/components/ModalRegister';
+"use client";
+import ImagePrincipal from "@/components/ImagePrincipal";
+import Password from "@/components/Password";
+import React from "react";
+import { GoogleButton } from "@/components/GoogleButton";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { signIn } from "next-auth/react";
+import ModalGeneral from "@/containers/ModalGeneral";
+import ModalRegister from "@/components/ModalRegister";
 
 const Login = () => {
+  // const { data: session } = useSession();
   const router = useRouter();
   const [error, setError] = useState();
-  const [stateModal, setStateModal] = useState( false )
 
   const handleSubmit = async (e) => {
-      e.preventDefault();
-      const data = new FormData(e.currentTarget);
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
 
-      const signInResponse = await signIn("credentials", {
-          email: data.get("email"),
-          password: data.get("password"),
-          redirect: false,
-      });
+    const signInResponse = await signIn("credentials", {
+      email: data.get("email"),
+      password: data.get("password"),
+      redirect: false,
+    });
 
-      if (signInResponse && !signInResponse.error) {
-          router.push("/login/1234");
-      } else {
-          console.log("Error: ", signInResponse);
-          setError("Tu email o contraseña es incorrecto")
-      }
+    if (signInResponse && !signInResponse.error) {
+      router.push("/login/1234");
+    } else {
+      console.log("Error: ", signInResponse);
+      setError("Tu email o contraseña es incorrecto");
+    }
   };
 
-return (
-  <>
+  return (
     <div className="flex gap-40 pt-8 pl-32">
       <main className="flex-colum justify-center w-1/2 ">
         <h1 className="text-secondaryBlack text-5xl font-bold font-dmsans flex justify-center">
@@ -58,8 +57,10 @@ return (
               />
             </div>
             <Password nameLabel="CONTRASEÑA" name="password" />
-            <div className='mt-2'>{error && <p className='font-medium text-red-600'>{error}</p>}</div>
-            <div className="flex justify-start items-center gap-8 mt-10">
+            <div className="mt-2">
+              {error && <p className="font-medium text-red-600">{error}</p>}
+            </div>
+            <div className="flex justify-start items-center gap-8 mt-8">
               <button className="bg-primaryPurple text-secondaryWhite w-5/12 font-dmsans font-medium py-2 rounded-full">
                 {" "}
                 INGRESAR{" "}
@@ -71,7 +72,7 @@ return (
           </div>
         </div>
 
-        <div className="flex gap-4 my-7">
+        <div className="flex gap-4 my-6">
           <hr className="flex-grow border-secondaryBlack mt-3" />
           <span className="text-secondaryBlack font-dmsans font-medium">
             OR
@@ -79,25 +80,14 @@ return (
           <hr className="flex-grow border-secondaryBlack mt-3" />
         </div>
 
-        <button 
-          className="text-primaryPurple font-dmsans font-medium border-primaryPurple border rounded-full w-full py-2"
-          onClick={() => setStateModal( !stateModal )}
-        >
+        <button className="text-primaryPurple font-dmsans font-medium border-primaryPurple border rounded-full w-full py-2">
           {" "}
           REGISTRATE{" "}
         </button>
       </main>
       <ImagePrincipal />
     </div>
-    <ModalGeneral
-      state = { stateModal }
-      changeState = { setStateModal }
-    >
-      <ModalRegister/>
-    </ModalGeneral>
-    </>
   );
 };
-    
 
-export default Login
+export default Login;
