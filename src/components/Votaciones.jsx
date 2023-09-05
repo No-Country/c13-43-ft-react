@@ -33,11 +33,18 @@ const Votaciones = () => {
                     </div>
                 </div>
                 <div className='flex flex-col gap-4 px-10 pb-10'>
+
                     {historial.map((sala, index) => 
-                    <div className='flex gap-2 items-center' key={index}>
+                    <div className='flex gap-2 justify-between' key={index}>
                         <div className={`w-3 h-3 ${sala.isActive ? 'bg-green-500' : 'bg-red-500'} rounded-full`}></div>
-                        <p className=''>{sala.codigo} - {sala.nombre} | {sala.ganador} </p>
+                        <p className='text-xs text-start w-full'>{sala.codigo} - {sala.nombre} | {sala.ganador} </p>
+                        <div className="flex justify-end w-1/4 gap-4 items-center">
+                            <Image src="/Images/CoronaIcon.png" alt="corona" width={20} height={20} />
+                            <Image src="/Images/TrashIcon.png" alt="corona" width={20} height={20} />
+                            <Image src="/Images/ShareIcon.png" alt="corona" width={15} height={15} />
+                        </div>
                     </div>)}
+
                 </div>
             </div>
         </div>
