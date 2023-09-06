@@ -21,20 +21,20 @@ const Login = () => {
     router.push(`/login/${userData}`);
   }, [status == "authenticated"]);
 
-  const cerrarModal = async () => {
+  const cerrarModal = () => {
     setStateModal(!stateModal);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-  
+
     const signInResponse = await signIn("credentials", {
       email: data.get("email"),
       password: data.get("password"),
       redirect: false,
     });
-  
+
     if (signInResponse && !signInResponse.error) {
     } else {
       console.log("Error: ", signInResponse);
