@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 const OptionCard = ({ text, details, image, action }) => {
     return (
-        <div className="flex w-72 bg-terciaryWhite shadow p-4 rounded-3xl mb-4 cursor-pointer" onClick={action} >
+        <div className="flex w-72 bg-tertiaryWhite shadow p-4 rounded-3xl mb-4 cursor-pointer" onClick={action} >
             <div className=" w-20 flex items-center justify-center rounded-3xl">
                 <Image src={image} alt="atajo" width={90} height={90} />
             </div>

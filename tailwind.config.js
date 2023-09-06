@@ -9,7 +9,11 @@ module.exports = {
         secondaryBlack: "#121212",
         secondaryWhite: "#F8F8F8",
         secondaryGray: "#f2f1fa",
-        terciaryWhite: "#FFFFFF",
+        tertiaryGray: "#686868",
+        tertiaryWhite: "#FFFFFF",
+      },
+      fontSize: {
+        '4xl': '2.75rem',
       },
       fontFamily: {
         dmsans: ["DM Sans", "sans-serif"],
