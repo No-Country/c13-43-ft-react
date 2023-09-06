@@ -9,18 +9,15 @@ const arrOptions = [
     {opcion: 'Viernes 20 de Septiembre - 12h', votos: '3 de 10 votaron esta opcion'}
 ]
 
-const Modal = () => {
+const ModalResults = () => {
 
     return (
-        <div className='w-screen h-screen flex justify-center items-center font-dmsans'>
-            <div className='bg-secondaryGray flex flex-col min-w-fit min-h-fit items-center p-6 pb-10'>
-                <div className='self-end mb-2'>
-                    <Image src="/Images/closeIcon.png" alt="closeIcon" width={32} height={32} />
-                </div>
+        <div className='flex justify-center items-center font-dmsans'>
+            <div className='flex flex-col items-center p-2 pb-10'>
                 <div className='items-center flex flex-col p-6 pb-0 pt-0'>
-                    <h2 className='text-primaryPurple font-dmsans font-bold text-3xl mb-4'>Resultados</h2>
+                    <h2 className='text-primaryPurple font-dmsans font-bold text-3xl mb-3'>Resultados</h2>
                     <p className='mb-4'>Acá los resultados de tu votación más reciente: <br/> <span className='font-semibold'>Festejo de mi cumple 🎂 Cuento con ustedes!</span></p>
-                    <div className='items-center flex flex-col w-full mt-2'>
+                    <div className='items-center flex flex-col w-full mt-1'>
                         {arrOptions.map((option, index) => <Options key={index} opcion={option.opcion} votos={option.votos} />)}
                     </div>
                 </div>
@@ -30,4 +27,4 @@ const Modal = () => {
     )
 }
 
-export default Modal;
+export default ModalResults;

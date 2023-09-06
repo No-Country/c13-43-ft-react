@@ -1,4 +1,6 @@
 import React from 'react'
+import ModalGeneral from '@/containers/ModalGeneral'
+import ModalCopiar from './ModalCopiar'
 
 const ModalCreate = (props) => {
 
@@ -6,6 +8,7 @@ const ModalCreate = (props) => {
     const [value, setValue] = React.useState('')
     const [alert, setAlert] = React.useState(false)
     const [advice, setAdvice] = React.useState(false)
+    const [creadoExitoso, setCreadoExitoso] = React.useState(false)
 
     const [formData, setFormData] = React.useState({                    // --> Guarda la información del formulario
         codigo: Math.floor(Math.random() * (999999 - 100001)) + 100000,
@@ -30,7 +33,7 @@ const ModalCreate = (props) => {
         } else {
             setAlert(false)
             setTimeout(() => {
-                props.changeState(false)
+                setCreadoExitoso(!creadoExitoso)
                 console.log(formData)       // Aqui debe enviarse la información a DB
             }, 2000);
         }
@@ -97,11 +100,27 @@ const ModalCreate = (props) => {
                         <span className="cursor-pointer" onClick= {() => deleteAnOption(index)}> x </span>
                     </div>)
                 }
+
                 {alert && <p className="text-red-500 text-xs text-center"> Faltan campos por completar </p>}
+
                 <div className="submit flex justify-center">
-                    <button type="submit" className="bg-primaryPurple text-secondaryWhite font-bold rounded-2xl w-2/5 px-2 py-1"> Crear Sala </button>
+                    <button 
+                        type="submit" 
+                        className="bg-primaryPurple text-secondaryWhite font-bold rounded-2xl w-2/5 px-2 py-1"
+                    > Crear Sala </button>
                 </div>
             </form>
+            <ModalGeneral
+                state = { creadoExitoso }
+                changeState = { setCreadoExitoso }
+            >
+                <ModalCopiar 
+                    image = {"/Images/CheckIcon.png"}
+                    title = {"Sala creada con éxito!"}
+                    content = {"Tu código de sala es:"} 
+                    code = {289350}
+                />
+            </ModalGeneral>
         </div>
     )
 }

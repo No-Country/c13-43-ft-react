@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { ModalChooseTime } from './ModalChooseTime';
 
 export const ModalEnterRoom = () => {
+
     const [chooseTime, setChooseTime] = useState( false );
 
     return (

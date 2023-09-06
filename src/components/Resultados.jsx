@@ -1,7 +1,13 @@
+'use client'
 import React from "react";
 import Image from "next/image";
+import ModalResults from "./ModalResults";
+import ModalGeneral from "@/containers/ModalGeneral";
 
 const Resultados = () => {
+
+    const [modalResults, setModalResults] = React.useState(false)
+
     return (
         <div className="flex flex-col px-3 font-dmsans w-2/5">
             <div className="flex flex-col text-center sm:text-left pb-3 px-3">
@@ -30,8 +36,19 @@ const Resultados = () => {
                 </div>
             </div>
             <div className="flex justify-center sm:justify-normal pt-8 ml-1">
-                <button className="text-lg bg-primaryPurple text-white font-bold rounded-3xl px-4 py-2">Ver respuestas</button>
+                <button 
+                    className="text-lg bg-primaryPurple text-white font-bold rounded-3xl px-4 py-2"
+                    onClick = {() => setModalResults(!modalResults)}
+                >
+                        Ver respuestas
+                </button>
             </div>
+            <ModalGeneral
+                state = { modalResults }
+                changeState = { setModalResults }
+            >
+                <ModalResults />      
+            </ModalGeneral>
         </div>
     )
 }
