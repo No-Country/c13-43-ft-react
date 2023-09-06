@@ -27,14 +27,14 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = e.currentTarget;
-
+    const data = new FormData(e.currentTarget);
+  
     const signInResponse = await signIn("credentials", {
       email: data.get("email"),
       password: data.get("password"),
       redirect: false,
     });
-
+  
     if (signInResponse && !signInResponse.error) {
     } else {
       console.log("Error: ", signInResponse);

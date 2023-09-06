@@ -2,15 +2,12 @@
 import React from 'react'
 import Atajos from '@/containers/Atajos'
 import Resultados from '@/components/Resultados'
-import { NextAuthOptions } from '@/app/api/auth/[...nextauth]/options'
-import { getServerSession } from 'next-auth'
 import SinVotaciones from '@/components/SinVotaciones'
 import { redirect } from 'next/navigation'
 
 
-export default async function Panel() {
+export default function Panel() {
 
-    const session = await getServerSession(NextAuthOptions)
     // const [component, setComponent] = React.useState(true)
 
 
