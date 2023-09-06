@@ -7,9 +7,7 @@ import { ModalEnterRoom } from "@/components/ModalEnterRoom";
 
 const Atajos = () => {
 
-  const [stateModalJoin, setStateModalJoin] = React.useState(false);
   const [stateModalCreate, setStateModalCreate] = React.useState(false);
-
   const [enterRoom, setEnterRoom] = useState( false );
 
   return (
