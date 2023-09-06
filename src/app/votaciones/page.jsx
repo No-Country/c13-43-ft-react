@@ -4,6 +4,7 @@ import Votaciones from '@/components/Votaciones'
 import Atajos from '@/containers/Atajos'
 
 const VotacionesPage = () => {
+
     return (
         <div className="flex mt-16">
             <div className="w-1/4"></div>

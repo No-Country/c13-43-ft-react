@@ -86,7 +86,7 @@ const Votaciones = () => {
                 </div>
             </div>
             <ModalGeneral state = { deleteModal } changeState = { setDeleteModal }>
-                <ModalEliminarSala />
+                <ModalEliminarSala state = { deleteModal } changeState = { setDeleteModal } />
             </ModalGeneral>
             
             <ModalGeneral state = { shareModal } changeState = { setShareModal }>

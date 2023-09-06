@@ -2,7 +2,7 @@ import React from 'react'
 import ModalSalaEliminada from "./ModalSalaEliminada";
 import ModalGeneral from '@/containers/ModalGeneral';
 
-export default function ModalEliminarSala() {
+export default function ModalEliminarSala({state, changeState}) {
 
     const [outputDelete, setOutputDelete] = React.useState(false)
 
@@ -15,7 +15,7 @@ export default function ModalEliminarSala() {
                 <div className="mt-8 flex gap-6">
                     <button 
                         className="rounded-full bg-slate-400 px-4 py-2 text-secondaryWhite"
-                        onClick={() => setOutputDelete(!outputDelete)}
+                        onClick={() => changeState(!state)}
                     >
                         CANCELAR
                     </button>
