@@ -1,16 +1,26 @@
 'use client';
 import React from 'react';
 import Password from './Password';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { APICreateUser } from '@/lib/APICalls';
 
 const ModalRegister = () => {
+    const router = useRouter();
+    const [error, setError] = useState();
     
     const  handleSubmit = async ( event ) =>{
         event.preventDefault();
-        const name = event.target.nombre.value;
-        const email = event.target.email.value;
-        const password = event.target.passwordModal.value;
-        const response = await APICreateUser( name, email, password );
+        const { nombre, email, passwordModal } = event.target;
+        const response = await APICreateUser( nombre.value, email.value, passwordModal.value );
+        console.log(response)
+
+        if(response && !response.error) {
+            router.push("/login/1234");
+        }else {
+            console.log("Error: ", response);
+            setError("Creación de cuenta fallido: email existente")
+        }
     }
 
     return (
@@ -37,6 +47,7 @@ const ModalRegister = () => {
                     nameLabel = 'REPETIR CONTRASEÑA'
                     name = 'passwordModal2'
                 />
+                <div className='my-2'>{error && <p className='font-medium font-dmsans text-red-600'>{error}</p>}</div>
                 
                 <button className='bg-primaryPurple text-secondaryWhite font-dmsans font-medium w-full py-2 rounded-full'> REGISTRAR </button>
 

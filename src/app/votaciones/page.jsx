@@ -1,7 +1,7 @@
 import React from 'react'
 import Sidebar from '@/containers/Sidebar'
 import Votaciones from '@/components/Votaciones'
-import Atajos from '@/components/Atajos'
+import Atajos from '@/containers/Atajos'
 
 const VotacionesPage = () => {
     return (
@@ -9,7 +9,7 @@ const VotacionesPage = () => {
             <div className="w-1/4"></div>
             <Sidebar />
             <Votaciones />
-            <Atajos/>
+            <Atajos />
         </div>
     )
 }

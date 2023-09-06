@@ -28,7 +28,7 @@ const Login = () => {
           router.push("/login/1234");
       } else {
           console.log("Error: ", signInResponse);
-          setError("Tu email o contraseña es incorrecto")
+          setError("Inicio de sesión fallido: verifica tu email y contraseña")
       }
   };
 
@@ -58,7 +58,7 @@ return (
               />
             </div>
             <Password nameLabel="CONTRASEÑA" name="password" />
-            <div className='mt-2'>{error && <p className='font-medium text-red-600'>{error}</p>}</div>
+            <div className='mt-2'>{error && <p className='font-medium font-dmsans text-red-600'>{error}</p>}</div>
             <div className="flex justify-start items-center gap-8 mt-10">
               <button className="bg-primaryPurple text-secondaryWhite w-5/12 font-dmsans font-medium py-2 rounded-full">
                 {" "}
@@ -98,6 +98,5 @@ return (
     </>
   );
 };
-    
 
 export default Login
