@@ -3,9 +3,12 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { ChangeLi } from '../components/ChangeLi';
-import { signOut } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
+
 
 const Sidebar = () => {
+    const { data: session } = useSession();
+    const userData = session?.user?.id
     const [activeIndex, setActiveIndex] = useState(0);
 
     const imgsM = {
@@ -43,6 +46,7 @@ const Sidebar = () => {
                     img = { activeIndex === 0  ? imgsM.panel : imgsN.panel }
                     nombre={ 'Panel' }
                     isActive={ activeIndex === 0 }
+                    href={ `/login/${ userData }` }
                     onClick={() => handleItemClick(0)}
                 />
 
@@ -50,6 +54,7 @@ const Sidebar = () => {
                     img = { activeIndex === 1 ? imgsM.votacion : imgsN.votacion }
                     nombre={ 'Votaciones' }
                     isActive={ activeIndex === 1 }
+                    href = { `/login/${ userData }/votaciones` }
                     onClick={() => handleItemClick(1)}
                 />
                 
@@ -57,6 +62,7 @@ const Sidebar = () => {
                     img = { activeIndex === 2 ? imgsM.perfil : imgsN.perfil }
                     nombre={ 'Perfil' }
                     isActive={ activeIndex === 2 }
+                    href= { `/login/${ userData }/perfil` }
                     onClick={() => handleItemClick(2)}
                 />
 

@@ -8,7 +8,6 @@ const VotacionesPage = () => {
     return (
         <div className="flex mt-16">
             <div className="w-1/4"></div>
-            <Sidebar />
             <Votaciones />
             <Atajos />
         </div>
