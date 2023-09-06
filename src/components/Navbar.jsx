@@ -71,7 +71,7 @@ const Navbar = () => {
                     </li>
                     <li className="text-secondaryBlack pr-12 font-semibold font-texts hidden md:block cursor-pointer">
                         <Link href={'/contact'}> Contacto </Link>
-                    </li>
+                    </li> 
                     <li className="right-20 cursor-pointer w-12 h-12 rounded-full border flex justify-center items-center">
                         <p className="text-primaryPurple font-semibold font-dmsans">AB</p>
                     </li>
