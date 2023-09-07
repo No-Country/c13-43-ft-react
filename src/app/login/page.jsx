@@ -29,8 +29,12 @@ const Login = () => {
     router.push(`/login/${userData}`);
   }, [status == "authenticated"]);
 
-  const cerrarModal = async () => {
+  const cerrarModal = () => {
     setStateModal(!stateModal);
+  };
+
+  const activarLoader = () => {
+    setLoaderActive(!loaderActive);
   };
 
   const handleSubmit = async (e) => {
@@ -54,7 +58,6 @@ const Login = () => {
   return (
     <>
       <Loader active={loaderActive}></Loader>
-
       <div className="flex gap-40 pt-8 pl-32">
         <main className="flex-colum justify-center w-1/2 ">
           <h1 className="text-secondaryBlack text-5xl font-bold font-dmsans flex justify-center">
@@ -119,7 +122,7 @@ const Login = () => {
       </div>
 
       <ModalGeneral state={stateModal} changeState={setStateModal}>
-        <ModalRegister callback={cerrarModal} />
+        <ModalRegister callback={cerrarModal} loader={activarLoader} />
       </ModalGeneral>
     </>
   );

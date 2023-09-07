@@ -12,7 +12,7 @@ export const ChangeLi = ({ img, nombre, isActive, href = "#", onClick }) => {
       }`}
       onClick={onClick}
     >
-      <Link href={href} className="text-primaryOrange flex gap-6 pl-2">
+      <Link href={href} className="text-secondaryWhite flex gap-6 pl-2">
         <div className="flex justify-center items-center">
           <Image
             src={img}
