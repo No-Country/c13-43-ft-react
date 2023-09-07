@@ -25,6 +25,7 @@ const Password = ({ nameLabel, name }) => {
           type={openEye ? "text" : "password"}
           name={name}
           id={name}
+          required="required"
         />
         <Image
           width={25}

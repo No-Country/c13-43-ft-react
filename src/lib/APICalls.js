@@ -94,7 +94,7 @@ export const APIDeleteRoom = async (roomId) => {
 
 export const APIGetInRoom = async (roomId) => {
   try {
-    const fetching = await fetch(callURL + `getInRoom?roomId=${roomId}`, {
+    const fetching = await fetch(callURL + `getInRoom?roomId=${roomId}`,{
       method: "GET",
       mode: "cors",
       headers: {
@@ -104,7 +104,7 @@ export const APIGetInRoom = async (roomId) => {
     const response = await fetching.json();
     return response;
   } catch (error) {
-    console.error(error);
+    console.error('hola: '+ error);
   }
 };
 
