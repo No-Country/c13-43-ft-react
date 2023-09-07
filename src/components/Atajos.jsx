@@ -16,7 +16,7 @@ const OptionCard = ({ text, details, image }) => {
 
 const Atajos = () => {
     return (
-    <div className="w-fit box-border p-4 flex-col  rounded-3x1">
+    <div className="atajos w-fit box-border p-4 flex-col  rounded-3x1">
         <h2 className="font-dmsans text-secondaryBlack text-2xl mt-1.5 mb-4 font-semibold">
         Atajos
         </h2>
