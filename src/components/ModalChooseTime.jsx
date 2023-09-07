@@ -1,10 +1,24 @@
+'use client'
 import ModalGeneral from '@/containers/ModalGeneral'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ModalVoteDone } from './ModalVoteDone'
 import { VoteOptions } from './VoteOptions';
+import { APIGetInRoom } from '@/lib/APICalls';
 
 export const ModalChooseTime = ({ code }) => {
     const [voteDone, setVoteDone] = useState( false );
+    const [roomInfo, setRoomInfo] = useState({});
+
+    const getRoomData = async( codeRoom ) =>{
+        const data = await APIGetInRoom( codeRoom );
+        console.log(data);
+        setRoomInfo(data.roomData);
+    }
+
+    if(code !== ''){
+        console.log('codeRoom: '+ code);
+        getRoomData( code );
+    }  
 
     const opciones = [
         {id: 1, opcion: 'Viernes 20 de septiembre - 22h'},
@@ -16,7 +30,7 @@ export const ModalChooseTime = ({ code }) => {
     return (
         <div>
             <h1 className='text-primaryPurple text-5xl font-bold font-dmsans flex justify-center'> Tiempo de elegir! </h1>
-            <p className='text-secondaryBlack font-dmsans flex justify-center my-4'> Te han invitado a votar: <b> &nbsp;  { code } </b> </p>
+            <p className='text-secondaryBlack font-dmsans flex justify-center my-4'> Te han invitado a votar: <b> &nbsp;  { roomInfo.problem } </b> </p>
             <div className='flex gap-2'>
                 <span className='text-secondaryBlack font-dmsans font-medium'>ESTADO</span>
                 <div className='flex justify-center items-center rounded-full bg-slate-300 w-20 gap-2 h-6 cursor-pointer' >
