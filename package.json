@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/font": "13.4.19",
+    "bcrypt": "^5.1.1",
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.19",
     "firebase": "^10.3.1",

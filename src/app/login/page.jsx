@@ -18,7 +18,13 @@ const Login = () => {
   const { data: session, status } = useSession();
   const [loaderActive, setLoaderActive] = useState(false);
 
+  // useEffect(() => {
+  //   setLoaderActive(false);
+  //   setRenderLoginComp(true);
+  // }, [status == "unauthenticated"]);
+
   useEffect(() => {
+    //setLoaderActive(true);
     const userData = session?.user?.id;
     router.push(`/login/${userData}`);
   }, [status == "authenticated"]);
@@ -48,6 +54,7 @@ const Login = () => {
   return (
     <>
       <Loader active={loaderActive}></Loader>
+
       <div className="flex gap-40 pt-8 pl-32">
         <main className="flex-colum justify-center w-1/2 ">
           <h1 className="text-secondaryBlack text-5xl font-bold font-dmsans flex justify-center">
@@ -69,6 +76,7 @@ const Login = () => {
                   type="email"
                   name="email"
                   id="email"
+                  required="required"
                 />
               </div>
               <Password nameLabel="CONTRASEÑA" name="password" />
@@ -109,6 +117,7 @@ const Login = () => {
         </main>
         <ImagePrincipal />
       </div>
+
       <ModalGeneral state={stateModal} changeState={setStateModal}>
         <ModalRegister callback={cerrarModal} />
       </ModalGeneral>
