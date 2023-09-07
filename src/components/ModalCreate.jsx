@@ -2,7 +2,7 @@ import React from 'react'
 import ModalGeneral from '@/containers/ModalGeneral'
 import ModalCopiar from './ModalCopiar'
 
-const ModalCreate = (props) => {
+const ModalCreate = () => {
 
     const [options, setOptions] = React.useState([])
     const [value, setValue] = React.useState('')
@@ -28,7 +28,7 @@ const ModalCreate = (props) => {
     const handleSubmit = (e) => {                       // --> Envia el formulario luego de validar la información
         e.preventDefault()
 
-        if (formData.codigo == '' || formData.fecha == '' || formData.opciones.length < 2) {
+        if (formData.titulo == '' || formData.fecha == '' || formData.opciones.length < 2) {
             setAlert(true)
         } else {
             setAlert(false)
