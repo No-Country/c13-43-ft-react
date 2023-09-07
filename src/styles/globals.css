@@ -12,6 +12,8 @@ body {
 }
 
 .container-global {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
     margin-inline: auto;
     width: min(90%,70.5rem);
 }
