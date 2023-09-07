@@ -9,14 +9,22 @@ import { signIn } from "next-auth/react";
 import ModalGeneral from "@/containers/ModalGeneral";
 import ModalRegister from "@/components/ModalRegister";
 import { useSession } from "next-auth/react";
+import Loader from "@/components/Loader";
 
 const Login = () => {
   const router = useRouter();
   const [error, setError] = useState();
   const [stateModal, setStateModal] = useState(false);
   const { data: session, status } = useSession();
+  const [loaderActive, setLoaderActive] = useState(false);
+
+  // useEffect(() => {
+  //   setLoaderActive(false);
+  //   setRenderLoginComp(true);
+  // }, [status == "unauthenticated"]);
 
   useEffect(() => {
+    //setLoaderActive(true);
     const userData = session?.user?.id;
     router.push(`/login/${userData}`);
   }, [status == "authenticated"]);
@@ -25,10 +33,14 @@ const Login = () => {
     setStateModal(!stateModal);
   };
 
+  const activarLoader = () => {
+    setLoaderActive(!loaderActive);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-
+    setLoaderActive(true);
     const signInResponse = await signIn("credentials", {
       email: data.get("email"),
       password: data.get("password"),
@@ -36,6 +48,7 @@ const Login = () => {
     });
 
     if (signInResponse && !signInResponse.error) {
+      setLoaderActive(false);
     } else {
       console.log("Error: ", signInResponse);
       setError("Inicio de sesión fallido: verifica tu email y contraseña");
@@ -44,6 +57,7 @@ const Login = () => {
 
   return (
     <>
+      <Loader active={loaderActive}></Loader>
       <div className="flex gap-40 pt-8 pl-32">
         <main className="flex-colum justify-center w-1/2 ">
           <h1 className="text-secondaryBlack text-5xl font-bold font-dmsans flex justify-center">
@@ -65,6 +79,7 @@ const Login = () => {
                   type="email"
                   name="email"
                   id="email"
+                  required="required"
                 />
               </div>
               <Password nameLabel="CONTRASEÑA" name="password" />
@@ -105,8 +120,9 @@ const Login = () => {
         </main>
         <ImagePrincipal />
       </div>
+
       <ModalGeneral state={stateModal} changeState={setStateModal}>
-        <ModalRegister callback={cerrarModal} />
+        <ModalRegister callback={cerrarModal} loader={activarLoader} />
       </ModalGeneral>
     </>
   );

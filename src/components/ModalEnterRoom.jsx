@@ -1,18 +1,11 @@
 "use client";
-import ModalGeneral from "@/containers/ModalGeneral";
-import React, { useState } from "react";
-import { ModalChooseTime } from "./ModalChooseTime";
 
-export const ModalEnterRoom = () => {
-  const [chooseTime, setChooseTime] = useState(false);
-  const [code, setCode] = useState("");
-
-  const handelSubmit = (event) => {
+export const ModalEnterRoom = (callback) => {
+  const handelSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const roomCode = data.get("code");
-    setCode(roomCode);
-    console.log(roomCode);
+    callback.callback(roomCode);
   };
 
   return (
@@ -39,17 +32,13 @@ export const ModalEnterRoom = () => {
         </div>
 
         <div className="flex justify-center items-center">
-          <button
-            className="bg-primaryPurple text-white font-semibold rounded-3xl px-4 py-2"
-            onClick={() => setChooseTime(!chooseTime)}
-          >
+          <button className="bg-primaryPurple text-white font-semibold rounded-3xl px-4 py-2">
             Empezar →
           </button>
         </div>
       </form>
-      <ModalGeneral state={chooseTime} changeState={setChooseTime}>
-        <ModalChooseTime code={code} />
-      </ModalGeneral>
     </main>
   );
 };
+
+//Linea 46 onClick={() => setChooseTime(!chooseTime)}
