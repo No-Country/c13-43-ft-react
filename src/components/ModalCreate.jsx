@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import ModalGeneral from "@/containers/ModalGeneral";
-import ModalCopiar from "./ModalCopiar";
 import { APICreateRoom } from "@/lib/APICalls";
 import { useSession } from "next-auth/react";
 
-const ModalCreate = () => {
-  const { data: session, status } = useSession();
+const ModalCreate = (callback) => {
+  const { data: session } = useSession();
   const userEmail = session.user.email;
   //Estado de las opciones
   const [options, setOptions] = React.useState({});
@@ -17,7 +15,6 @@ const ModalCreate = () => {
   const [creadoExitoso, setCreadoExitoso] = React.useState(false);
   //states de los limites de opciones
   const [optionsLimit, setOptionsLimit] = useState(0);
-  const [shareCode, setShareCode] = useState("");
 
   const handleCreateRoom = async (roomData) => {
     const email = userEmail;
@@ -25,7 +22,7 @@ const ModalCreate = () => {
     const options = roomData.options;
     const expires = roomData.expires;
     const response = await APICreateRoom(email, problem, options, expires);
-    setShareCode(response.shareCode);
+    callback.callback(response.shareCode);
   };
 
   //funcion para comprobar el limite de opciones y crear o no, una opcion
@@ -58,6 +55,7 @@ const ModalCreate = () => {
         setCreadoExitoso(!creadoExitoso);
         // Aqui debe enviarse la información a DB
         handleCreateRoom(formData);
+
         //handleCreateRoom(formData);
       }, 2000);
     }
@@ -189,14 +187,6 @@ const ModalCreate = () => {
           </button>
         </div>
       </form>
-      <ModalGeneral state={creadoExitoso} changeState={setCreadoExitoso}>
-        <ModalCopiar
-          image={"/Images/CheckIcon.png"}
-          title={"Sala creada con éxito!"}
-          content={"Tu código de sala es:"}
-          code={shareCode}
-        />
-      </ModalGeneral>
     </div>
   );
 };
