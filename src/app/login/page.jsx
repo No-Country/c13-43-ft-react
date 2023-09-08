@@ -18,11 +18,6 @@ const Login = () => {
   const { data: session, status } = useSession();
   const [loaderActive, setLoaderActive] = useState(false);
 
-  // useEffect(() => {
-  //   setLoaderActive(false);
-  //   setRenderLoginComp(true);
-  // }, [status == "unauthenticated"]);
-
   useEffect(() => {
     //setLoaderActive(true);
     const userData = session?.user?.id;
@@ -31,10 +26,6 @@ const Login = () => {
 
   const cerrarModal = () => {
     setStateModal(!stateModal);
-  };
-
-  const activarLoader = () => {
-    setLoaderActive(!loaderActive);
   };
 
   const handleSubmit = async (e) => {
@@ -122,7 +113,7 @@ const Login = () => {
       </div>
 
       <ModalGeneral state={stateModal} changeState={setStateModal}>
-        <ModalRegister callback={cerrarModal} loader={activarLoader} />
+        <ModalRegister callback={cerrarModal} />
       </ModalGeneral>
     </>
   );
