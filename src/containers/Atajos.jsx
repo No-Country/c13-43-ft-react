@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React, { useState } from "react";
 import OptionCard from "../components/OptionCard";
 import ModalCreate from "@/components/ModalCreate";
@@ -6,6 +7,7 @@ import ModalGeneral from "./ModalGeneral";
 import { ModalEnterRoom } from "@/components/ModalEnterRoom";
 import { ModalChooseTime } from "@/components/ModalChooseTime";
 import { ModalVoteDone } from "@/components/ModalVoteDone";
+import ModalCopiar from "@/components/ModalCopiar";
 
 const Atajos = () => {
   const [stateModalCreate, setStateModalCreate] = React.useState(false);
@@ -13,7 +15,15 @@ const Atajos = () => {
   const [createRoom, setCreateRoom] = useState(false);
   const [chooseTime, setChooseTime] = useState(false);
   const [voteDone, setVoteDone] = useState(false);
+  const [creadoExitoso, setCreadoExitoso] = useState(false);
   const [code, setCode] = useState("");
+  const [shareCode, setShareCode] = useState("");
+
+  const closeModalCreate = (callbackCode) => {
+    setStateModalCreate(!stateModalCreate);
+    setShareCode(callbackCode);
+    setCreadoExitoso(!creadoExitoso);
+  };
 
   const closeEnterRoomModal = (callbackCode) => {
     setEnterRoom(!enterRoom);
@@ -45,8 +55,18 @@ const Atajos = () => {
           action={() => setStateModalCreate(!stateModalCreate)}
         />
       </div>
+
       <ModalGeneral state={stateModalCreate} changeState={setStateModalCreate}>
-        <ModalCreate />
+        <ModalCreate callback={closeModalCreate} />
+      </ModalGeneral>
+
+      <ModalGeneral state={creadoExitoso} changeState={setCreadoExitoso}>
+        <ModalCopiar
+          image={"/Images/CheckIcon.png"}
+          title={"Sala creada con éxito!"}
+          content={"Tu código de sala es:"}
+          code={shareCode}
+        />
       </ModalGeneral>
 
       <ModalGeneral state={enterRoom} changeState={setEnterRoom}>
@@ -65,11 +85,3 @@ const Atajos = () => {
 };
 
 export default Atajos;
-
-//<ModalGeneral state={modalActive} changeState={setModalActive}>
-//        <ModalChooseTime code={"484848"} />
-//      </ModalGeneral>
-//
-//      <ModalGeneral state={modalActive} changeState={setModalActive}>
-//        <ModalVoteDone roomCode={"484848"} />
-//      </ModalGeneral>

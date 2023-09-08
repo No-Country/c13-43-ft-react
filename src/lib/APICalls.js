@@ -55,19 +55,19 @@ export const APISendNotification = async (email, message, subject, name) => {
   }
 };
 //APICalls de Room
-export const APICreateRoom = async (problem, email, options, expires) => {
+export const APICreateRoom = async (email, problem, options, expires) => {
   try {
-    const fetching = await fetch(callURL + "createRoom", {
+    const fetching = await fetch(`${callURL}createRoom`, {
       method: "POST",
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        createdBy: email,
+        email,
         problem,
         options,
-        expires
+        expires,
       }),
     });
     const response = await fetching.json();
@@ -95,7 +95,7 @@ export const APIDeleteRoom = async (roomId) => {
 
 export const APIGetInRoom = async (roomId) => {
   try {
-    const fetching = await fetch(callURL + `getInRoom?roomId=${roomId}`,{
+    const fetching = await fetch(callURL + `getInRoom?roomId=${roomId}`, {
       method: "GET",
       mode: "cors",
       headers: {
@@ -105,7 +105,7 @@ export const APIGetInRoom = async (roomId) => {
     const response = await fetching.json();
     return response;
   } catch (error) {
-    console.error('hola: '+ error);
+    console.error("hola: " + error);
   }
 };
 
