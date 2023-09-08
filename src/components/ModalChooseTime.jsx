@@ -3,20 +3,27 @@ import React, { useEffect, useState } from "react";
 import { VoteOptions } from "./VoteOptions";
 import { APIGetInRoom, APIVote } from "@/lib/APICalls";
 import { useSession } from "next-auth/react";
+import Loader from "./Loader";
 
 
 export const ModalChooseTime = ({ code, callback }) => {
-  const [roomInfo, setRoomInfo] = useState({});
-  const [titleOptions, setTitleOptions] = useState([]);
-  const { data: session, status } = useSession();
+  const [ roomInfo, setRoomInfo ] = useState({});
+  const [ titleOptions, setTitleOptions ] = useState([]);
+  const { data: session } = useSession();
+  const [ error, setError ] = useState( false );
+  const [ loaderActive, setLoaderActive ] = useState( false );
   const userEmail = session.user?.email;
 
   useEffect(() => {
     const getRoomData = async (codeRoom) => {
       try {
-        const data = await APIGetInRoom(codeRoom);
-        setRoomInfo(data.roomData);
+        setLoaderActive( true );
+        console.log('Loader activo');
+        const data = await APIGetInRoom( codeRoom );
+        setRoomInfo( data.roomData );
         setTitleOptions(Object.values(data.roomData.options).map(option => option));
+        console.log('Loader desactivado');
+        setLoaderActive( false );
       } catch (error) {
         console.error(error);
       }
@@ -33,7 +40,13 @@ export const ModalChooseTime = ({ code, callback }) => {
       const name = index.toString();
       const element = event.target[ name ];
       if( element.checked ){
+        setError(false);
         opctionChoose = element.value;
+      }else{
+        setError('Debes elegir una opción');
+        setTimeout(() => {
+          setError(false);
+        }, 3000);
       }
     }
     return opctionChoose;
@@ -41,13 +54,16 @@ export const ModalChooseTime = ({ code, callback }) => {
 
   const handleSubmit = async(event) =>{
     event.preventDefault();
+    setLoaderActive( true );
     const opctionChoose = getChooseOption( event );
-    const response = await APIVote( code, opctionChoose, userEmail);
+    const response = await APIVote( code, opctionChoose, userEmail );
+    setLoaderActive( false );
     response ? callback() : console.log('Error de sintaxis');
   }
 
   return (
     <div>
+      <Loader active ={ loaderActive }/>
       <h1 className="text-primaryPurple text-center text-5xl font-bold font-dmsans flex justify-center">
         {" "}
         Tiempo de elegir!{" "}
@@ -71,6 +87,12 @@ export const ModalChooseTime = ({ code, callback }) => {
             <VoteOptions key={ option.id } options={ option.title } name={`value`} value={ option.id } />
           ))
         }
+
+        <div className="my-2">
+          {error && (
+            <p className="font-medium font-dmsans text-red-600">{ error }</p>
+          )}
+        </div>
 
         <div className="flex justify-center items-center mt-8">
           <button className="bg-primaryPurple text-white font-semibold rounded-3xl px-4 py-2">
