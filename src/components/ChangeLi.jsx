@@ -2,7 +2,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-//import useNavigate from "";
 
 export const ChangeLi = ({ img, nombre, isActive, href = "#", onClick }) => {
   return (
@@ -29,7 +28,7 @@ export const ChangeLi = ({ img, nombre, isActive, href = "#", onClick }) => {
             alt="image"
           />
         </div>
-        <span className="font-dmsans font-medium"> {nombre} </span>
+        <span className="font-dmsans text-xl font-medium"> {nombre} </span>
       </Link>
     </li>
   );

@@ -23,7 +23,7 @@ const ModalCopiar = ({ image, title, content, code }) => {
             <h2 className="text-center text-2xl my-4 text-primaryPurple font-bold"> {title} </h2>
             <div className="flex justify-center">
                 <p> { content } &nbsp; </p>
-                <p className="font-bold"> {code} &nbsp; &nbsp; </p>
+                <p className="font-bold text-center"> {code} &nbsp; &nbsp; </p>
                 <button onClick = {handleCopyClick}>
                     <svg 
                     width="15" 

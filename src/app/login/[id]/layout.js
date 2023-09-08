@@ -3,7 +3,9 @@ import Sidebar from "@/containers/Sidebar";
 export default function RootLayout({ children }) {
   return (
     <div>
-      <Sidebar />
+      <div className="hidden xl:flex">
+        <Sidebar />
+      </div>
       {children}
     </div>
   );
