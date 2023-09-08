@@ -10,6 +10,7 @@ import { ModalVoteDone } from "@/components/ModalVoteDone";
 const Atajos = () => {
   const [stateModalCreate, setStateModalCreate] = React.useState(false);
   const [enterRoom, setEnterRoom] = useState(false);
+  const [createRoom, setCreateRoom] = useState(false);
   const [chooseTime, setChooseTime] = useState(false);
   const [voteDone, setVoteDone] = useState(false);
   const [code, setCode] = useState("");
@@ -45,10 +46,7 @@ const Atajos = () => {
         />
       </div>
       <ModalGeneral state={stateModalCreate} changeState={setStateModalCreate}>
-        <ModalCreate
-          state={stateModalCreate}
-          changeState={setStateModalCreate}
-        />
+        <ModalCreate />
       </ModalGeneral>
 
       <ModalGeneral state={enterRoom} changeState={setEnterRoom}>

@@ -55,7 +55,7 @@ export const APISendNotification = async (email, message, subject, name) => {
   }
 };
 //APICalls de Room
-export const APICreateRoom = async (problem, email, options) => {
+export const APICreateRoom = async (problem, email, options, expires) => {
   try {
     const fetching = await fetch(callURL + "createRoom", {
       method: "POST",
@@ -67,6 +67,7 @@ export const APICreateRoom = async (problem, email, options) => {
         createdBy: email,
         problem,
         options,
+        expires
       }),
     });
     const response = await fetching.json();
