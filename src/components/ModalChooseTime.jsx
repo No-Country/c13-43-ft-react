@@ -5,13 +5,8 @@ import { APIGetInRoom } from "@/lib/APICalls";
 
 export const ModalChooseTime = ({ code, callback }) => {
   const [roomInfo, setRoomInfo] = useState({});
-  const opciones = [
-    { id: 1, opcion: "Viernes 20 de septiembre - 22h" },
-    { id: 2, opcion: "Sabado 21 de septiembre - 22h" },
-    { id: 3, opcion: "Domimngo 22 de Septiembre - 22h" },
-    { id: 4, opcion: "Domingo 27 de Septiembre - 22h" },
-  ];
-
+  const [titleOptions, setTitleOptions] = useState([]);
+  
   const testFunction = () => {
     callback();
   };
@@ -21,6 +16,7 @@ export const ModalChooseTime = ({ code, callback }) => {
       try {
         const data = await APIGetInRoom(codeRoom);
         setRoomInfo(data.roomData);
+        setTitleOptions(Object.values(data.roomData.options).map(option => option.title));
       } catch (error) {
         console.error(error);
       }
@@ -33,13 +29,13 @@ export const ModalChooseTime = ({ code, callback }) => {
 
   return (
     <div>
-      <h1 className="text-primaryPurple text-5xl font-bold font-dmsans flex justify-center">
+      <h1 className="text-primaryPurple text-center text-5xl font-bold font-dmsans flex justify-center">
         {" "}
         Tiempo de elegir!{" "}
       </h1>
-      <p className="text-secondaryBlack font-dmsans flex justify-center my-4">
+      <p className="text-secondaryBlack text-center font-dmsans flex justify-center my-4">
         {" "}
-        Te han invitado a votar: <b> &nbsp; {roomInfo.problem} </b>{" "}
+        Te han invitado a votar: <b> &nbsp; { roomInfo.problem } </b>{" "}
       </p>
       <div className="flex gap-2">
         <span className="text-secondaryBlack font-dmsans font-medium">
@@ -50,10 +46,12 @@ export const ModalChooseTime = ({ code, callback }) => {
           <button className="text-xs">Activa</button>
         </div>
       </div>
-      <main className="mt-2">
-        {opciones.map((option) => (
-          <VoteOptions key={option.id} options={option} />
-        ))}
+      <form  className="mt-2">
+        {
+          titleOptions.map((title, index)=>(
+            <VoteOptions key={ index } options={ title } />
+          ))
+        }
 
         <div className="flex justify-center items-center mt-8">
           <button
@@ -63,7 +61,7 @@ export const ModalChooseTime = ({ code, callback }) => {
             Enviar votación
           </button>
         </div>
-      </main>
+      </form>
     </div>
   );
 };
