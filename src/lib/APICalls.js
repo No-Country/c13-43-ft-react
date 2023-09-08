@@ -137,6 +137,11 @@ export const APIVote = async (roomId, optionId, email) => {
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({
+          roomId,
+          optionId,
+          email,
+        }),
       }
     );
     const response = await fetching.json();

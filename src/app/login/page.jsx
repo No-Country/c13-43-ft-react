@@ -51,7 +51,9 @@ const Login = () => {
       <Loader active={loaderActive}></Loader>
       <main className="flex justify-between mt-4 mx-2 md:mx-0 font-dmsans flex-col md:flex-row md:py-10 mb-10 sm:mb-0">
         <section className="my-10 h-auto w-full text-center md:w-2/5 md:text-left mx-auto">
-          <h1 className="text-secondaryBlack text-5xl font-bold font-dmsans flex justify-center">Iniciar sesión</h1>
+          <h1 className="text-secondaryBlack text-5xl font-bold font-dmsans flex justify-center">
+            Iniciar sesión
+          </h1>
           <div className="relative mx-8">
             <form onSubmit={handleSubmit}>
               <div className="my-4 pt-4">
@@ -95,15 +97,14 @@ const Login = () => {
               </span>
               <hr className="flex-grow border-secondaryBlack mt-3" />
             </div>
-          <button
-            className="text-primaryPurple font-dmsans font-medium border-primaryPurple border rounded-full w-full py-2"
-            onClick={() => setStateModal(!stateModal)}
-          >
-            {" "}
-            REGISTRATE{" "}
-          </button>
+            <button
+              className="text-primaryPurple font-dmsans font-medium border-primaryPurple border rounded-full w-full py-2"
+              onClick={() => setStateModal(!stateModal)}
+            >
+              {" "}
+              REGISTRATE{" "}
+            </button>
           </div>
-
         </section>
         <ImagePrincipal />
       </main>
