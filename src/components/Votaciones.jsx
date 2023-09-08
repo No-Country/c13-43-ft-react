@@ -66,7 +66,7 @@ const Votaciones = () => {
                             <button onClick={() => setDeleteModal(!deleteModal)}>
                                 <Image
                                     src="/Images/TrashIcon.png" 
-                                    alt="corona" 
+                                    alt="basura" 
                                     width={20} 
                                     height={20} 
                                     className="cursor-pointer"
@@ -75,7 +75,7 @@ const Votaciones = () => {
                             <button onClick={() => setShareModal(!shareModal)}>
                                 <Image
                                     src="/Images/ShareIcon.png" 
-                                    alt="corona" 
+                                    alt="compartir" 
                                     width={15} 
                                     height={15} 
                                     className="cursor-pointer"
