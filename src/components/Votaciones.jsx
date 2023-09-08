@@ -75,7 +75,7 @@ const Votaciones = () => {
                             <button onClick={() => setShareModal(!shareModal)}>
                                 <Image
                                     src="/Images/ShareIcon.png" 
-                                    alt="corona" 
+                                    alt="compartir" 
                                     width={15} 
                                     height={15} 
                                     className="cursor-pointer max-w-none"

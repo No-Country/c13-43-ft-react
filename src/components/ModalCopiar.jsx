@@ -1,21 +1,21 @@
-import React from 'react'
-import Image from 'next/image'
+import React from "react";
+import Image from "next/image";
 
 const ModalCopiar = ({ image, title, content, code }) => {
+  const [alert, setAlert] = React.useState("");
+  console.log(code);
 
-    const [alert, setAlert] = React.useState('')
-
-    const handleCopyClick = async () => {
-        try {
-            await navigator.clipboard.writeText(code);
-            setAlert('Copiado con éxito!')
-            setTimeout(() => {
-                setAlert('')
-            }, 1000);
-        } catch (err) {
-            alert('No se pudo copiar el texto');
-        }
-    };
+  const handleCopyClick = async () => {
+    try {
+      await navigator.clipboard.writeText(code);
+      setAlert("Copiado con éxito!");
+      setTimeout(() => {
+        setAlert("");
+      }, 1000);
+    } catch (err) {
+      setAlert("No se pudo copiar el texto");
+    }
+  };
 
     return (
         <div>

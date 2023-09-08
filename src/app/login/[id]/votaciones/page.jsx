@@ -1,6 +1,6 @@
-import React from 'react'
-import Votaciones from '@/components/Votaciones'
-import Atajos from '@/containers/Atajos'
+import React from "react";
+import Votaciones from "@/components/Votaciones";
+import Atajos from "@/containers/Atajos";
 
 const VotacionesPage = () => {
 
@@ -14,4 +14,4 @@ const VotacionesPage = () => {
     )
 }
 
-export default VotacionesPage
+export default VotacionesPage;
