@@ -49,7 +49,7 @@ VoteChoice es tu solución perfecta. Con nuestra aplicación, puedes:
           <img width="110" src="https://media.licdn.com/dms"/>
         </a>
         <h4 style="margin-top: 1rem;"> Laura Bernal </h4>
-        <h6 style="margin-top: 1rem;">Tester</h6>
+        <h6 style="margin-top: 1rem;">Frontend</h6>
       </div>
     </td>
     <td>
