@@ -49,13 +49,10 @@ const Login = () => {
   return (
     <>
       <Loader active={loaderActive}></Loader>
-      <div className="flex gap-40 pt-8 pl-32">
-        <main className="flex-colum justify-center w-1/2 ">
-          <h1 className="text-secondaryBlack text-5xl font-bold font-dmsans flex justify-center">
-            {" "}
-            Iniciar sesión{" "}
-          </h1>
-          <div className="relative">
+      <main className="flex justify-between mt-4 mx-2 md:mx-0 font-dmsans flex-col md:flex-row md:py-10 mb-10 sm:mb-0">
+        <section className="my-10 h-auto w-full text-center md:w-2/5 md:text-left mx-auto">
+          <h1 className="text-secondaryBlack text-5xl font-bold font-dmsans flex justify-center">Iniciar sesión</h1>
+          <div className="relative mx-8">
             <form onSubmit={handleSubmit}>
               <div className="my-4 pt-4">
                 <label
@@ -81,26 +78,23 @@ const Login = () => {
                   </p>
                 )}
               </div>
-              <div className="flex justify-start items-center gap-8 mt-10">
-                <button className="bg-primaryPurple text-secondaryWhite w-5/12 font-dmsans font-medium py-2 rounded-full">
+              <div className="flex flex-col lg:flex-row justify-start items-center mt-10">
+                <button className="bg-primaryPurple text-secondaryWhite w-full lg:w-49 font-dmsans font-medium py-2 rounded-full">
                   {" "}
                   INGRESAR{" "}
                 </button>
               </div>
             </form>
-            <div className="flex justify-center items-center gap-8  pt-4 absolute bottom-0 right-0 w-5/12">
+            <div className="flex justify-center items-center gap-8 w-full mt-4 mx-auto lg:absolute lg:bottom-13 sm:right-0 lg:w-49 lg:mt-0">
               <GoogleButton />
             </div>
-          </div>
-
-          <div className="flex gap-4 my-7">
-            <hr className="flex-grow border-secondaryBlack mt-3" />
-            <span className="text-secondaryBlack font-dmsans font-medium">
-              OR
-            </span>
-            <hr className="flex-grow border-secondaryBlack mt-3" />
-          </div>
-
+            <div className="flex gap-4 my-7">
+              <hr className="flex-grow border-secondaryBlack mt-3" />
+              <span className="text-secondaryBlack font-dmsans font-medium">
+                OR
+              </span>
+              <hr className="flex-grow border-secondaryBlack mt-3" />
+            </div>
           <button
             className="text-primaryPurple font-dmsans font-medium border-primaryPurple border rounded-full w-full py-2"
             onClick={() => setStateModal(!stateModal)}
@@ -108,10 +102,11 @@ const Login = () => {
             {" "}
             REGISTRATE{" "}
           </button>
-        </main>
-        <ImagePrincipal />
-      </div>
+          </div>
 
+        </section>
+        <ImagePrincipal />
+      </main>
       <ModalGeneral state={stateModal} changeState={setStateModal}>
         <ModalRegister callback={cerrarModal} />
       </ModalGeneral>

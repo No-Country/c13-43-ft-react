@@ -9,17 +9,15 @@ const Resultados = () => {
     const [modalResults, setModalResults] = React.useState(false)
 
     return (
-        <div className="flex flex-col px-3 font-dmsans w-2/5">
+        <div className="flex flex-col p-4 font-dmsans sm:w-1/2 xl:w-45">
             <div className="flex flex-col text-center sm:text-left pb-3 px-3">
-                <h2 className="text-4xl font-bold text-secondaryBlack pt-3">Resultados</h2>
-                <p className="text-sm md:text-md w-3/4 py-3">Acá los resultados de tu votación más reciente: &nbsp;
-                    <b>Festejo de mi cumple 🎂 Cuento con ustedes!</b>
-                </p>
+                <h2 className="text-4xl font-bold text-secondaryBlack pt-2">Resultados</h2>
+                <p className="text-sm md:text-md py-3">Acá los resultados de tu votación más reciente: <span className="font-bold">Festejo de mi cumple 🎂 Cuento con ustedes!</span></p>
             </div>
             <div className="flex justify-center sm:justify-normal">
                 <div className="flex flex-col items-start bg-primaryPurple rounded-lg px-5 py-7 gap-5 min-w-fit">
                     <div>
-                        <Image className="w-1/2 md:w-9/12" src="/Images/resultados/resultados-ImagePlaceholder.png" alt="emoji" width={60} height={60} />
+                        <Image className="w-3/4 md:w-9/12" src="/Images/resultados/resultados-ImagePlaceholder.png" alt="emoji" width={60} height={60} />
                     </div>
                     <span className="text-3xl md:text-4xl text-white font-bold">80%</span>
                     <p className="text-sm md:text-xl text-white font-bold">Sábado 21 de septiembre</p>
@@ -36,18 +34,18 @@ const Resultados = () => {
                 </div>
             </div>
             <div className="flex justify-center sm:justify-normal pt-8 ml-1">
-                <button 
+                <button
                     className="text-lg bg-primaryPurple text-white font-bold rounded-3xl px-4 py-2"
-                    onClick = {() => setModalResults(!modalResults)}
+                    onClick={() => setModalResults(!modalResults)}
                 >
-                        Ver respuestas
+                    Ver respuestas
                 </button>
             </div>
             <ModalGeneral
-                state = { modalResults }
-                changeState = { setModalResults }
+                state={modalResults}
+                changeState={setModalResults}
             >
-                <ModalResults />      
+                <ModalResults />
             </ModalGeneral>
         </div>
     )
