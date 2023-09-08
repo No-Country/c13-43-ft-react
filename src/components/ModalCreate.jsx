@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { APICreateRoom } from "@/lib/APICalls";
 import { useSession } from "next-auth/react";
+import Loader from "@/components/Loader";
 
 const ModalCreate = (callback) => {
   const { data: session } = useSession();
@@ -15,15 +16,7 @@ const ModalCreate = (callback) => {
   const [creadoExitoso, setCreadoExitoso] = React.useState(false);
   //states de los limites de opciones
   const [optionsLimit, setOptionsLimit] = useState(0);
-
-  const handleCreateRoom = async (roomData) => {
-    const email = userEmail;
-    const problem = roomData.problem;
-    const options = roomData.options;
-    const expires = roomData.expires;
-    const response = await APICreateRoom(email, problem, options, expires);
-    callback.callback(response.shareCode);
-  };
+  const [loaderActive, setLoaderActive] = useState(false);
 
   //funcion para comprobar el limite de opciones y crear o no, una opcion
 
@@ -36,6 +29,17 @@ const ModalCreate = (callback) => {
 
   // --> formData: Es el objeto que debe guardarse en la base de datos con la información de la sala
   // --> formData.codigo: Es el código de la sala.
+
+  const handleCreateRoom = async (roomData) => {
+    setLoaderActive(true);
+    const email = userEmail;
+    const problem = roomData.problem;
+    const options = roomData.options;
+    const expires = roomData.expires;
+    const response = await APICreateRoom(email, problem, options, expires);
+    setLoaderActive(false);
+    callback.callback(response.shareCode);
+  };
 
   const handleChange = (event) => {
     // --> Maneja los cambios de los inputs
@@ -91,12 +95,26 @@ const ModalCreate = (callback) => {
   };
 
   const deleteAnOption = (index) => {
-    // --> Borra una de las opciones de respuestas (PENDIENTE)
-    console.log("Borrando la opción: " + options[index].titulo);
+    // Verifica si el índice existe en el objeto de opciones
+    if (options[index]) {
+      // Copia el objeto de opciones actual
+      const updatedOptions = { ...options };
+
+      // Borra la opción con el índice proporcionado
+      delete updatedOptions[index];
+
+      // Actualiza el estado de opciones y el formData
+      setOptions(updatedOptions);
+      setFormData({
+        ...formData,
+        options: updatedOptions,
+      });
+    }
   };
 
   return (
     <div className="createRoom px-4">
+      <Loader active={loaderActive}></Loader>
       <h2 className="text-primaryPurple font-dmsans font-bold text-3xl mb-4 text-center">
         Crear una sala
       </h2>
