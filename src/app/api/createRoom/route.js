@@ -1,23 +1,32 @@
 import { NextResponse } from "next/server";
 import { firestoreDB } from "@/lib/firebaseConn";
+
 //el back tiene que crear una roomID facil, y antes de proceder
 //checkear que no exista
-let roomId = 123456;
 //date-fns
+
+function generarNumeroAleatorio() {
+  let numero = Math.floor(Math.random() * 90000) + 10000;
+  return numero;
+}
+
 export async function POST(request) {
+  let roomId = generarNumeroAleatorio();
+
   const body = await request.json();
-  const { createdBy, problem, options } = body;
+  const { email, problem, options, expires } = body;
+
   const newRoom = {
     roomId,
-    createdBy,
+    email,
     problem,
+    expires,
     options,
   };
-  const roomRef = firestoreDB.collection("rooms").doc(newRoom.roomId);
-  const createdRoom = await roomRef.set(newRoom);
+
+  await firestoreDB.collection("rooms").add(newRoom);
+
   return NextResponse.json({
-    roomCreated: true,
-    createdRoom,
-    shareCode: newRoom.roomId,
+    shareCode: roomId,
   });
 }
