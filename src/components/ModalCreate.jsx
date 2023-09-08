@@ -68,6 +68,12 @@ const ModalCreate = (callback) => {
   const addNewOption = (event, value) => {
     event.preventDefault();
 
+    if (Object.keys(options).length >= 4) {
+      // Si ya hay 4 opciones, muestra un mensaje de error o realiza la acción deseada
+      console.log("No se pueden agregar más de 4 opciones");
+      return;
+    }
+
     if (value.length < 1) {
       setAdvice(true);
     } else {
