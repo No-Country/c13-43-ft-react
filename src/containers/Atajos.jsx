@@ -12,6 +12,7 @@ import ModalCopiar from "@/components/ModalCopiar";
 const Atajos = () => {
   const [stateModalCreate, setStateModalCreate] = React.useState(false);
   const [enterRoom, setEnterRoom] = useState(false);
+  const [createRoom, setCreateRoom] = useState(false);
   const [chooseTime, setChooseTime] = useState(false);
   const [voteDone, setVoteDone] = useState(false);
   const [creadoExitoso, setCreadoExitoso] = useState(false);
