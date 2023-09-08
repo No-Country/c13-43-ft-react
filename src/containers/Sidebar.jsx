@@ -12,19 +12,19 @@ const Sidebar = () => {
     const [activeIndex, setActiveIndex] = useState(0);
 
     const imgsM = {
-        panel: '/Images/panel/panelM.png',
-        sala: '/Images/panel/salaM.png',
-        votacion: '/Images/panel/votacionM.png',
-        perfil: '/Images/panel/perfilM.png',
-        logout: '/Images/panel/logoutM.png'
+        panel: '/Images/panel/panelM.svg',
+        sala: '/Images/panel/salaM.svg',
+        votacion: '/Images/panel/votacionM.svg',
+        perfil: '/Images/panel/perfilM.svg',
+        logout: '/Images/panel/logoutM.svg'
     }
 
     const imgsN = {
-        panel: '/Images/panel/panelN.png',
-        sala: '/Images/panel/salaN.png',
-        votacion: '/Images/panel/votacionN.png',
-        perfil: '/Images/panel/perfilN.png',
-        logout: '/Images/panel/logoutN.png'
+        panel: '/Images/panel/panelN.svg',
+        sala: '/Images/panel/salaN.svg',
+        votacion: '/Images/panel/votacionN.svg',
+        perfil: '/Images/panel/perfilN.svg',
+        logout: '/Images/panel/logoutN.svg'
     }
 
     const handleItemClick = (index) => {
@@ -36,10 +36,10 @@ const Sidebar = () => {
     };
 
     return (
-        <div className='bg-primaryPurple h-screen absolute top-0 w-72 pl-14 rounded-tr-3xl'>
-            <ul className=''>
+        <div className='bg-primaryPurple rounded-tr-3xl flex h-screen pl-6 pt-4 fixed top-0 w-1/5 min-w-fit z-10'>
+            <ul className='w-full'>
                 <li className='m-2 mt-4 mb-20'>
-                    <Image src="/Images/logoPanel.png" width={ 186 } height={ 40 } className='static' alt='image'/>
+                    <Image src="/Images/logoPanel.png" width={ 186 } height={ 40 } alt='image'/>
                 </li>
 
                 <ChangeLi

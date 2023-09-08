@@ -26,7 +26,7 @@ const Participants = ({ nombre, rol, linkedin, colStart }) => {
         <div className='flex items-center justify-center gap-2'>
           <p className='font-medium text-base text-secondaryBlack'>{rol}</p>
           <a href={linkedin}>
-            <Image src="/Images/about/linkedin.png" alt="Linkedin logo" width={20} height={20} />
+            <Image className='max-w-none' src="/Images/about/linkedin.png" alt="Linkedin logo" width={20} height={20} />
           </a>
         </div>
       </div>
