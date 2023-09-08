@@ -5,18 +5,20 @@ import Password from "./Password";
 import { useState } from "react";
 import { APICreateUser } from "@/lib/APICalls";
 import { signIn } from "next-auth/react";
+import Loader from "@/components/Loader";
 
 function passwordsAreEqual(pOne, pTwo) {
   return pOne === pTwo;
 }
 
-const ModalRegister = (callback, loader) => {
+const ModalRegister = (callback) => {
   const [error, setError] = useState();
+  const [loaderActive, setLoaderActive] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const { nombre, email, passwordModal, passwordModal2 } = event.target;
-    console.log(typeof loader);
+    setLoaderActive(true);
     const equalPasswords = passwordsAreEqual(
       passwordModal.value,
       passwordModal2.value
@@ -33,20 +35,21 @@ const ModalRegister = (callback, loader) => {
           password: passwordModal.value,
           redirect: false,
         });
-        //loader tiene que pasar a false
-        console.log("loader a false");
+        setLoaderActive(false);
         callback.callback();
       } else {
         console.log("Error: ", response);
         setError("Creación de cuenta fallido: email existente");
       }
     } else {
-      console.log("las contraseñas no son iguales");
+      setLoaderActive(false);
+      alert("las contraseñas no son iguales");
     }
   };
 
   return (
     <>
+      <Loader active={loaderActive}></Loader>
       <main>
         <h1 className="text-secondaryBlack text-5xl font-bold font-dmsans flex justify-center">
           {" "}
