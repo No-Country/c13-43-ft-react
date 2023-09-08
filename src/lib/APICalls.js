@@ -144,5 +144,4 @@ export const APIVote = async (roomId, optionId, email) => {
   } catch (error) {
     console.error(error);
   }
-  s;
 };

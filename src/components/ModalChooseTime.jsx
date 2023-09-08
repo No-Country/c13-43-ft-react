@@ -1,22 +1,22 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { VoteOptions } from "./VoteOptions";
-import { APIGetInRoom } from "@/lib/APICalls";
+import { APIGetInRoom, APIVote } from "@/lib/APICalls";
+import { useSession } from "next-auth/react";
+
 
 export const ModalChooseTime = ({ code, callback }) => {
   const [roomInfo, setRoomInfo] = useState({});
   const [titleOptions, setTitleOptions] = useState([]);
-  
-  const testFunction = () => {
-    callback();
-  };
+  const { data: session, status } = useSession();
+  const userEmail = session.user?.email;
 
   useEffect(() => {
     const getRoomData = async (codeRoom) => {
       try {
         const data = await APIGetInRoom(codeRoom);
         setRoomInfo(data.roomData);
-        setTitleOptions(Object.values(data.roomData.options).map(option => option.title));
+        setTitleOptions(Object.values(data.roomData.options).map(option => option));
       } catch (error) {
         console.error(error);
       }
@@ -26,6 +26,25 @@ export const ModalChooseTime = ({ code, callback }) => {
       getRoomData(code);
     }
   }, [code]);
+
+  const getChooseOption = ( event ) =>{
+    let opctionChoose;
+    for (let index = 0; index < titleOptions.length; index++) {
+      const name = index.toString();
+      const element = event.target[ name ];
+      if( element.checked ){
+        opctionChoose = element.value;
+      }
+    }
+    return opctionChoose;
+  }
+
+  const handleSubmit = async(event) =>{
+    event.preventDefault();
+    const opctionChoose = getChooseOption( event );
+    const response = await APIVote( code, opctionChoose, userEmail);
+    response ? callback() : console.log('Error de sintaxis');
+  }
 
   return (
     <div>
@@ -46,18 +65,15 @@ export const ModalChooseTime = ({ code, callback }) => {
           <button className="text-xs">Activa</button>
         </div>
       </div>
-      <form  className="mt-2">
+      <form onSubmit={ handleSubmit } className="mt-2">
         {
-          titleOptions.map((title, index)=>(
-            <VoteOptions key={ index } options={ title } />
+          titleOptions.map((option)=>(
+            <VoteOptions key={ option.id } options={ option.title } name={`value`} value={ option.id } />
           ))
         }
 
         <div className="flex justify-center items-center mt-8">
-          <button
-            className="bg-primaryPurple text-white font-semibold rounded-3xl px-4 py-2"
-            onClick={testFunction}
-          >
+          <button className="bg-primaryPurple text-white font-semibold rounded-3xl px-4 py-2">
             Enviar votación
           </button>
         </div>
