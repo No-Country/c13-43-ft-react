@@ -10,6 +10,15 @@ export function generarNumeroAleatorio() {
   return numero;
 }
 
+export function compararFechas(fecha1, fecha2) {
+  // Crear objetos Date a partir de las cadenas de fecha
+  var date1 = new Date(fecha1);
+  var date2 = new Date(fecha2);
+
+  // Comparar las fechas
+  return date1 > date2;
+}
+
 export function passwordsAreEqual(pOne, pTwo) {
   return pOne === pTwo;
 }

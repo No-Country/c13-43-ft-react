@@ -80,7 +80,7 @@ const ModalCreate = (callback) => {
       const newOption = {
         title: value,
         timesVoted: 0,
-        votedBy: {},
+        id: optionsLimit.toString(),
       };
 
       // Copia el objeto options y agrega la nueva opción
@@ -109,6 +109,8 @@ const ModalCreate = (callback) => {
       // Borra la opción con el índice proporcionado
       delete updatedOptions[index];
 
+      // disminuye en 1 el limite
+      setOptionsLimit(optionsLimit - 1);
       // Actualiza el estado de opciones y el formData
       setOptions(updatedOptions);
       setFormData({
