@@ -4,9 +4,15 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
+
+
 
 const Navbar = () => {
+  
   const path = usePathname();
+
+  const { data: session } = useSession();
 
   if (path === "/" || path === "/about" || path === "/contact") {
     return (
@@ -76,7 +82,7 @@ const Navbar = () => {
       <nav className="flex justify-end h-20 w-screen">
         <ul className="flex justify-end px-24 items-center relative">
           <li className="right-20 cursor-pointer w-12 h-12 rounded-full border flex justify-center items-center shadow-md">
-            <p className="text-primaryPurple font-semibold font-dmsans">AB</p>
+            <p className="text-primaryPurple font-semibold font-dmsans">{session.user.name.substring(0,2).toUpperCase()}</p>
           </li>
           <div className="statusCircle w-2 h-2 rounded-full hidden md:block bg-green-400 absolute top-5 right-24"></div>
         </ul>
