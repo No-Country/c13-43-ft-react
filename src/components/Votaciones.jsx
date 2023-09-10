@@ -4,7 +4,7 @@ import Image from "next/image";
 import ModalGeneral from "@/containers/ModalGeneral";
 import ModalEliminarSala from "./ModalEliminarSala";
 import ModalCopiar from "./ModalCopiar";
-
+//con session traer el email del usuario
 //Con un api Call traer mis room en principio y si se llega traer las que he participado
 
 const Votaciones = () => {

@@ -1,28 +1,46 @@
 import { firestoreDB } from "@/lib/firebaseConn";
 import { NextResponse } from "next/server";
-import { compararFechas } from "@/lib/Tools";
+import sgMail from "@/lib/SendgridConn";
+import { compararFechas, createNotificationMessage } from "@/lib/Tools";
 
 export async function PUT(request) {
-  try {
-    const now = new Date(Date.now()).toISOString();
+    try {
+        const now = new Date(Date.now()).toISOString();
+        const roomQuerySnapshot = await firestoreDB.collection("rooms").get();
+        const expiredRooms = [];
 
-    const roomQuerySnapshot = await firestoreDB.collection("rooms").get();
+        for (const doc of roomQuerySnapshot.docs) {
+            const roomData = doc.data();
+            const roomId = doc.id;
 
-    roomQuerySnapshot.forEach(async (doc) => {
-      // Recorre las rooms y a las que estan vencidas les setea como true el campo expired a true
-      const roomData = doc.data();
-      const expiredRoom = compararFechas(now, roomData.expires);
-      if (expiredRoom) {
-        await firestoreDB
-          .collection("rooms")
-          .doc(doc.id)
-          .update({ ...roomData, expired: true });
-      }
-    });
+            // Verificar si existe el campo "notified" en la sala
+            if (
+                typeof roomData.notified === "boolean" &&
+                compararFechas(now, roomData.expires) &&
+                !roomData.notified
+            ) {
+                expiredRooms.push({ roomId, roomData });
 
-    return NextResponse.json({ expiredRooms });
-  } catch (error) {
-    console.error("Error al obtener datos de Firestore:", error);
-    return NextResponse.error("Error al obtener datos de Firestore");
-  }
+                const creator = roomData.createdBy;
+                const participants = roomData.participants.concat(creator);
+
+                for (const participant of participants) {
+                    await sgMail.send(
+                        createNotificationMessage(participant, roomId)
+                    );
+                }
+
+                // Marcar la sala como notificada y vencida
+                await firestoreDB.collection("rooms").doc(roomId).update({
+                    notified: true,
+                    expired: true,
+                });
+            }
+        }
+
+        return NextResponse.json({ expiredRooms });
+    } catch (error) {
+        console.error("Error al procesar la solicitud:", error);
+        return NextResponse.error("Error al procesar la solicitud");
+    }
 }

@@ -30,6 +30,7 @@ export async function POST(request) {
     options,
     participants: [],
     expired: false,
+    notified: false,
   };
 
   await firestoreDB.collection("rooms").doc(roomId).set(newRoom);
