@@ -16,7 +16,7 @@ const Navbar = () => {
 
   if (path === "/" || path === "/about" || path === "/contact") {
     return (
-      <nav className="flex justify-between items-center px-12 bg-white shadow-md h-20">
+      <nav className="flex justify-between items-center px-12 shadow-md h-20">
         <ul className="flex w-3/4">
           <li>
             <Image
@@ -29,13 +29,13 @@ const Navbar = () => {
           </li>
         </ul>
         <ul className="flex justify-end gap-12 w-3/4 items-center">
-          <li className="text-secondaryBlack font-semibold font-texts hidden md:block cursor-pointer">
+          <li className="font-semibold font-texts hidden md:block cursor-pointer">
             <Link href={"/"}> Inicio </Link>
           </li>
-          <li className="text-secondaryBlack font-semibold font-texts hidden md:block cursor-pointer">
+          <li className="font-semibold font-texts hidden md:block cursor-pointer">
             <Link href={"/about"}> Nosotros </Link>
           </li>
-          <li className="text-secondaryBlack font-semibold font-texts hidden md:block cursor-pointer">
+          <li className="font-semibold font-texts hidden md:block cursor-pointer">
             <Link href={"/contact"}> Contacto </Link>
           </li>
           <li className="bg-primaryPurple font-semibold text-secondaryWhite rounded-3xl px-5 py-2 hidden md:block cursor-pointer">

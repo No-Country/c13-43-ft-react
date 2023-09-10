@@ -3,13 +3,16 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { ChangeLi } from '../components/ChangeLi';
-import { signOut, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
+import ModalGeneral from './ModalGeneral';
+import ModalConfirmLogout from '@/components/ModalConfirmLogout';
 
 
 const Sidebar = () => {
     const { data: session } = useSession();
     const userData = session?.user?.id
     const [activeIndex, setActiveIndex] = useState(0);
+    const [confirmLogout, setConfirmLogout] = useState(false);
 
     const imgsM = {
         panel: '/Images/panel/panelM.svg',
@@ -30,10 +33,6 @@ const Sidebar = () => {
     const handleItemClick = (index) => {
         setActiveIndex(index);
     }
-
-    const handleClicksignOut = () => {
-        signOut({ callbackUrl: '/'});
-    };
 
     return (
         <div className='bg-primaryPurple rounded-tr-3xl flex h-screen pl-6 pt-4 fixed top-0 w-1/5 min-w-fit z-10'>
@@ -72,10 +71,13 @@ const Sidebar = () => {
                     isActive={ activeIndex === 3 }
                     onClick={() => {
                         handleItemClick(3)
-                        handleClicksignOut()
+                        setConfirmLogout(true)
                     }}
                 />
             </ul>
+            <ModalGeneral state={confirmLogout} changeState={setConfirmLogout}>
+                <ModalConfirmLogout state={confirmLogout} changeState={setConfirmLogout} />
+            </ModalGeneral>
         </div>
     )
 }

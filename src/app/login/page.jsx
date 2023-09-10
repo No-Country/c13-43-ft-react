@@ -29,6 +29,7 @@ const Login = () => {
   };
 
   const handleSubmit = async (e) => {
+    setError('')
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     setLoaderActive(true);
@@ -41,7 +42,7 @@ const Login = () => {
     if (signInResponse && !signInResponse.error) {
       setLoaderActive(false);
     } else {
-      console.log("Error: ", signInResponse);
+      setLoaderActive(false);
       setError("Inicio de sesión fallido: verifica tu email y contraseña");
     }
   };
@@ -49,7 +50,7 @@ const Login = () => {
   return (
     <>
       <Loader active={loaderActive}></Loader>
-      <main className="flex justify-between mt-4 mx-2 md:mx-0 font-dmsans flex-col md:flex-row md:py-10 mb-10 sm:mb-0">
+      <main className="flex justify-between items-center mx-2 md:mx-0 font-dmsans flex-col md:flex-row md:py-5 sm:mb-0">
         <section className="my-10 h-auto w-full text-center md:w-2/5 md:text-left mx-auto">
           <h1 className="text-secondaryBlack text-5xl font-bold font-dmsans flex justify-center">Iniciar sesión</h1>
           <div className="relative mx-8">
