@@ -17,6 +17,9 @@ export async function GET(request) {
                 // Extraer los resultados de las opciones y los votos
                 const resultsData = Object.values(roomData.options);
 
+                // Ordenar el array de resultados por la cantidad de votos en orden descendente
+                resultsData.sort((a, b) => b.timesVoted - a.timesVoted);
+
                 // Obtener la cantidad total de participantes
                 const totalParticipants = roomData.participants.length;
 
@@ -26,7 +29,14 @@ export async function GET(request) {
                     percentage: (option.timesVoted / totalParticipants) * 100,
                 }));
 
+                // Tomar la opción más votada y la segunda más votada
+                const firstOption = resultsData[0];
+                const secondOption = resultsData[1];
+
                 return NextResponse.json({
+                    problem: roomData.problem,
+                    firstOption,
+                    secondOption,
                     resultsWithPercentage,
                     totalParticipants,
                 });
