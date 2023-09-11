@@ -119,15 +119,11 @@ const ModalCreate = (callback) => {
   };
 
   return (
-    <div className="createRoom px-4">
+    <div className="createRoom px-4 w-full">
       <Loader active={loaderActive}></Loader>
-      <h2 className="text-primaryPurple font-dmsans font-bold text-3xl mb-4 text-center">
-        Crear una sala
-      </h2>
+      <h2 className="text-primaryPurple font-dmsans font-bold text-3xl mb-4 text-center">Crear una sala</h2>
       <form onSubmit={handleSubmit} className="flex flex-col gap-2">
-        <label htmlFor="titulo" className="font-semibold">
-          NOMBRE DE LA SALA
-        </label>
+        <label htmlFor="titulo" className="font-semibold">NOMBRE DE LA SALA</label>
         <input
           type="text"
           id="problem"
@@ -139,9 +135,7 @@ const ModalCreate = (callback) => {
           className="px-2 rounded-lg bg-none text-sm h-8"
         />
         <div className="border-b w-full mt-1 border-secondaryBlack"></div>
-        <label htmlFor="fecha" className="font-semibold">
-          FECHA LIMITE
-        </label>
+        <label htmlFor="fecha" className="font-semibold">FECHA LIMITE</label>
         <input
           type="datetime-local"
           className="px-2 rounded-lg bg-none text-sm h-8"
@@ -151,9 +145,7 @@ const ModalCreate = (callback) => {
           onChange={handleChange}
         />
         <div className="border-b w-full mt-1 border-secondaryBlack"></div>
-        <label htmlFor="opciones" className="font-semibold">
-          AGREGAR OPCIONES
-        </label>
+        <label htmlFor="opciones" className="font-semibold">AGREGAR OPCIONES</label>
         <div className="handler relative">
           <input
             type="text"
@@ -181,7 +173,7 @@ const ModalCreate = (callback) => {
         {Object.keys(options).map((key) => (
           <div
             key={key}
-            className="flex justify-between items-center px-2 text-xs rounded-lg bg-yellow-200 my-1"
+            className="flex justify-between items-center px-2 text-sm font-semibold rounded-xl bg-secondaryGray shadow py-1"
           >
             <p> {options[key].title} </p>
             <span
@@ -201,10 +193,10 @@ const ModalCreate = (callback) => {
           </p>
         )}
 
-        <div className="submit flex justify-center">
+        <div className="submit flex justify-center mt-2">
           <button
             type="submit"
-            className="bg-primaryPurple text-secondaryWhite font-bold rounded-2xl w-2/5 px-2 py-1"
+            className="bg-primaryPurple text-secondaryWhite font-bold rounded-3xl w-3/5 sm:w-2/5 px-4 py-2"
           >
             {" "}
             Crear Sala{" "}

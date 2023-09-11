@@ -7,37 +7,44 @@ const About = () => {
     {
       nombre: "Alejandro Álvarez",
       rol: "Frontend",
-      linkedin: "https://www.linkedin.com/...",
+      linkedin: "https://www.linkedin.com/in/alejandro-alvarez-65030a240/",
+      headshot: "/Images/about/Ale.jpg"
     },
     {
       nombre: "Orlemar Abreu",
       rol: "Tester",
-      linkedin: "https://www.linkedin.com/...",
+      linkedin: "https://www.linkedin.com/in/orlemar-abreu/",
+      headshot: "/Images/about/Orle.jpg"
     },
     {
       nombre: "Pablo Murillo",
       rol: "Fullstack",
-      linkedin: "https://www.linkedin.com/...",
+      linkedin: "https://www.linkedin.com/in/pablo-nicolas-murillo/",
+      headshot: "/Images/about/Pablo.jpg"
     },
     {
       nombre: "Laura Bernal",
       rol: "Frontend",
-      linkedin: "https://www.linkedin.com/...",
+      linkedin: "https://www.linkedin.com/in/ingeniera-laura-bernal/",
+      headshot: "/Images/about/Laura.jpg"
     },
     {
       nombre: "Martín Cosimano",
       rol: "Fullstack",
-      linkedin: "https://www.linkedin.com/...",
+      linkedin: "https://www.linkedin.com/in/martin-cosimano/",
+      headshot: "/Images/about/Martin.png"
     },
     {
       nombre: "Carla Toledo",
       rol: "UX / UI",
-      linkedin: "https://www.linkedin.com/...",
+      linkedin: "https://www.linkedin.com/in/carla-m-toledo/",
+      headshot: "/Images/about/Carla.jpg"
     },
     {
       nombre: "Candelaria Gonzalez",
       rol: "Fullstack",
       linkedin: "https://www.linkedin.com/in/candelariagonzalezdev/",
+      headshot: "/Images/about/Cande.jpg"
     },
   ];
 
@@ -60,6 +67,7 @@ const About = () => {
                 rol={participante.rol}
                 linkedin={participante.linkedin}
                 colStart={`col-start-${index + 1}`}
+                headshot={participante.headshot}
               />
             ))}
           </div>
