@@ -1,4 +1,3 @@
-
 'use client'
 import React, { useState } from 'react';
 import Image from 'next/image';
@@ -6,7 +5,6 @@ import { ChangeLi } from '../components/ChangeLi';
 import { useSession } from 'next-auth/react';
 import ModalGeneral from './ModalGeneral';
 import ModalConfirmLogout from '@/components/ModalConfirmLogout';
-
 
 const Sidebar = () => {
     const { data: session } = useSession();

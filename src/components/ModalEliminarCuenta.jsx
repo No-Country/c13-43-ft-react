@@ -1,20 +1,28 @@
 import React from 'react'
+import Loader from './Loader'
 import { signOut, useSession } from 'next-auth/react'
 import { APIDeleteUser } from '@/lib/APICalls'
-import Loader from './Loader'
+import ModalCorrectDelete from './ModalCorrectDelete'
+import ModalGeneral from '@/containers/ModalGeneral'
 
 const ModalEliminarCuenta = ({state, changeState}) => {
 
     const { data: session } = useSession()
     const [loaderActive, setLoaderActive] = React.useState(false)
+    const [correctDelete, setCorrectDelete] = React.useState(false)
 
     const handleDelete = () => {
         setLoaderActive(true)
-        setTimeout(() => {            
+        setTimeout(() => {     
             setLoaderActive(false)
-            APIDeleteUser(session.user.email)
-            changeState(!state)
-            signOut({ callbackUrl: '/'});
+            setCorrectDelete(true)    
+            
+            setTimeout(() => {   
+                setCorrectDelete(false)             
+                APIDeleteUser(session.user.email)
+                changeState(!state)
+                signOut({ callbackUrl: '/'});
+            }, 2000);
         }, 2000);
     }
 
@@ -42,6 +50,9 @@ const ModalEliminarCuenta = ({state, changeState}) => {
                     </button>
                 </div>
             </div>
+            <ModalGeneral state={correctDelete} changeState={setCorrectDelete}>
+                <ModalCorrectDelete />
+            </ModalGeneral>
         </div>
     </>
   )

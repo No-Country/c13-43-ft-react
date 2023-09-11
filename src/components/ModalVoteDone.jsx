@@ -3,11 +3,11 @@ import React from "react";
 
 export const ModalVoteDone = ({ roomCode }) => {
   return (
-    <main>
+    <main className="p-6">
       <div className="flex items-center justify-center">
         <Image src="/Images/check.png" alt="check" width={50} height={50} />
       </div>
-      <h1 className="text-primaryPurple text-5xl text-center font-bold font-dmsans flex justify-center my-6">
+      <h1 className="text-primaryPurple text-3xl text-center font-bold font-dmsans flex justify-center my-6">
         {" "}
         Votación realizada con exito{" "}
       </h1>
