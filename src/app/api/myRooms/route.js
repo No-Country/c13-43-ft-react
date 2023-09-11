@@ -1,6 +1,6 @@
 import { firestoreDB } from "@/lib/firebaseConn";
 import { NextResponse } from "next/server";
-
+//Trae tanto las salas creadas por mi, activas e inactivas. asi como tambien las que he participado
 export async function GET(request) {
     try {
         const { searchParams } = new URL(request.url);
