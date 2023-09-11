@@ -169,9 +169,9 @@ export const APIGetRoomOptions = async (roomId) => {
     }
 };
 
-export const APIGetMyRooms = async (roomId) => {
+export const APIGetMyRooms = async (email) => {
     try {
-        const fetching = await fetch(callURL + `myRooms?roomId=${roomId}`, {
+        const fetching = await fetch(callURL + `myRooms?userEmail=${email}`, {
             method: "GET",
             mode: "cors",
             headers: {
