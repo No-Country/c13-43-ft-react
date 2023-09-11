@@ -1,26 +1,29 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { VoteOptions } from "./VoteOptions";
-import { APIGetInRoom } from "@/lib/APICalls";
+import { APIGetInRoom, APIVote } from "@/lib/APICalls";
+import { useSession } from "next-auth/react";
+import Loader from "./Loader";
+
 
 export const ModalChooseTime = ({ code, callback }) => {
-  const [roomInfo, setRoomInfo] = useState({});
-  const opciones = [
-    { id: 1, opcion: "Viernes 20 de septiembre - 22h" },
-    { id: 2, opcion: "Sabado 21 de septiembre - 22h" },
-    { id: 3, opcion: "Domimngo 22 de Septiembre - 22h" },
-    { id: 4, opcion: "Domingo 27 de Septiembre - 22h" },
-  ];
-
-  const testFunction = () => {
-    callback();
-  };
+  const [ roomInfo, setRoomInfo ] = useState({});
+  const [ titleOptions, setTitleOptions ] = useState([]);
+  const { data: session } = useSession();
+  const [ error, setError ] = useState( false );
+  const [ loaderActive, setLoaderActive ] = useState( false );
+  const userEmail = session.user?.email;
 
   useEffect(() => {
     const getRoomData = async (codeRoom) => {
       try {
-        const data = await APIGetInRoom(codeRoom);
-        setRoomInfo(data.roomData);
+        setLoaderActive( true );
+        console.log('Loader activo');
+        const data = await APIGetInRoom( codeRoom );
+        setRoomInfo( data.roomData );
+        setTitleOptions(Object.values(data.roomData.options).map(option => option));
+        console.log('Loader desactivado');
+        setLoaderActive( false );
       } catch (error) {
         console.error(error);
       }
@@ -31,15 +34,43 @@ export const ModalChooseTime = ({ code, callback }) => {
     }
   }, [code]);
 
+  const getChooseOption = ( event ) =>{
+    let opctionChoose;
+    for (let index = 0; index < titleOptions.length; index++) {
+      const name = index.toString();
+      const element = event.target[ name ];
+      if( element.checked ){
+        setError(false);
+        opctionChoose = element.value;
+      }else{
+        setError('Debes elegir una opción');
+        setTimeout(() => {
+          setError(false);
+        }, 3000);
+      }
+    }
+    return opctionChoose;
+  }
+
+  const handleSubmit = async(event) =>{
+    event.preventDefault();
+    setLoaderActive( true );
+    const opctionChoose = getChooseOption( event );
+    const response = await APIVote( code, opctionChoose, userEmail );
+    setLoaderActive( false );
+    response ? callback() : console.log('Error de sintaxis');
+  }
+
   return (
     <div>
-      <h1 className="text-primaryPurple text-5xl font-bold font-dmsans flex justify-center">
+      <Loader active ={ loaderActive }/>
+      <h1 className="text-primaryPurple text-center text-5xl font-bold font-dmsans flex justify-center">
         {" "}
         Tiempo de elegir!{" "}
       </h1>
-      <p className="text-secondaryBlack font-dmsans flex justify-center my-4">
+      <p className="text-secondaryBlack text-center font-dmsans flex justify-center my-4">
         {" "}
-        Te han invitado a votar: <b> &nbsp; {roomInfo.problem} </b>{" "}
+        Te han invitado a votar: <b> &nbsp; { roomInfo.problem } </b>{" "}
       </p>
       <div className="flex gap-2">
         <span className="text-secondaryBlack font-dmsans font-medium">
@@ -50,20 +81,25 @@ export const ModalChooseTime = ({ code, callback }) => {
           <button className="text-xs">Activa</button>
         </div>
       </div>
-      <main className="mt-2">
-        {opciones.map((option) => (
-          <VoteOptions key={option.id} options={option} />
-        ))}
+      <form onSubmit={ handleSubmit } className="mt-2">
+        {
+          titleOptions.map((option)=>(
+            <VoteOptions key={ option.id } options={ option.title } name={`value`} value={ option.id } />
+          ))
+        }
+
+        <div className="my-2">
+          {error && (
+            <p className="font-medium font-dmsans text-red-600">{ error }</p>
+          )}
+        </div>
 
         <div className="flex justify-center items-center mt-8">
-          <button
-            className="bg-primaryPurple text-white font-semibold rounded-3xl px-4 py-2"
-            onClick={testFunction}
-          >
+          <button className="bg-primaryPurple text-white font-semibold rounded-3xl px-4 py-2">
             Enviar votación
           </button>
         </div>
-      </main>
+      </form>
     </div>
   );
 };

@@ -6,6 +6,8 @@ import Loader from "@/components/Loader";
 const ModalCreate = (callback) => {
   const { data: session } = useSession();
   const userEmail = session.user.email;
+
+  console.log(session.user)
   //Estado de las opciones
   const [options, setOptions] = React.useState({});
   //state que setea el title de la option
@@ -80,7 +82,7 @@ const ModalCreate = (callback) => {
       const newOption = {
         title: value,
         timesVoted: 0,
-        votedBy: {},
+        id: optionsLimit.toString(),
       };
 
       // Copia el objeto options y agrega la nueva opción
@@ -96,6 +98,7 @@ const ModalCreate = (callback) => {
         ...formData,
         options: updatedOptions, // Actualiza el formData con las nuevas opciones
       });
+      setValue("");
       setAdvice(false);
     }
   };
@@ -109,6 +112,8 @@ const ModalCreate = (callback) => {
       // Borra la opción con el índice proporcionado
       delete updatedOptions[index];
 
+      // disminuye en 1 el limite
+      setOptionsLimit(optionsLimit - 1);
       // Actualiza el estado de opciones y el formData
       setOptions(updatedOptions);
       setFormData({
@@ -133,6 +138,7 @@ const ModalCreate = (callback) => {
           onChange={handleChange}
           placeholder="Escribe la decisión a tomar"
           className="px-2 rounded-lg bg-none text-sm h-8"
+          required="required"
         />
         <div className="border-b w-full mt-1 border-secondaryBlack"></div>
         <label htmlFor="fecha" className="font-semibold">FECHA LIMITE</label>
@@ -142,6 +148,7 @@ const ModalCreate = (callback) => {
           id="expires"
           name="expires"
           value={formData.expires}
+          required="required"
           onChange={handleChange}
         />
         <div className="border-b w-full mt-1 border-secondaryBlack"></div>
@@ -151,6 +158,7 @@ const ModalCreate = (callback) => {
             type="text"
             placeholder="Escribe una opción"
             className="w-full px-2 rounded-lg bg-none h-8 text-sm"
+            value={value}
             onChange={(event) => setValue(event.target.value)}
           />
           <button

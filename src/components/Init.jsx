@@ -19,7 +19,7 @@ const Init = () => {
                     </Link>  
                 </div>
             </section>
-                <ImagePrincipal/>
+                <ImagePrincipal />
         </main>
     )
 }

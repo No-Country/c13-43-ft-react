@@ -24,10 +24,13 @@ export async function POST(request) {
   const { email, problem, options, expires } = body;
 
   const newRoom = {
-    email,
+    createdBy: email,
     problem,
     expires,
     options,
+    participants: [],
+    expired: false,
+    notified: false,
   };
 
   await firestoreDB.collection("rooms").doc(roomId).set(newRoom);

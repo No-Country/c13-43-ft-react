@@ -1,15 +1,23 @@
 "use client";
+import { useState } from "react";
+import Loader from "./Loader";
 
 export const ModalEnterRoom = (callback) => {
+  const [ loaderActive, setLoaderActive ] = useState( false );
+
   const handelSubmit = async (event) => {
+    setLoaderActive(true)
     event.preventDefault();
+    setLoaderActive( true );
     const data = new FormData(event.currentTarget);
     const roomCode = data.get("code");
+    setLoaderActive( false );
     callback.callback(roomCode);
   };
 
   return (
     <main>
+      <Loader active ={ loaderActive }/>
       <h1 className="text-primaryPurple text-5xl font-bold font-dmsans flex justify-center">
         {" "}
         Entrar a la sala{" "}
@@ -31,13 +39,13 @@ export const ModalEnterRoom = (callback) => {
           />
         </div>
 
-        <div className="flex justify-center items-center">
-          <button className="bg-primaryPurple text-white font-semibold rounded-3xl px-4 py-2">
-            Empezar →
-          </button>
-        </div>
-      </form>
-    </main>
+          <div className="flex justify-center items-center">
+            <button className="bg-primaryPurple text-white font-semibold rounded-3xl px-4 py-2">
+              Empezar →
+            </button>
+          </div>
+        </form>
+      </main>
   );
 };
 
