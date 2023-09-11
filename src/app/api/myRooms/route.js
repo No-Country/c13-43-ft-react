@@ -28,9 +28,8 @@ export async function GET(request) {
         participatedRoomsQuery.forEach((doc) => {
             const roomData = doc.data();
             // Verificar si la sala ya se encuentra en el array para evitar duplicados
-            if (!combinedRooms.some((room) => room.id === roomData.id)) {
-                combinedRooms.push(roomData);
-            }
+
+            combinedRooms.push(roomData);
         });
 
         return NextResponse.json({ combinedRooms });
