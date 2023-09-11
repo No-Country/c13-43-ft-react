@@ -33,7 +33,8 @@ module.exports = {
         '544': '30rem'
       },
       spacing: {
-        '100': '35rem'
+        '100': '35rem',
+        '102': '38rem'
       },
       inset: {
         '13': '7.54rem'
