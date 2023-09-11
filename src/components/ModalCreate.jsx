@@ -6,6 +6,8 @@ import Loader from "@/components/Loader";
 const ModalCreate = (callback) => {
   const { data: session } = useSession();
   const userEmail = session.user.email;
+
+  console.log(session.user)
   //Estado de las opciones
   const [options, setOptions] = React.useState({});
   //state que setea el title de la option

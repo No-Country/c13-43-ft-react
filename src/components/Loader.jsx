@@ -1,4 +1,5 @@
 import ClipLoader from "react-spinners/ClipLoader";
+
 const Loader = (active) => {
   return (
     active.active && (

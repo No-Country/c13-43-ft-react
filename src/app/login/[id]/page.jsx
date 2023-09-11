@@ -10,7 +10,7 @@ export default function Panel() {
     <div className="flex flex-col test:flex-row justify-around xl:justify-end mt-16 xl:mr-40">
       {true ? <Resultados /> : <SinVotaciones />}
       <div className='mt-5'>
-                <Atajos />
+        <Atajos />
       </div>
     </div>
   );

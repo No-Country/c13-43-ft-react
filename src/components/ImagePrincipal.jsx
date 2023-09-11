@@ -2,7 +2,7 @@ import React from 'react'
 
 const ImagePrincipal = () => {
     return (
-        <div className="flex md:justify-end w-full md:w-45 justify-center h-544">
+        <div className="flex md:justify-end w-full md:w-45 justify-center h-3/6">
         <img 
             src="/Images/imgLogin.png" 
             alt="HomeImage" 
