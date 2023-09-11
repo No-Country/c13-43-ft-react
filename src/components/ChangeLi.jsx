@@ -6,12 +6,12 @@ import Link from "next/link";
 export const ChangeLi = ({ img, nombre, isActive, href = "#", onClick }) => {
   return (
     <li
-      className={`panelLi py-4 pl-6 rounded-tl-3xl rounded-bl-3xl ${
+      className={`panelLi rounded-tl-3xl rounded-bl-3xl ${
         isActive ? "active" : ""
       }`}
       onClick={onClick}
     >
-      <Link href={href} className="text-secondaryWhite flex gap-6 pl-2">
+      <Link href={href} className="text-secondaryWhite flex gap-6 pl-6 py-4">
         <div className="flex justify-center items-center">
           <Image
             src={img}

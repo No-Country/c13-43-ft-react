@@ -50,8 +50,8 @@ const Login = () => {
   return (
     <>
       <Loader active={loaderActive}></Loader>
-      <main className="flex justify-between items-center mx-2 md:mx-0 font-dmsans flex-col md:flex-row md:py-5 sm:mb-0">
-        <section className="my-10 h-auto w-full text-center md:w-2/5 md:text-left mx-auto">
+      <main className="flex justify-between items-center mx-2 md:mx-0 font-dmsans flex-col md:flex-row md:py-8 mb-4 sm:mb-0 md:h-100">
+        <section className="my-10 w-full text-center md:w-2/5 md:text-left mx-auto">
           <h1 className="text-secondaryBlack text-5xl font-bold font-dmsans flex justify-center">
             Iniciar sesión
           </h1>
@@ -107,7 +107,9 @@ const Login = () => {
             </button>
           </div>
         </section>
-        <ImagePrincipal />
+        <div className="md:w-1/2 h-full mt-8">
+          <ImagePrincipal />
+        </div>
       </main>
       <ModalGeneral state={stateModal} changeState={setStateModal}>
         <ModalRegister callback={cerrarModal} />
