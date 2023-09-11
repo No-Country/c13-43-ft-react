@@ -37,23 +37,6 @@ export const APIDeleteUser = async (userEmail) => {
     }
 };
 
-//ENDPOINT EN CONSTRUCCION
-export const APISendNotification = async (email, message, subject, name) => {
-    try {
-        const fetching = await fetch("https://send2.vercel.app/api/send", {
-            method: "POST",
-            mode: "cors",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email, message, subject, name }),
-        });
-        const response = await fetching.json();
-        return response;
-    } catch (error) {
-        console.error(error);
-    }
-};
 //APICalls de Room
 export const APICreateRoom = async (email, problem, options, expires) => {
     try {
@@ -109,15 +92,18 @@ export const APIGetInRoom = async (roomId) => {
     }
 };
 
-export const APIGetResults = async (roomId) => {
+export const APIGetResultsLastRoom = async (roomId) => {
     try {
-        const fetching = await fetch(callURL + `getResults?roomId=${roomId}`, {
-            method: "GET",
-            mode: "cors",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
+        const fetching = await fetch(
+            callURL + `getLastRoomResults?roomId=${roomId}`,
+            {
+                method: "GET",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
+        );
         const response = await fetching.json();
         return response;
     } catch (error) {
@@ -150,9 +136,42 @@ export const APIVote = async (roomId, optionId, email) => {
     }
 };
 
+//Checkea si la sala ha expirado (usar en modal enter room )
 export const APICheckRoomStatus = async (roomId) => {
     try {
         const fetching = await fetch(callURL + `expiredRoom?roomId=${roomId}`, {
+            method: "GET",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        const response = await fetching.json();
+        return response;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+export const APIGetRoomOptions = async (roomId) => {
+    try {
+        const fetching = await fetch(callURL + `roomOptions?roomId=${roomId}`, {
+            method: "GET",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        const response = await fetching.json();
+        return response;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+export const APIGetMyRooms = async (roomId) => {
+    try {
+        const fetching = await fetch(callURL + `myRooms?roomId=${roomId}`, {
             method: "GET",
             mode: "cors",
             headers: {
