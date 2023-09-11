@@ -46,7 +46,6 @@ export const ModalEnterRoom = (callback) => {
           </div>
         </form>
       </main>
-    </>
   );
 };
 
