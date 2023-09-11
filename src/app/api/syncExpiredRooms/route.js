@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import sgMail from "@/lib/SendgridConn";
 import { compararFechas, createNotificationMessage } from "@/lib/Tools";
 
+//si no vota nadie, de todos modos hay que notificar al creador
 export async function PUT(request) {
     try {
         const now = new Date(Date.now()).toISOString();
