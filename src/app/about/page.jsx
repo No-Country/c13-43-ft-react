@@ -55,10 +55,7 @@ const About = () => {
           <h1 className="text-primaryPurple font-bold text-4xl text-center items-center justify-center pb-4">
             Conoce a Nuestro Team
           </h1>
-          <p className="text-lg text-center w-full md:w-6/12">
-            Lorem ipsum dolor sit amet consectetur adipiscing elit volutpat
-            gravida malesuada quam commodo id integer nam.
-          </p>
+          <p className="text-lg text-center w-full md:w-7/12">Descubre quiénes somos, lo que hacemos y por qué somos apasionados por lo que hacemos. ¡Estamos ansiosos por conocerte!</p>
           <div className="flex flex-col sm:grid sm:grid-cols-8 sm:grid-rows-2 sm:gap-20 md:gap-24 gap-y-10 mt-14">
             {participantes.map((participante, index) => (
               <Participants

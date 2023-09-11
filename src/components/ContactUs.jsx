@@ -20,7 +20,7 @@ const ContactUs = () => {
                         <h2 className="font-bold text-secondaryBlack"> CONTACTO </h2>
                         <h1 className="font-bold text-primaryOrange text-4xl">Hablemos hoy</h1>
                         <div className="flex flex-col items-center md:items-start gap-5">
-                            <span className="text-center md:text-start text-lg sm:w-4/6"> Lorem ipsum dolor sit consectetur adipiscing elit nulla adipiscing tincidung interdum tellus </span>
+                            <p className="text-center md:text-start text-lg sm:w-11/12">Si tienes alguna pregunta, idea, o simplemente deseas ponerte en contacto con nosotros para explorar oportunidades de colaboración, no dudes en hacerlo.</p>
                             <div className='flex flex-col gap-5'>
                                 <div className="flex gap-2 items-center">
                                     <Image className='h-fit' src="/Images/contact/Email.png" width={20} height={20} alt="Mail.png" />
@@ -28,7 +28,7 @@ const ContactUs = () => {
                                 </div>
                                 <div className="flex gap-2 items-center">
                                     <Image className='h-fit' src="/Images/contact/Phone.png" width={20} height={20} alt="Phone.png" />
-                                    <span className="text-lg"> (123) 456 7890 </span>
+                                    <span className="text-lg"> (123) 456 - 789 </span>
                                 </div>
                                 <div className="flex gap-2 items-center">
                                     <Image className='h-fit' src="/Images/contact/Mark.png" width={20} height={20}  alt="Mark.png" />
