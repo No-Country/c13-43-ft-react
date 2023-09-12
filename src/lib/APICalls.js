@@ -36,7 +36,6 @@ export const APIDeleteUser = async (userEmail) => {
         console.error(error);
     }
 };
-
 //APICalls de Room
 export const APICreateRoom = async (email, problem, options, expires) => {
     try {
@@ -59,7 +58,6 @@ export const APICreateRoom = async (email, problem, options, expires) => {
         console.error(error);
     }
 };
-
 export const APIDeleteRoom = async (roomId) => {
     try {
         const fetching = await fetch(callURL + `deleteRoom?roomId=${roomId}`, {
@@ -75,7 +73,6 @@ export const APIDeleteRoom = async (roomId) => {
         console.error(error);
     }
 };
-
 export const APIGetInRoom = async (roomId) => {
     try {
         const fetching = await fetch(callURL + `getInRoom?roomId=${roomId}`, {
@@ -91,7 +88,6 @@ export const APIGetInRoom = async (roomId) => {
         console.error("hola: " + error);
     }
 };
-
 export const APIGetResultsLastRoom = async (email) => {
     try {
         const fetching = await fetch(
@@ -110,7 +106,6 @@ export const APIGetResultsLastRoom = async (email) => {
         console.error(error);
     }
 };
-
 export const APIVote = async (roomId, optionId, email) => {
     try {
         const fetching = await fetch(
@@ -135,7 +130,6 @@ export const APIVote = async (roomId, optionId, email) => {
         console.error(error);
     }
 };
-
 //Checkea si la sala ha expirado (usar en modal enter room )
 export const APICheckRoomStatus = async (roomId) => {
     try {
@@ -152,10 +146,9 @@ export const APICheckRoomStatus = async (roomId) => {
         console.error(error);
     }
 };
-
 export const APIGetRoomOptions = async (roomId) => {
     try {
-        const fetching = await fetch(callURL + `roomOptions?roomId=${roomId}`, {
+        const fetching = await fetch(callURL + `getResults?roomId=${roomId}`, {
             method: "GET",
             mode: "cors",
             headers: {
@@ -168,7 +161,6 @@ export const APIGetRoomOptions = async (roomId) => {
         console.error(error);
     }
 };
-
 export const APIGetMyRooms = async (email) => {
     try {
         const fetching = await fetch(callURL + `myRooms?userEmail=${email}`, {
