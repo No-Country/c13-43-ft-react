@@ -33,6 +33,7 @@ export async function GET(request) {
             percentage: Math.floor(
                 (option.timesVoted / totalParticipants) * 100
             ),
+            totalParticipants,
         }));
 
         return NextResponse.json(resultsWithPercentage);
