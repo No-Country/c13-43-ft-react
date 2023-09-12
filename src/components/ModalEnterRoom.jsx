@@ -1,18 +1,26 @@
 "use client";
 import { useState } from "react";
 import Loader from "./Loader";
+import { APICheckRoomStatus } from "@/lib/APICalls";
 
 export const ModalEnterRoom = (callback) => {
   const [ loaderActive, setLoaderActive ] = useState( false );
+  const [error, setError] = useState( false )
 
   const handelSubmit = async (event) => {
-    setLoaderActive(true)
     event.preventDefault();
     setLoaderActive( true );
     const data = new FormData(event.currentTarget);
     const roomCode = data.get("code");
-    setLoaderActive( false );
-    callback.callback(roomCode);
+    const expiredRom = await APICheckRoomStatus( roomCode );
+    console.log('expiracion total: '+ expiredRom);
+    if(!expiredRom.expired){
+      setLoaderActive( false );
+      callback.callback(roomCode);
+    }else{
+      setLoaderActive( false );
+      setError(true);
+    }
   };
 
   return (
@@ -23,7 +31,7 @@ export const ModalEnterRoom = (callback) => {
         Entrar a la sala{" "}
       </h1>
       <form onSubmit={handelSubmit}>
-        <div className="my-10">
+        <div className="mt-10">
           <label
             className="text-secondaryBlack font-dmsans font-medium"
             htmlFor="code"
@@ -39,7 +47,11 @@ export const ModalEnterRoom = (callback) => {
           />
         </div>
 
-          <div className="flex justify-center items-center">
+          {error && (
+            <p className="font-medium font-dmsans text-center text-red-600 my-6"> Sala vencida o no existe </p>
+          )}
+
+          <div className="flex justify-center items-center mt-6">
             <button className="bg-primaryPurple text-white font-semibold rounded-3xl px-4 py-2">
               Empezar →
             </button>
