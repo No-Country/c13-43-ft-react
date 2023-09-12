@@ -21,6 +21,7 @@ const Resultados = () => {
         secondOption: '',
         problem: '',
     });
+    //let hasResults = result.problem != '' ?  true : <Loader active ={ loaderActive }/> ;
 
     useEffect(() => {
         async function fetchLastResults() {
@@ -38,8 +39,9 @@ const Resultados = () => {
                         roomId: lastResult.roomId,
                     });
                     setLoaderActive( false );
+                }else {
+                    setLoaderActive( false );
                 }
-                setLoaderActive( false );
             } catch (error) {
                 console.error(error);
             }
@@ -48,10 +50,9 @@ const Resultados = () => {
         fetchLastResults();
     }, [userEmail]);
 
-    const hasResults = result.problem ?  true : <Loader active ={ loaderActive }/> ;
 
     return (
-        hasResults ? (
+        result.problem !== '' ? (
             <>
                 <Loader active ={ loaderActive }/>
                 <div className="flex flex-col p-4 font-dmsans sm:w-1/2 xl:w-45">
