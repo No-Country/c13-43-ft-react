@@ -92,10 +92,10 @@ export const APIGetInRoom = async (roomId) => {
     }
 };
 
-export const APIGetResultsLastRoom = async (roomId) => {
+export const APIGetResultsLastRoom = async (email) => {
     try {
         const fetching = await fetch(
-            callURL + `getLastRoomResults?roomId=${roomId}`,
+            callURL + `getLastRoomResults?userEmail=${email}`,
             {
                 method: "GET",
                 mode: "cors",
