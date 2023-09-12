@@ -2,17 +2,24 @@ import { firestoreDB } from "@/lib/firebaseConn";
 import { NextResponse } from "next/server";
 import { compararFechas } from "@/lib/Tools";
 
-// endpoint que trae los datos de mi ultima sala vencida
+// Endpoint que trae los datos de la última sala vencida
 export async function GET(request) {
     try {
         const { searchParams } = new URL(request.url);
         const userEmail = searchParams.get("userEmail");
 
-        // Consulta para obtener todas las salas creadas por el usuario
+        // Consulta para verificar si el usuario ha creado salas
         const createdRoomsQuery = await firestoreDB
             .collection("rooms")
             .where("createdBy", "==", userEmail)
             .get();
+
+        if (createdRoomsQuery.empty) {
+            // Si el usuario no ha creado salas, devolver un mensaje
+            return NextResponse.json({
+                message: "El usuario no ha creado ninguna sala aún",
+            });
+        }
 
         // Obtener la fecha actual
         const now = new Date(Date.now()).toISOString();
