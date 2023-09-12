@@ -1,15 +1,13 @@
 import React from "react";
 import Votaciones from "@/components/Votaciones";
-import Atajos from "@/containers/Atajos";
 
 const VotacionesPage = () => {
 
+    // bg-blue-500 test:mx-auto w-5/6 flex test:items-center test:flex-row xl:justify-end mt-16 xl:mr-40
+
     return (
-        <div className="flex flex-col items-center test:items-start test:flex-row justify-around xl:justify-end mt-16 xl:mr-40">
+        <div className="test:w-3/4 flex test:justify-center absolute right-0">
             <Votaciones />
-            <div className='mt-5'>
-                <Atajos />
-            </div>
         </div>
     )
 }

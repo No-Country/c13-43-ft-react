@@ -3,7 +3,6 @@ import Image from "next/image";
 
 const ModalCopiar = ({ image, title, content, code }) => {
   const [alert, setAlert] = React.useState("");
-  console.log(code);
 
   const handleCopyClick = async () => {
     try {
