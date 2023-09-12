@@ -11,6 +11,7 @@ const Resultados = () => {
     const { data: session } = useSession();
     const userEmail = session.user?.email;
     const [result, setResult] = useState({
+        roomId: '',
         percetageWin: '',
         winOption: '',
         participants: '',
@@ -31,6 +32,7 @@ const Resultados = () => {
                         percentageSecond: lastResult?.resultsWithPercentage[1]?.percentage?.toString().slice(0, 4) || '',
                         secondOption: lastResult?.resultsWithPercentage[1]?.title || '',
                         problem: lastResult.problem,
+                        roomId: lastResult.roomId
                     });
                 }
             } catch (error) {
@@ -81,7 +83,7 @@ const Resultados = () => {
                     state={modalResults}
                     changeState={setModalResults}
                 >
-                    <ModalResults />
+                    <ModalResults roomId = { result.roomId } problem = { result.problem }/>
                 </ModalGeneral>
             </div>
         ) : <SinVotaciones />
