@@ -25,12 +25,14 @@ export async function GET(request) {
             return NextResponse.json({ message: "La sala no ha expirado" });
         }
 
-        // Calcular los porcentajes de votos en cada opción
+        // Calcular los porcentajes de votos en cada opción y redondear a números enteros con Math.floor
         const resultsData = Object.values(roomData.options);
         const totalParticipants = roomData.participants.length;
         const resultsWithPercentage = resultsData.map((option) => ({
             ...option,
-            percentage: (option.timesVoted / totalParticipants) * 100,
+            percentage: Math.floor(
+                (option.timesVoted / totalParticipants) * 100
+            ),
         }));
 
         return NextResponse.json(resultsWithPercentage);
