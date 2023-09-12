@@ -13,7 +13,8 @@ export const ModalEnterRoom = (callback) => {
     const data = new FormData(event.currentTarget);
     const roomCode = data.get("code");
     const expiredRom = await APICheckRoomStatus( roomCode );
-    if(!expiredRom){
+    console.log('expiracion total: '+ expiredRom);
+    if(!expiredRom.expired){
       setLoaderActive( false );
       callback.callback(roomCode);
     }else{
