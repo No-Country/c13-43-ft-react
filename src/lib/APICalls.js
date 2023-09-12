@@ -62,7 +62,7 @@ export const APICreateRoom = async (email, problem, options, expires) => {
 
 export const APIDeleteRoom = async (roomId) => {
     try {
-        const fetching = await fetch(callURL + `deleteRoom/${roomId}`, {
+        const fetching = await fetch(callURL + `deleteRoom?roomId=${roomId}`, {
             method: "DELETE",
             mode: "cors",
             headers: {
