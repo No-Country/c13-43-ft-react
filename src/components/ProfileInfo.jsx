@@ -51,7 +51,7 @@ const ProfileInfo = () => {
   return (
     <>
         <Loader active={loaderActive} />
-        <div className='relative mx-auto profile flex justify-center w-full md:w-1/2 md:px-4'>
+        <div className='relative mx-auto profile flex justify-center w-auto p-0 md:w-1/2 md:px-4'>
             <div className="header flex w-full justify-between p-4">
                 <form onSubmit={handleSubmit} className="flex flex-col w-3/4">
                     <h1 className="font-bold text-3xl my-3"> Perfil </h1>
@@ -100,7 +100,7 @@ const ProfileInfo = () => {
                         GUARDAR CAMBIOS 
                     </button>
                 </form>
-                <div className="relative flex justify-center items-center mr-8 md:mr-0 header-right w-16 h-16 rounded-full border"> 
+                <div className="relative flex justify-center items-center mr-4 md:mr-0 header-right w-16 h-16 rounded-full border"> 
                     <p className="font-semibold text-primaryPurple text-2xl"> {session.user.name.substring(0,2).toUpperCase()} </p>
                     <div 
                         className="absolute cursor-pointer flex justify-center items-center bottom-0 left-0 bg-gray-300 w-5 h-5 rounded-full"
