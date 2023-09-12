@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import { APIGetMyRooms } from "@/lib/APICalls";
+import { useSession } from "next-auth/react";
 import ModalGeneral from "@/containers/ModalGeneral";
 import ModalEliminarSala from "./ModalEliminarSala";
 import ModalCopiar from "./ModalCopiar";
@@ -8,43 +10,55 @@ import ModalCopiar from "./ModalCopiar";
 //Con un api Call traer mis room en principio y si se llega traer las que he participado
 
 const Votaciones = () => {
-  const historial = [
-    {
-      codigo: "01563",
-      nombre: "Fiesta de cumpleaños",
-      ganador: "80% votó 20 de Marzo",
-      isActive: true,
-    },
-    {
-      codigo: "025884",
-      nombre: "Instrumento musical",
-      ganador: "60% votó Guitarra",
-      isActive: true,
-    },
-    {
-      codigo: "029484",
-      nombre: "Viaje",
-      ganador: "30% votó Mar del Plata",
-      isActive: false,
-    },
-    {
-      codigo: "079584",
-      nombre: "¿Qué cenamos?",
-      ganador: "70% votó Pizza",
-      isActive: false,
-    },
-  ];
 
+  const {data: session} = useSession();
+  const [rooms, setRooms] = React.useState([]);
+  const [code, setCode] = React.useState(0);
+  const [title, setTitle] = React.useState('');
   const [deleteModal, setDeleteModal] = React.useState(false);
   const [shareModal, setShareModal] = React.useState(false);
   const [search, setSearch] = React.useState("");
 
-  const filteredRooms = historial.filter((room) =>
-    room.nombre.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+  const historiaPromise = APIGetMyRooms(session.user.email)
+  
+  React.useEffect(() => {
+    historiaPromise.then((historia) => {
+      setRooms(historia.combinedRooms)
+    })
+  }, [])
+
+  const filteredRooms = rooms.filter((room) =>
+    room?.problem.toLocaleLowerCase().includes(search.toLocaleLowerCase())
   );
 
+  const winnerPercent = (arr) => {
+    const winnerTimes = Object.values(arr).sort((a,b) => a.timesVoted - b.timesVoted).at(-1).timesVoted
+    const totalTimes = Object.values(arr).reduce((a,b) => a + b.timesVoted, 0)
+    
+    if(totalTimes === 0 ) {
+      return 0
+    } else {
+      return String((winnerTimes / totalTimes) * 100).slice(0,4)
+    }
+  }
+
+  const winnerOption = (arr) => {
+    return Object.values(arr).sort((a,b) => a.timesVoted - b.timesVoted).at(-1).title
+  }
+
+  const handleDelete = (id) => {
+    setCode(filteredRooms[id].roomId)
+    setTitle(filteredRooms[id].problem)
+    setDeleteModal(!deleteModal)
+  }
+
+  const handleShare = (id) => {
+    setCode(filteredRooms[id].roomId)
+    setShareModal(!shareModal)
+  } 
+
   return (
-    <div className="xl:w-45 mt-6 font-dmsans mx-4 sm:mx-0">
+    <div className="xl:w-3/4 mt-6 font-dmsans mx-4 sm:mx-0 sm:py-5">
       <h1 className="ml-6 mb-4 text-4xl font-bold">Votaciones</h1>
       <div className=" flex flex-col bg-secondaryGray pt-6 xl:w-11/12 shadow rounded-4xl">
         <div className="pb-10 flex flex-col items-center">
@@ -66,7 +80,7 @@ const Votaciones = () => {
             />
           </form>
         </div>
-        <div className="flex gap-4 pl-10 pb-10">
+        <div className="flex gap-4 pl-10 py-5">
           <div className="flex justify-center items-center rounded-full bg-slate-300 gap-2 w-24 h-6 cursor-pointer">
             <div className="w-4 h-4 bg-green-500 rounded-full shadow"></div>
             <button className="text-xs">Activas</button>
@@ -76,22 +90,22 @@ const Votaciones = () => {
             <button className="text-xs">Inactivas</button>
           </div>
         </div>
-        <div className="flex flex-col gap-4 px-4 pb-10">
+        <div className="flex flex-col gap-4 px-8 pb-10 h-44 py-2 overflow-y-auto mb-2">
           {filteredRooms.map((sala, index) => (
             <div
               className="flex gap-8 sm:gap-4 justify-between items-center"
               key={index}
             >
               <div
-                className={`w-3 h-3 ${
-                  sala.isActive ? "bg-green-500" : "bg-red-500"
+                className={`w-4 h-3 mx-4 ${
+                  !sala.expired ? "bg-green-500" : "bg-red-500"
                 } rounded-full`}
               ></div>
               <p className="text-xs text-start w-full">
-                {sala.codigo} - {sala.nombre} | {sala.ganador}{" "}
+                {`${sala.roomId} - ${sala.problem} | ${winnerPercent(sala.options)}% Votó: ${winnerOption(sala.options)}`}
               </p>
               <div className="flex justify-end w-1/4 gap-4 items-center">
-                <button>
+                {sala.createdBy == session.user.email ? <button>
                   <Image
                     src="/Images/CoronaIcon.svg"
                     alt="corona"
@@ -99,17 +113,17 @@ const Votaciones = () => {
                     height={20}
                     className="cursor-pointer max-w-none"
                   />
-                </button>
-                <button onClick={() => setDeleteModal(!deleteModal)}>
+                </button>  : null}
+                {sala.createdBy == session.user.email ? <button onClick={() => handleDelete(index)}>
                   <Image
                     src="/Images/TrashIcon.svg"
                     alt="corona"
                     width={20}
                     height={20}
                     className="cursor-pointer max-w-none"
-                  />
-                </button>
-                <button onClick={() => setShareModal(!shareModal)}>
+                  /> 
+                </button> : null}
+                <button onClick={() => handleShare(index)}>
                   <Image
                     src="/Images/ShareIcon.png"
                     alt="compartir"
@@ -124,15 +138,15 @@ const Votaciones = () => {
         </div>
       </div>
       <ModalGeneral state={deleteModal} changeState={setDeleteModal}>
-        <ModalEliminarSala state={deleteModal} changeState={setDeleteModal} />
+        <ModalEliminarSala code={code} title={title} state={deleteModal} changeState={setDeleteModal} />
       </ModalGeneral>
 
       <ModalGeneral state={shareModal} changeState={setShareModal}>
         <ModalCopiar
           image={"/Images/ShareIcon.png"}
           title="Comparte la sala con tus amigos"
-          content="Enlace: "
-          code={`https://votechoice.com/sala/${2985674}`}
+          content="Código: "
+          code={code}
         />
       </ModalGeneral>
     </div>
