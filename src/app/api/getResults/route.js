@@ -2,10 +2,12 @@ import { firestoreDB } from "@/lib/firebaseConn";
 import { NextResponse } from "next/server";
 
 // Endpoint que trae los datos de la última sala vencida
-export async function GET(request) {
+export async function POST(request) {
     try {
-        const { searchParams } = new URL(request.url);
-        const roomId = searchParams.get("roomId");
+        // const { searchParams } = new URL(request.url);
+        // const roomId = searchParams.get("roomId");
+        const body = await request.json()
+        const { roomId } = body
 
         // Consulta para obtener la sala por su ID
         const roomQuery = await firestoreDB

@@ -144,12 +144,13 @@ export const APICheckRoomStatus = async (roomId) => {
 };
 export const APIGetRoomOptions = async (roomId) => {
     try {
-        const fetching = await fetch(callURL + `getResults?roomId=${roomId}`, {
-            method: "GET",
+        const fetching = await fetch(callURL + `getResults`, {
+            method: "POST",
             mode: "cors",
             headers: {
                 "Content-Type": "application/json",
-            },
+            }, 
+            body: JSON.stringify({roomId})
         });
         const response = await fetching.json();
         return response;
