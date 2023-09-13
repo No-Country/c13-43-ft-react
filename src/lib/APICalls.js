@@ -108,22 +108,18 @@ export const APIGetResultsLastRoom = async (email) => {
 };
 export const APIVote = async (roomId, optionId, email) => {
     try {
-        const fetching = await fetch(
-            callURL +
-                `vote?roomId=${roomId}&optionId=${optionId}&voterEmail=${email}`,
-            {
-                method: "PUT",
-                mode: "cors",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    roomId,
-                    optionId,
-                    email,
-                }),
-            }
-        );
+        const fetching = await fetch(callURL + `vote`, {
+            method: "PUT",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                roomId,
+                optionId,
+                email,
+            }),
+        });
         const response = await fetching.json();
         return response;
     } catch (error) {

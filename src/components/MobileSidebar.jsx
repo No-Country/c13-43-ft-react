@@ -2,10 +2,13 @@
 import React, { useState } from 'react';
 import Link from "next/link";
 import { signOut, useSession } from 'next-auth/react';
+import ModalGeneral from '@/containers/ModalGeneral';
+import ModalConfirmLogout from '@/components/ModalConfirmLogout';
 
 const MobileSidebar = () => {
     const { data: session } = useSession();
     const userData = session?.user?.id;
+    const [confirmLogout, setConfirmLogout] = useState(false);
 
     const handleClicksignOut = () => {
         signOut({ callbackUrl: '/'});
@@ -36,13 +39,18 @@ const MobileSidebar = () => {
                     </Link>
                 </li>
                 <li className="w-full text-white font-semibold font-texts md:block cursor-pointer hover:bg-white hover:text-primaryPurple py-2 rounded-b-3xl">
-                <Link href={"#"} onClick={() => handleClicksignOut()}>
+                <Link href={"#"} onClick={() => {
+                    setConfirmLogout(true);
+                    }}>
                         <div className="flex justify-center items-center">
                             <span className="text-lg font-normal">Salir</span>
                         </div>
                     </Link>
                 </li>
             </ul>
+            <ModalGeneral state={confirmLogout} changeState={setConfirmLogout}>
+                <ModalConfirmLogout state={confirmLogout} changeState={setConfirmLogout} />
+            </ModalGeneral>
         </nav>
     )
 }

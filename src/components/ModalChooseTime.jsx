@@ -11,6 +11,9 @@ export const ModalChooseTime = ({ code, callback }) => {
   const [ titleOptions, setTitleOptions ] = useState([]);
   const { data: session } = useSession();
   const [ error, setError ] = useState( false );
+  const [ error2, setError2 ] = useState( false );
+  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage2, setErrorMessage2] = useState('');
   const [ loaderActive, setLoaderActive ] = useState( false );
   const userEmail = session.user?.email;
 
@@ -18,11 +21,9 @@ export const ModalChooseTime = ({ code, callback }) => {
     const getRoomData = async (codeRoom) => {
       try {
         setLoaderActive( true );
-        console.log('Loader activo');
         const data = await APIGetInRoom( codeRoom );
         setRoomInfo( data.roomData );
         setTitleOptions(Object.values(data.roomData.options).map(option => option));
-        console.log('Loader desactivado');
         setLoaderActive( false );
       } catch (error) {
         console.error(error);
@@ -35,30 +36,44 @@ export const ModalChooseTime = ({ code, callback }) => {
   }, [code]);
 
   const getChooseOption = ( event ) =>{
-    let opctionChoose;
+    let optionChoose = '';
     for (let index = 0; index < titleOptions.length; index++) {
       const name = index.toString();
       const element = event.target[ name ];
       if( element.checked ){
-        setError(false);
-        opctionChoose = element.value;
+        optionChoose = element.value;
       }else{
-        setError('Debes elegir una opción');
+        setLoaderActive( false );
+        setError(true);
+        setErrorMessage('Debes elegir una opción');
         setTimeout(() => {
-          setError(false);
-        }, 3000);
+          setError( false );
+          setErrorMessage('');
+        }, 1000);
       }
     }
-    return opctionChoose;
+    return optionChoose;
   }
 
   const handleSubmit = async(event) =>{
     event.preventDefault();
     setLoaderActive( true );
-    const opctionChoose = getChooseOption( event );
-    const response = await APIVote( code, opctionChoose, userEmail );
-    setLoaderActive( false );
-    response ? callback() : console.log('Error de sintaxis');
+    const optionChoose = getChooseOption( event );
+    console.log('Estoy trayengo algo: ' +optionChoose );
+    if(optionChoose != ''){
+      const response = await APIVote( code, optionChoose, userEmail );
+      if(response.voted){
+        setLoaderActive( false );
+        callback(); 
+      }else{
+        setError2( true );
+        setErrorMessage2( response.message );
+        setTimeout(() => {
+          setError2( false );
+          setErrorMessage2('');
+        }, 1000);
+      } 
+    }
   }
 
   return (
@@ -88,11 +103,13 @@ export const ModalChooseTime = ({ code, callback }) => {
           ))
         }
 
-        <div className="my-2">
-          {error && (
-            <p className="font-medium font-dmsans text-red-600">{ error }</p>
-          )}
-        </div>
+        {error && (
+          <p className="font-medium font-dmsans text-center text-red-600"> { errorMessage } </p>
+        )}
+
+        {error2 && (
+          <p className="font-medium font-dmsans text-center text-red-600"> { errorMessage2 } </p>
+        )}
 
         <div className="flex justify-center items-center mt-8">
           <button className="bg-primaryPurple text-white font-semibold rounded-3xl px-4 py-2">

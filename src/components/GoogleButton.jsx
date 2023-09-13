@@ -3,7 +3,7 @@ import { signIn } from "next-auth/react";
 
 export const GoogleButton = () => {
     const handleClickLogin = () => {
-        signIn("google", { callbackUrl: '/login/1234' });
+        signIn("google", { redirect: "/login" });
     };
 
     return (
