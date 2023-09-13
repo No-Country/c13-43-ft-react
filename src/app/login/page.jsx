@@ -2,7 +2,7 @@
 import ImagePrincipal from "@/components/ImagePrincipal";
 import Password from "@/components/Password";
 import React, { useEffect } from "react";
-// import { GoogleButton } from "@/components/GoogleButton";
+import { GoogleButton } from "@/components/GoogleButton";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
@@ -19,10 +19,11 @@ const Login = () => {
   const [loaderActive, setLoaderActive] = useState(false);
 
   useEffect(() => {
-    //setLoaderActive(true);
-    const userData = session?.user?.id;
-    router.push(`/login/${userData}`);
-  }, [status == "authenticated"]);
+    if (status === "authenticated") {
+      const userData = session?.user?.id;
+      router.push(`/login/${userData}`);
+    }
+  }, [status]);
 
   // --> useEffect dependency
 
@@ -91,7 +92,7 @@ const Login = () => {
               </div>
             </form>
             <div className="flex justify-center items-center gap-8 w-full mt-4 mx-auto lg:absolute lg:bottom-13 sm:right-0 lg:w-49 lg:mt-0">
-              {/* <GoogleButton /> */}
+              <GoogleButton />
             </div>
             <div className="flex gap-4 my-7">
               <hr className="flex-grow border-secondaryBlack mt-3" />
