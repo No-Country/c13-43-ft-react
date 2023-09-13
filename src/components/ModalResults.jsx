@@ -1,16 +1,8 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
 import Options from './Options';
 import { APIGetRoomOptions } from '@/lib/APICalls';
 import Loader from "./Loader";
-
-const arrOptions = [
-    {opcion: 'Viernes 20 de Septiembre - 22h', votos: '5 de 10 votaron esta opcion'},
-    {opcion: 'Jueves 19 de Septiembre - 18h', votos: '2 de 10 votaron esta opcion'},
-    {opcion: 'Domingo 22 de Septiembre - 20h', votos: '0 de 10 votaron esta opcion'},
-    {opcion: 'Viernes 20 de Septiembre - 12h', votos: '3 de 10 votaron esta opcion'}
-]
 
 const ModalResults = ({ roomId, problem, participants }) => {
     const [finishResults, setFinishResults] = useState([]);
@@ -25,12 +17,12 @@ const ModalResults = ({ roomId, problem, participants }) => {
                 setLoaderActive( false )
                 console.log(arrayResults);
             } catch (error) {
-                
+                console.error(error)
             }
         }
 
         results();
-    }, [])
+    }, [roomId])
     
 
     return (

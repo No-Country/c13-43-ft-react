@@ -1,4 +1,3 @@
-"use client"
 import Navbar from "@/components/Navbar"
 import AuthProvider from "@/context/AuthProvider"
 import '@/styles/globals.css'

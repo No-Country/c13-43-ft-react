@@ -21,20 +21,28 @@ const Votaciones = () => {
   const [loaderActive, setLoaderActive] = React.useState(false)
   const [search, setSearch] = React.useState("");
 
-  const historiaPromise = APIGetMyRooms(session.user.email)
+  
   
   React.useEffect(() => {
-    setLoaderActive(true)
 
-    historiaPromise.then((historia) => {
-      setRooms(historia.combinedRooms)
-  
-      if(historia.combinedRooms) {
-        setLoaderActive(false)
+    const votants = async() =>{
+      try {
+        const historiaPromise = APIGetMyRooms(session.user.email)
+        setLoaderActive(true)
+        historiaPromise.then((historia) => {
+          setRooms(historia.combinedRooms)
+      
+          if(historia.combinedRooms) {
+            setLoaderActive(false)
+          }
+        })
+      } catch (error) {
+          console.error(error)
       }
-    })
+  }
 
-  }, [])
+  votants()
+  }, [session?.user?.email])
 
   const filteredRooms = rooms.filter((room) =>
     room?.problem.toLocaleLowerCase().includes(search.toLocaleLowerCase())
