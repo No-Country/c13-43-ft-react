@@ -21,8 +21,8 @@ export async function PUT(request) {
         const { createdBy, options, participants, expires } = currentRoomData;
         const currentOption = options && options[optionId];
 
-        const currentTime = new Date(Date.now()).toISOString();
-        const expiresAt = new Date(expires);
+        const currentTime = Date.now();
+        const expiresAt = expires;
 
         if (!currentOption) {
             return NextResponse.json(
