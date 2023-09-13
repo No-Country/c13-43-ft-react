@@ -4,10 +4,12 @@ import { NextResponse } from "next/server";
 // Endpoint que tiene como finalidad comprobar el estado de una sala.
 // Sera util a la hora de intentar ingresar a una sala
 
-export async function GET(request) {
+export async function POST(request) {
     try {
-        const { searchParams } = new URL(request.url);
-        const roomId = searchParams.get("roomId");
+        // const { searchParams } = new URL(request.url);
+        // const roomId = searchParams.get("roomId");
+        const body = await request.json();
+        const { roomId } = body;
         const roomDoc = await firestoreDB.collection("rooms").doc(roomId).get();
 
         if (roomDoc.exists) {
@@ -19,7 +21,7 @@ export async function GET(request) {
             }
         } else {
             // Si no se encuentra la sala con el ID dado
-            return NextResponse.json({ expired: false });
+            return NextResponse.json({ expired: true });
         }
     } catch (error) {
         console.error("Error al obtener datos de Firestore:", error);

@@ -4,7 +4,7 @@ import ProfileInfo from '@/components/ProfileInfo'
 import ProfileConfig from '@/components/ProfileConfig'
 import Loader from '@/components/Loader'
 
-const perfil = () => {
+const Perfil = () => {
 
     const [loaderActive, setLoaderActive] = React.useState(true)
 
@@ -23,5 +23,4 @@ const perfil = () => {
     )
 }
 
-export default perfil
-
+export default Perfil

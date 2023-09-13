@@ -18,10 +18,13 @@ const Login = () => {
     const { data: session, status } = useSession();
     const [loaderActive, setLoaderActive] = useState(false);
 
-    useEffect(() => {
-        const userData = session?.user?.id;
-        router.push(`/login/${userData}`);
-    }, [status]);
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      const userData = session?.user?.id;
+      router.push(`/login/${userData}`);
+    }
+  }, [status]);
 
     const cerrarModal = () => {
         setStateModal(!stateModal);

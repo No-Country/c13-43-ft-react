@@ -3,11 +3,12 @@ import { NextResponse } from "next/server";
 import { compararFechas } from "@/lib/Tools";
 
 // Endpoint que trae los datos de la última sala vencida
-export async function GET(request) {
+export async function POST(request) {
     try {
-        const { searchParams } = new URL(request.url);
-        const userEmail = searchParams.get("userEmail");
-
+        // const { searchParams } = new URL(request.url);
+        // const userEmail = searchParams.get("userEmail");
+        const body = await request.json();
+        const { userEmail } = body;
         // Consulta para verificar si el usuario ha creado salas
         const createdRoomsQuery = await firestoreDB
             .collection("rooms")
