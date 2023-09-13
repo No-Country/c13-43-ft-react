@@ -7,7 +7,6 @@ const ModalCreate = (callback) => {
   const { data: session } = useSession();
   const userEmail = session.user.email;
 
-  console.log(session.user)
   //Estado de las opciones
   const [options, setOptions] = React.useState({});
   //state que setea el title de la option
@@ -15,6 +14,7 @@ const ModalCreate = (callback) => {
   //states de alertas y carteles
   const [alert, setAlert] = React.useState(false);
   const [advice, setAdvice] = React.useState(false);
+  const [limitAlert, setLimitAlert] = React.useState(false);
   const [creadoExitoso, setCreadoExitoso] = React.useState(false);
   //states de los limites de opciones
   const [optionsLimit, setOptionsLimit] = useState(0);
@@ -33,7 +33,7 @@ const ModalCreate = (callback) => {
   // --> formData.codigo: Es el código de la sala.
 
   const handleCreateRoom = async (roomData) => {
-    setLoaderActive(true);
+    
     const email = userEmail;
     const problem = roomData.problem;
     const options = roomData.options;
@@ -50,19 +50,17 @@ const ModalCreate = (callback) => {
   };
 
   const handleSubmit = (e) => {
-    // --> Envia el formulario luego de validar la información
     e.preventDefault();
-
-    if (formData.codigo == "" || formData.fecha == "") {
+    
+    if (formData.problem == "" || formData.expires == "" || Object.values(formData.options).length < 2) {
       setAlert(true);
     } else {
       setAlert(false);
+      setLoaderActive(true);
+
       setTimeout(() => {
         setCreadoExitoso(!creadoExitoso);
-        // Aqui debe enviarse la información a DB
         handleCreateRoom(formData);
-
-        //handleCreateRoom(formData);
       }, 2000);
     }
   };
@@ -71,9 +69,11 @@ const ModalCreate = (callback) => {
     event.preventDefault();
 
     if (Object.keys(options).length >= 4) {
-      // Si ya hay 4 opciones, muestra un mensaje de error o realiza la acción deseada
-      console.log("No se pueden agregar más de 4 opciones");
-      return;
+      setLimitAlert(true)
+      setTimeout(() => {
+        setLimitAlert(false)
+      }, 500);
+      return
     }
 
     if (value.length < 1) {
@@ -124,7 +124,7 @@ const ModalCreate = (callback) => {
   };
 
   return (
-    <div className="createRoom px-4 w-full">
+    <div className="createRoom px-4 w-full overflow-y-auto">
       <Loader active={loaderActive}></Loader>
       <h2 className="text-primaryPurple font-dmsans font-bold text-3xl mb-4 text-center">Crear una sala</h2>
       <form onSubmit={handleSubmit} className="flex flex-col gap-2">
@@ -138,7 +138,6 @@ const ModalCreate = (callback) => {
           onChange={handleChange}
           placeholder="Escribe la decisión a tomar"
           className="px-2 rounded-lg bg-none text-sm h-8"
-          required="required"
         />
         <div className="border-b w-full mt-1 border-secondaryBlack"></div>
         <label htmlFor="fecha" className="font-semibold">FECHA LIMITE</label>
@@ -148,7 +147,6 @@ const ModalCreate = (callback) => {
           id="expires"
           name="expires"
           value={formData.expires}
-          required="required"
           onChange={handleChange}
         />
         <div className="border-b w-full mt-1 border-secondaryBlack"></div>
@@ -196,8 +194,13 @@ const ModalCreate = (callback) => {
 
         {alert && (
           <p className="text-red-500 text-xs text-center">
-            {" "}
-            Faltan campos por completar{" "}
+            Faltan opciones de respuesta o campos por completar
+          </p>
+        )}
+
+        {limitAlert && (
+          <p className="text-red-500 text-xs text-center">
+            No puedes añadir más opciones
           </p>
         )}
 
