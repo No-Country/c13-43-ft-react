@@ -91,13 +91,14 @@ export const APIGetInRoom = async (roomId) => {
 export const APIGetResultsLastRoom = async (email) => {
     try {
         const fetching = await fetch(
-            callURL + `getLastRoomResults?userEmail=${email}`,
+            callURL + `getLastRoomResults`,
             {
-                method: "GET",
+                method: "POST",
                 mode: "cors",
                 headers: {
                     "Content-Type": "application/json",
                 },
+                body: JSON.stringify({userEmail: email})
             }
         );
         const response = await fetching.json();
@@ -129,12 +130,13 @@ export const APIVote = async (roomId, optionId, email) => {
 //Checkea si la sala ha expirado (usar en modal enter room )
 export const APICheckRoomStatus = async (roomId) => {
     try {
-        const fetching = await fetch(callURL + `expiredRoom?roomId=${roomId}`, {
-            method: "GET",
+        const fetching = await fetch(callURL + `expiredRoom`, {
+            method: "POST",
             mode: "cors",
             headers: {
                 "Content-Type": "application/json",
             },
+            body: JSON.stringify({roomId})
         });
         const response = await fetching.json();
         return response;
@@ -160,12 +162,13 @@ export const APIGetRoomOptions = async (roomId) => {
 };
 export const APIGetMyRooms = async (email) => {
     try {
-        const fetching = await fetch(callURL + `myRooms?userEmail=${email}`, {
-            method: "GET",
+        const fetching = await fetch(callURL + `myRooms`, {
+            method: "POST",
             mode: "cors",
             headers: {
                 "Content-Type": "application/json",
             },
+            body: JSON.stringify({userEmail: email})
         });
         const response = await fetching.json();
         return response;
