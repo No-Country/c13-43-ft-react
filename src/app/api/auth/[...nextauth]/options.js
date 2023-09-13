@@ -2,7 +2,6 @@ import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { firestoreDB } from "@/lib/firebaseConn";
 const googleUrl = process.env.GOOGLE_LOG_URL;
-//el problema es que nunca entra al if
 
 export const NextAuthOptions = {
     providers: [
@@ -88,15 +87,19 @@ export const NextAuthOptions = {
                         console.error(error);
                     }
                     return true;
+                }else {
+                    const user = userRef.docs[0].data();
+                    return user;
                 }
             }
             return true;
         },
-        async jwt({ token, user, session }) {
+        async jwt({ token, user }) {
+            console.log(token, user)
             if (user) {
                 return {
                     ...token,
-                    id: user.id,
+                    name: user.name,
                 };
             }
             return token;
