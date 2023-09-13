@@ -50,7 +50,7 @@ export async function POST(request) {
 
         let last = lastExpiredRoom.at(-1);
 
-        if (last !== null) {
+        if (last !== undefined) {
             // Extraer los resultados de las opciones y los votos
             const resultsData = Object.values(last.options);
 
