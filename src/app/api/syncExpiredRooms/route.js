@@ -6,7 +6,7 @@ import { compararFechas, createNotificationMessage } from "@/lib/Tools";
 //si no vota nadie, de todos modos hay que notificar al creador
 export async function PUT(request) {
     try {
-        const now = new Date(Date.now()).toISOString();
+        const now = Date.now();
         const roomQuerySnapshot = await firestoreDB.collection("rooms").get();
         const expiredRooms = [];
 
