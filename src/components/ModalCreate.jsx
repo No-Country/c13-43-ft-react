@@ -97,7 +97,7 @@ const ModalCreate = (callback) => {
             setOptionsLimit(optionsLimit + 1);
 
             setOptions(updatedOptions);
-            console.log(updatedOptions);
+
             setFormData({
                 ...formData,
                 options: updatedOptions, // Actualiza el formData con las nuevas opciones
@@ -115,9 +115,7 @@ const ModalCreate = (callback) => {
 
             // Borra la opción con el índice proporcionado
             delete updatedOptions[index];
-            console.log(updatedOptions);
-            // disminuye en 1 el limite
-            setOptionsLimit(optionsLimit - 1);
+
             // Actualiza el estado de opciones y el formData
             setOptions(updatedOptions);
             setFormData({
