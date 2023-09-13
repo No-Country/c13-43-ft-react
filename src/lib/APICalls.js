@@ -176,3 +176,41 @@ export const APIGetMyRooms = async (email) => {
         console.error(error);
     }
 };
+
+export const APIGetMe = async (email) => {
+    try {
+        const fetching = await fetch(callURL + `me`, {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                userEmail: email,
+            }),
+        });
+        const response = await fetching.json();
+        return response;
+    } catch (error) {
+        console.error(error);
+    }
+};
+export const APIUpdateMe = async (email, data) => {
+    try {
+        const fetching = await fetch(callURL + `me`, {
+            method: "PUT",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                userEmail: email,
+                updatedUserData: data,
+            }),
+        });
+        const response = await fetching.json();
+        return response;
+    } catch (error) {
+        console.error(error);
+    }
+};
