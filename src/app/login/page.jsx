@@ -9,48 +9,53 @@ import { signIn } from "next-auth/react";
 import ModalGeneral from "@/containers/ModalGeneral";
 import ModalRegister from "@/components/ModalRegister";
 import { useSession } from "next-auth/react";
+import Loader from "@/components/Loader";
 
 const Login = () => {
   const router = useRouter();
   const [error, setError] = useState();
   const [stateModal, setStateModal] = useState(false);
   const { data: session, status } = useSession();
+  const [loaderActive, setLoaderActive] = useState(false);
 
   useEffect(() => {
+    //setLoaderActive(true);
     const userData = session?.user?.id;
     router.push(`/login/${userData}`);
   }, [status == "authenticated"]);
 
-  const cerrarModal = async () => {
+  const cerrarModal = () => {
     setStateModal(!stateModal);
   };
 
   const handleSubmit = async (e) => {
+    setError('')
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-  
+    setLoaderActive(true);
     const signInResponse = await signIn("credentials", {
       email: data.get("email"),
       password: data.get("password"),
       redirect: false,
     });
-  
+
     if (signInResponse && !signInResponse.error) {
+      setLoaderActive(false);
     } else {
-      console.log("Error: ", signInResponse);
+      setLoaderActive(false);
       setError("Inicio de sesión fallido: verifica tu email y contraseña");
     }
   };
 
   return (
     <>
-      <div className="flex gap-40 pt-8 pl-32">
-        <main className="flex-colum justify-center w-1/2 ">
+      <Loader active={loaderActive}></Loader>
+      <main className="flex justify-between items-center mx-2 md:mx-0 font-dmsans flex-col md:flex-row md:py-8 mb-4 sm:mb-0 md:h-100">
+        <section className="my-10 w-full text-center md:w-2/5 md:text-left mx-auto">
           <h1 className="text-secondaryBlack text-5xl font-bold font-dmsans flex justify-center">
-            {" "}
-            Iniciar sesión{" "}
+            Iniciar sesión
           </h1>
-          <div className="relative">
+          <div className="relative mx-8">
             <form onSubmit={handleSubmit}>
               <div className="my-4 pt-4">
                 <label
@@ -65,6 +70,7 @@ const Login = () => {
                   type="email"
                   name="email"
                   id="email"
+                  required="required"
                 />
               </div>
               <Password nameLabel="CONTRASEÑA" name="password" />
@@ -75,36 +81,36 @@ const Login = () => {
                   </p>
                 )}
               </div>
-              <div className="flex justify-start items-center gap-8 mt-10">
-                <button className="bg-primaryPurple text-secondaryWhite w-5/12 font-dmsans font-medium py-2 rounded-full">
+              <div className="flex flex-col lg:flex-row justify-start items-center mt-10">
+                <button className="bg-primaryPurple text-secondaryWhite w-full lg:w-49 font-dmsans font-medium py-2 rounded-full">
                   {" "}
                   INGRESAR{" "}
                 </button>
               </div>
             </form>
-            <div className="flex justify-center items-center gap-8  pt-4 absolute bottom-0 right-0 w-5/12">
+            <div className="flex justify-center items-center gap-8 w-full mt-4 mx-auto lg:absolute lg:bottom-13 sm:right-0 lg:w-49 lg:mt-0">
               <GoogleButton />
             </div>
+            <div className="flex gap-4 my-7">
+              <hr className="flex-grow border-secondaryBlack mt-3" />
+              <span className="text-secondaryBlack font-dmsans font-medium">
+                OR
+              </span>
+              <hr className="flex-grow border-secondaryBlack mt-3" />
+            </div>
+            <button
+              className="text-primaryPurple font-dmsans font-medium border-primaryPurple border rounded-full w-full py-2"
+              onClick={() => setStateModal(!stateModal)}
+            >
+              {" "}
+              REGISTRATE{" "}
+            </button>
           </div>
-
-          <div className="flex gap-4 my-7">
-            <hr className="flex-grow border-secondaryBlack mt-3" />
-            <span className="text-secondaryBlack font-dmsans font-medium">
-              OR
-            </span>
-            <hr className="flex-grow border-secondaryBlack mt-3" />
-          </div>
-
-          <button
-            className="text-primaryPurple font-dmsans font-medium border-primaryPurple border rounded-full w-full py-2"
-            onClick={() => setStateModal(!stateModal)}
-          >
-            {" "}
-            REGISTRATE{" "}
-          </button>
-        </main>
-        <ImagePrincipal />
-      </div>
+        </section>
+        <div className="md:w-1/2 h-full mt-8">
+          <ImagePrincipal />
+        </div>
+      </main>
       <ModalGeneral state={stateModal} changeState={setStateModal}>
         <ModalRegister callback={cerrarModal} />
       </ModalGeneral>

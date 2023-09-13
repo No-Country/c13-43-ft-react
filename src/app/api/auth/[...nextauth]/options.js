@@ -1,6 +1,7 @@
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { firestoreDB } from "@/lib/firebaseConn";
+const googleUrl = process.env.GOOGLE_LOG_URL;
 
 export const NextAuthOptions = {
   providers: [
@@ -55,12 +56,39 @@ export const NextAuthOptions = {
     signIn: "/login",
   },
   callbacks: {
-    // async signIn({user}) {
-    //     // console.log(user)
-    //     return true
-    // },
+    async signIn({ account, profile }) {
+      if (account.provider === "google") {
+        // Checkea si el email del usuario existe en la DB
+        const userRef = await firestoreDB
+          .collection("users")
+          .where("email", "==", profile.email)
+          .get();
+
+        if (userRef.empty) {
+          try {
+            const fetching = await fetch(`${googleUrl}/api/signup`, {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: profile.email,
+                    password: '123456',
+                    name: profile.name,
+                }),
+            });
+            const response = await fetching.json();
+            return response;
+        } catch (error) {
+            console.error(error);
+        }
+          return true;
+        }
+      }
+      return true;
+    },
     async jwt({ token, user, session }) {
-      // console.log("jwt callback", { token, user, session });
       if (user) {
         return {
           ...token,
@@ -70,7 +98,6 @@ export const NextAuthOptions = {
       return token;
     },
     async session({ session, token, user }) {
-      // console.log("session callback", { session, token, user });
       return {
         ...session,
         user: {
@@ -80,18 +107,6 @@ export const NextAuthOptions = {
       };
       return session;
     },
-    //Aca lo del login de google
-    // async signIn({profile}) {
-    //     console.log(profile)
-    //     try {
-    //         // await connectDB();
-
-    //         return true;
-    //     } catch (error) {
-    //         console.log(error);
-    //         return false;
-    //     }
-    // }
   },
   session: {
     strategy: "jwt",

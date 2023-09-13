@@ -1,85 +1,159 @@
-"use client"
+"use client";
 
-import React from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
+import MobileNav from "./MobileNav";
+import MobileSidebar from "./MobileSidebar";
+
+
 
 const Navbar = () => {
+  
+  const path = usePathname();
 
-    const path = usePathname()
+  const { data: session } = useSession();
 
-    if (path === '/' || path === '/about' || path === '/contact') {
-        return (
-            <nav className="flex justify-between px-16 items-center bg-white shadow-md h-20">
-                <ul className="flex w-3/4">
-                    <li>
-                        <Image src="/Images/logoColor.png" alt="choiceLogo" width={120} height={70} />
-                    </li>
-                </ul>
-                <ul className="flex justify-between px-16 w-2/4 items-center">
-                    <li className="text-secondaryBlack font-semibold font-texts hidden md:block cursor-pointer">
-                        <Link href={'/'}> Inicio </Link>    
-                        
-                    </li>
-                    <li className="text-secondaryBlack font-semibold font-texts hidden md:block cursor-pointer"> 
-                        <Link href={'/about'}> Sobre nosotros </Link>
-                    </li>
-                    <li className="text-secondaryBlack font-semibold font-texts hidden md:block cursor-pointer"> 
-                        <Link href={'/contact'}> Contacto </Link>
-                    </li>
-                    <li className="bg-primaryPurple font-semibold text-secondaryWhite rounded-3xl px-4 py-2 hidden md:block cursor-pointer">
-                        <Link href={'/login'}> Empezar </Link>
-                    </li>
-                    
-                    <li className="absolute top-4 right-12 block md:hidden cursor-pointer">
-                        <Image src="/menuIcon.svg" alt="MenuIcon" width={30} height={30} />
-                    </li>
-                </ul>
-            </nav>
-        )
-    } else if (path === '/login' || path === '/signup') {
-        return (
-            <nav className="flex justify-between px-16 items-center bg-white shadow-md h-20">
-            <ul className="flex w-3/4">
-                <li>
-                    <Image src="/Images/logoColor.png" alt="choiceLogo" width={120} height={70} />
-                </li>
-            </ul>
-            <ul className="flex justify-end px-24 w-2/4 items-center">
-                <li className="text-secondaryBlack pr-12 font-semibold font-texts hidden md:block cursor-pointer">
-                    <Link href={'/'}>Inicio</Link>
-                </li>
-                <li className="text-secondaryBlack pr-12 font-semibold font-texts hidden md:block cursor-pointer w-40"> 
-                    <Link href={'/about'}> Sobre nosotros </Link> 
-                </li>
-                <li className="text-secondaryBlack pr-12 font-semibold font-texts hidden md:block cursor-pointer"> 
-                    <Link href={'/contact'}> Contacto </Link> 
-                </li>
-                <li className="absolute top-4 right-12 block md:hidden cursor-pointer">
-                    <Image src="/menuIcon.svg" alt="MenuIcon" width={30} height={30} />
-                </li>
-            </ul>
-        </nav> 
-        )
-    } else {
-        return (
-            <nav className="flex justify-end h-20 w-screen">
-                <ul className="flex justify-end px-24 items-center relative">
-                    <li className="text-secondaryBlack pr-12 font-semibold font-texts hidden md:block cursor-pointer"> 
-                        <Link href={'/about'}> Sobre nosotros </Link>  
-                    </li>
-                    <li className="text-secondaryBlack pr-12 font-semibold font-texts hidden md:block cursor-pointer">
-                        <Link href={'/contact'}> Contacto </Link>
-                    </li> 
-                    <li className="right-20 cursor-pointer w-12 h-12 rounded-full border flex justify-center items-center">
-                        <p className="text-primaryPurple font-semibold font-dmsans">AB</p>
-                    </li>
-                    <div className="statusCircle w-2 h-2 rounded-full hidden md:block bg-green-400 absolute top-5 right-24"></div>
-                </ul>
-            </nav>
-        )
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isHome, setIsHome] = useState(true);
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsLargeScreen(window.innerWidth > 1280);
+
+      const handleResize = () => {
+        setIsLargeScreen(window.innerWidth > 1280);
+      };
+
+      window.addEventListener("resize", handleResize);
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
     }
-}
+  }, []);
 
-export default Navbar
+
+  if (path === "/" || path === "/about" || path === "/contact") {
+    return (
+      <header>
+        <nav className="flex justify-between items-center px-6 sm:px-12 bg-white shadow-md h-20">
+          <ul className="flex w-3/4">
+            <li>
+              <Image
+                className="max-w-none"
+                src="/Images/logoColor.png"
+                alt="choiceLogo"
+                width={120}
+                height={70}
+              />
+            </li>
+          </ul>
+          <ul className="flex justify-end gap-12 w-3/4 items-center">
+            <li className="text-secondaryBlack font-semibold hidden md:block cursor-pointer">
+              <Link href={"/"}>Inicio</Link>
+            </li>
+            <li className="text-secondaryBlack font-semibold hidden md:block cursor-pointer">
+              <Link href={"/about"}>Nosotros </Link>
+            </li>
+            <li className="text-secondaryBlack font-semibold hidden md:block cursor-pointer">
+              <Link href={"/contact"}>Contacto</Link>
+            </li>
+            <li className="hidden md:block">
+              <Link href={'/login'}>
+                <button className="bg-primaryPurple text-white font-semibold rounded-3xl px-5 py-2">Empezar</button>
+              </Link> 
+            </li>
+            <li className="absolute top-7 right-12 block md:hidden cursor-pointer" onClick={toggleMobileMenu}>
+              <Image src="/menuIcon.svg" alt="MenuIcon" width={30} height={30} />
+            </li>
+          </ul>
+        </nav>
+        {isMobileMenuOpen && (
+            <MobileNav isHome={isHome} />
+        )}
+      </header>
+    );
+  } else if (path === "/login") {
+    return (
+      <header>
+        <nav className="flex justify-between px-6 sm:px-12 items-center bg-white shadow-md h-20">
+          <ul className="flex w-3/4">
+            <li>
+              <Image
+                src="/Images/logoColor.png"
+                alt="choiceLogo"
+                width={120}
+                height={70}
+              />
+            </li>
+          </ul>
+          <ul className="flex justify-end gap-12 w-3/4 items-center">
+            <li className="text-secondaryBlack font-semibold hidden md:block cursor-pointer">
+              <Link href={"/"}>Inicio</Link>
+            </li>
+            <li className="text-secondaryBlack font-semibold hidden md:block cursor-pointer">
+              <Link href={"/about"}>Nosotros</Link>
+            </li>
+            <li className="text-secondaryBlack font-semibold hidden md:block cursor-pointer">
+              <Link href={"/contact"}>Contacto</Link>
+            </li>
+            <li className="absolute top-7 right-12 block md:hidden cursor-pointer" onClick={toggleMobileMenu}>
+              <Image src="/menuIcon.svg" alt="MenuIcon" width={30} height={30} />
+            </li>
+          </ul>
+        </nav>
+        {isMobileMenuOpen && (
+            <MobileNav isHome={!isHome} />
+        )}
+      </header>
+    );
+  } else if (isLargeScreen) {
+    return (
+      <header>
+        <nav className="flex justify-end h-20 w-screen">
+          <ul className="flex justify-end px-24 items-center relative">
+            <li className="right-20 cursor-pointer w-12 h-12 rounded-full border flex justify-center items-center shadow-md">
+              <p className="text-primaryPurple font-semibold font-dmsans">{session.user.name.substring(0,2).toUpperCase()}</p>
+            </li>
+            <div className="statusCircle w-2 h-2 rounded-full hidden md:block bg-green-400 absolute top-5 right-24"></div>
+          </ul>
+        </nav>
+      </header>
+    );
+  }
+  else {
+    return (
+      <header>
+        <nav className="flex justify-end h-20 w-screen bg-primaryPurple">
+          <ul className="flex justify-between items-center w-full relative px-6">
+          <li>
+              <Image
+                className="max-w-none"
+                src="/Images/logoPanel.png"
+                alt="choiceLogo"
+                width={120}
+                height={70}
+              />
+            </li>
+            <li className="right-20 cursor-pointer w-12 h-12 rounded-full border flex justify-center items-center shadow-md" onClick={toggleMobileMenu}>
+              <p className="text-white font-semibold font-dmsans">{session.user.name.substring(0,2).toUpperCase()}</p>
+            </li>
+          </ul>
+        </nav>
+        {isMobileMenuOpen && (
+            <MobileSidebar />
+        )}
+      </header>
+    );
+  }
+};
+
+export default Navbar;

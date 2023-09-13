@@ -2,8 +2,8 @@ import React from "react";
 
 const SinVotaciones = () => {
     return (
-        <div className="flex flex-col items-center justify-center font-dmsans bg-white rounded-2xl">
-            <div className="flex items-center">
+        <div className="flex flex-col items-center justify-center font-dmsans bg-white rounded-2xl m-24 h-full py-6 shadow">
+            <div className="flex items-center ">
                 <img src="../Images/sinvotaciones/sinvotaciones-ImagePlaceholder.png"/>
             </div>
             <div className="flex flex-col items-center mt-5 gap-5 text-center">

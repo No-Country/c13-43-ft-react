@@ -1,17 +1,13 @@
-import React from 'react'
-import Sidebar from '@/containers/Sidebar'
-import Votaciones from '@/components/Votaciones'
-import Atajos from '@/containers/Atajos'
+import React from "react";
+import Votaciones from "@/components/Votaciones";
 
 const VotacionesPage = () => {
 
     return (
-        <div className="flex mt-16">
-            <div className="w-1/4"></div>
+        <div className="test:w-3/4 flex test:justify-center absolute right-0">
             <Votaciones />
-            <Atajos />
         </div>
     )
 }
 
-export default VotacionesPage
+export default VotacionesPage;

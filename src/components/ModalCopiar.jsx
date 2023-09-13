@@ -1,21 +1,20 @@
-import React from 'react'
-import Image from 'next/image'
+import React from "react";
+import Image from "next/image";
 
 const ModalCopiar = ({ image, title, content, code }) => {
+  const [alert, setAlert] = React.useState("");
 
-    const [alert, setAlert] = React.useState('')
-
-    const handleCopyClick = async () => {
-        try {
-            await navigator.clipboard.writeText(code);
-            setAlert('Copiado con éxito!')
-            setTimeout(() => {
-                setAlert('')
-            }, 1000);
-        } catch (err) {
-            alert('No se pudo copiar el texto');
-        }
-    };
+  const handleCopyClick = async () => {
+    try {
+      await navigator.clipboard.writeText(code);
+      setAlert("Copiado con éxito!");
+      setTimeout(() => {
+        setAlert("");
+      }, 1000);
+    } catch (err) {
+      setAlert("No se pudo copiar el texto");
+    }
+  };
 
     return (
         <div>
@@ -23,7 +22,7 @@ const ModalCopiar = ({ image, title, content, code }) => {
             <h2 className="text-center text-2xl my-4 text-primaryPurple font-bold"> {title} </h2>
             <div className="flex justify-center">
                 <p> { content } &nbsp; </p>
-                <p className="font-bold"> {code} &nbsp; &nbsp; </p>
+                <p className="font-bold text-center"> {code} &nbsp; &nbsp; </p>
                 <button onClick = {handleCopyClick}>
                     <svg 
                     width="15" 

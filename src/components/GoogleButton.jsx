@@ -3,15 +3,15 @@ import { signIn } from "next-auth/react";
 
 export const GoogleButton = () => {
     const handleClickLogin = () => {
-        signIn("google", { callbackUrl: '/login/1234' });
+        signIn("google", { redirect: "/login" });
     };
 
     return (
-        <button onClick={handleClickLogin} className='text-primaryPurple font-dmsans font-medium border-primaryPurple border rounded-full w-full gap-2 py-1 flex items-center justify-center'>
+        <button onClick={handleClickLogin} className='text-primaryPurple font-dmsans font-medium border-primaryPurple border rounded-full w-full py-1 flex items-center justify-center gap-4 md:gap-0.5 xl:gap-2 '>
             <picture>
                 <img src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png" alt="logoGoogle" className='w-8 h-8 justify-center' />
             </picture>
-            Entrar con google
+            <span>Entrar con Google</span>
         </button>
     )
 }

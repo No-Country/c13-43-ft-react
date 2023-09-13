@@ -18,6 +18,27 @@ module.exports = {
       fontFamily: {
         dmsans: ["DM Sans", "sans-serif"],
       },
+      borderRadius: {
+        '4xl': '2.5rem',
+        '5xl': '5.5rem',
+      },
+      screens: {
+        'test': '875px',
+      },
+      width: {
+        '45': '45%',
+        '49': '49%',
+      },
+      height: {
+        '544': '30rem'
+      },
+      spacing: {
+        '100': '35rem',
+        '102': '38rem'
+      },
+      inset: {
+        '13': '7.54rem'
+      },
     },
   },
   plugins: [],

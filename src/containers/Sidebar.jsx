@@ -1,45 +1,59 @@
-
 'use client'
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { ChangeLi } from '../components/ChangeLi';
-import { signOut, useSession } from 'next-auth/react';
-
+import { useSession } from 'next-auth/react';
+import ModalGeneral from './ModalGeneral';
+import ModalConfirmLogout from '@/components/ModalConfirmLogout';
+import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
     const { data: session } = useSession();
     const userData = session?.user?.id
     const [activeIndex, setActiveIndex] = useState(0);
+    const [confirmLogout, setConfirmLogout] = useState(false);
+    const path = usePathname()
+
+    React.useEffect(() => {
+        const regex = /\/(votaciones|perfil)?$/
+        const values = ['', 'votaciones', 'perfil']
+    
+        if (path.match(regex) == null) {
+            setActiveIndex(0)
+        } else {
+            setActiveIndex(values.indexOf(path.match(regex)[1]))
+        }
+    }, [path])
+    
+    // console.log(path)
+    // console.log(values.indexOf(path.match(regex)[1]))
+
 
     const imgsM = {
-        panel: '/Images/panel/panelM.png',
-        sala: '/Images/panel/salaM.png',
-        votacion: '/Images/panel/votacionM.png',
-        perfil: '/Images/panel/perfilM.png',
-        logout: '/Images/panel/logoutM.png'
+        panel: '/Images/panel/panelM.svg',
+        sala: '/Images/panel/salaM.svg',
+        votacion: '/Images/panel/votacionM.svg',
+        perfil: '/Images/panel/perfilM.svg',
+        logout: '/Images/panel/logoutM.svg'
     }
 
     const imgsN = {
-        panel: '/Images/panel/panelN.png',
-        sala: '/Images/panel/salaN.png',
-        votacion: '/Images/panel/votacionN.png',
-        perfil: '/Images/panel/perfilN.png',
-        logout: '/Images/panel/logoutN.png'
+        panel: '/Images/panel/panelN.svg',
+        sala: '/Images/panel/salaN.svg',
+        votacion: '/Images/panel/votacionN.svg',
+        perfil: '/Images/panel/perfilN.svg',
+        logout: '/Images/panel/logoutN.svg'
     }
 
     const handleItemClick = (index) => {
         setActiveIndex(index);
     }
 
-    const handleClicksignOut = () => {
-        signOut({ callbackUrl: '/'});
-    };
-
     return (
-        <div className='bg-primaryPurple h-screen absolute top-0 w-72 pl-14 rounded-tr-3xl'>
-            <ul className=''>
+        <div className='bg-primaryPurple rounded-tr-3xl flex h-screen pl-6 pt-4 fixed top-0 w-1/5 min-w-fit z-10'>
+            <ul className='w-full'>
                 <li className='m-2 mt-4 mb-20'>
-                    <Image src="/Images/logoPanel.png" width={ 186 } height={ 40 } className='static' alt='image'/>
+                    <Image src="/Images/logoPanel.png" width={ 186 } height={ 40 } alt='image'/>
                 </li>
 
                 <ChangeLi
@@ -72,10 +86,13 @@ const Sidebar = () => {
                     isActive={ activeIndex === 3 }
                     onClick={() => {
                         handleItemClick(3)
-                        handleClicksignOut()
+                        setConfirmLogout(true)
                     }}
                 />
             </ul>
+            <ModalGeneral state={confirmLogout} changeState={setConfirmLogout}>
+                <ModalConfirmLogout state={confirmLogout} changeState={setConfirmLogout} />
+            </ModalGeneral>
         </div>
     )
 }
