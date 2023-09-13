@@ -21,7 +21,7 @@ export async function POST(request) {
             }
         } else {
             // Si no se encuentra la sala con el ID dado
-            return NextResponse.json({ expired: false });
+            return NextResponse.json({ expired: true });
         }
     } catch (error) {
         console.error("Error al obtener datos de Firestore:", error);
