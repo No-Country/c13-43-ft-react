@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Atajos from "@/containers/Atajos";
 import Loader from "@/components/Loader";
@@ -12,7 +13,7 @@ export default function Panel() {
   const [render, setRender] = React.useState(false)
   const [loaderActive, setLoaderActive] = React.useState(false)
 
-  const lastResult = useMemo(() => {
+  React.useEffect(() => {
     async function fetchLastResults() {
         setLoaderActive(true)
         try {
@@ -31,7 +32,7 @@ export default function Panel() {
     }
 
     fetchLastResults();
-  }, [session.user?.email]);
+}, [session.user?.email]);
 
   return (
     <>
