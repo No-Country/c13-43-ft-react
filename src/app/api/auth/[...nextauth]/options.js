@@ -94,12 +94,11 @@ export const NextAuthOptions = {
             }
             return true;
         },
-        async jwt({ token, user }) {
-            console.log(token, user)
+        async jwt({ token, user, session }) {
             if (user) {
                 return {
                     ...token,
-                    name: user.name,
+                    id: user.id
                 };
             }
             return token;
