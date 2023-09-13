@@ -3,8 +3,9 @@ import { firestoreDB } from "@/lib/firebaseConn";
 //Endpoint para acceder a una sala
 //
 export async function GET(request) {
-  const { searchParams } = new URL(request.url);
-  const roomId = searchParams.get("roomId");
+  // const { searchParams } = new URL(request.url);
+  // const roomId = searchParams.get("roomId");
+  const roomId = request.query.roomId;
   const roomRef = await firestoreDB.collection("rooms").doc(roomId).get();
   const roomExists = roomRef.exists;
   if (roomExists) {
