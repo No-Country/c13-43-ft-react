@@ -22,9 +22,9 @@ const Login = () => {
     //setLoaderActive(true);
     const userData = session?.user?.id;
     router.push(`/login/${userData}`);
-  }, [router, session?.user?.id]);
+  }, [status == "authenticated"]);
 
-  //status == "authenticated" --> useEffect dependency
+  // --> useEffect dependency
 
   const cerrarModal = () => {
     setStateModal(!stateModal);
