@@ -212,3 +212,30 @@ export const APIUpdateMe = async (email, data) => {
         console.error(error);
     }
 };
+
+export const APIContactUs = async (
+    contactEmail,
+    contactMessage,
+    contactPhone,
+    contactName
+) => {
+    try {
+        const fetching = await fetch(callURL + `contactUs`, {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                contactEmail,
+                contactMessage,
+                contactPhone,
+                contactName,
+            }),
+        });
+        const response = await fetching.json();
+        return response;
+    } catch (error) {
+        console.error(error);
+    }
+};
