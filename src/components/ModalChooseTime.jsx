@@ -77,13 +77,13 @@ export const ModalChooseTime = ({ code, callback }) => {
                 {" "}
                 Tiempo de elegir!{" "}
             </h1>
-            <p className="text-secondaryBlack text-center font-dmsans flex justify-center my-4">
+            <p className="text-center font-dmsans flex justify-center my-4">
                 {" "}
                 Te han invitado a votar: <b> &nbsp; {roomInfo.problem} </b>{" "}
             </p>
             <div className="flex gap-2">
                 <div className="flex justify-center items-center rounded-full bg-slate-300 w-20 gap-2 h-6 cursor-pointer">
-                    <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+                    <div className="w-4 h-4 bg-green-500 dark:bg-darkBlack rounded-full"></div>
                     <button className="text-xs">Activa</button>
                 </div>
             </div>

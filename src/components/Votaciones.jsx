@@ -84,9 +84,9 @@ const Votaciones = () => {
             <Loader active={loaderActive} />
             <div className="w-full xl:w-3/4 mt-6 font-dmsans mx-4 sm:mx-0 sm:py-5">
                 <h1 className="ml-6 mb-4 text-4xl font-bold text-center xl:text-start">Votaciones</h1>
-                {!rooms.length ? <div className="flex justify-center items-center bg-secondaryGray pt-6 xl:w-11/12 shadow rounded-4xl h-85">
+                {!rooms.length ? <div className="flex justify-center items-center bg-secondaryGray dark:bg-darkNav pt-6 xl:w-11/12 shadow rounded-4xl h-85">
                     <p>Aún no has participado en una votación.</p>
-                </div> : <div className="flex flex-col bg-secondaryGray pt-6 xl:w-11/12 shadow rounded-4xl">
+                </div> : <div className="flex flex-col bg-secondaryGray dark:bg-darkNav  pt-6 xl:w-11/12 shadow rounded-4xl">
                     <div className="pb-10 flex flex-col items-center">
                         <form className="bg-primaryOrange rounded-full flex items-center h-8 justify-around px-2 w-1/2 shadow">
                             <input
@@ -109,11 +109,11 @@ const Votaciones = () => {
                         </form>
                     </div>
                     <div className="flex gap-4 pl-6 py-5">
-                        <div className="flex justify-center items-center rounded-full bg-slate-300 gap-2 w-24 h-6 cursor-pointer">
+                        <div className="flex justify-center items-center rounded-full bg-slate-300 dark:bg-darkBlack  gap-2 w-24 h-6 cursor-pointer">
                             <div className="w-3 h-3 bg-green-500 rounded-full shadow"></div>
                             <button className="text-xs">Activas</button>
                         </div>
-                        <div className="flex justify-center items-center rounded-full bg-slate-300 gap-2 w-24 h-6 cursor-pointer">
+                        <div className="flex justify-center items-center rounded-full bg-slate-300 dark:bg-darkBlack gap-2 w-24 h-6 cursor-pointer">
                             <div className="w-3 h-3 bg-red-500 rounded-full shadow"></div>
                             <button className="text-xs">Inactivas</button>
                         </div>
