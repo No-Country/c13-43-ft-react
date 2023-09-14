@@ -48,7 +48,11 @@ export async function POST(request) {
             }
         });
 
-        return NextResponse.json(resultsWithPercentage);
+        return NextResponse.json({
+            resultsWithPercentage,
+            problem: roomData.problem,
+            totalParticipants,
+        });
     } catch (error) {
         console.error("Error al obtener datos de Firestore:", error);
         return NextResponse.error("Error al obtener datos de Firestore");

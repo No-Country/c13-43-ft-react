@@ -13,7 +13,7 @@ const ModalResults = ({ roomId, problem, participants }) => {
             try {
                 setLoaderActive(true);
                 const arrayResults = await APIGetRoomOptions(roomId);
-                setFinishResults(arrayResults);
+                setFinishResults(arrayResults.resultsWithPercentage);
                 setLoaderActive(false);
             } catch (error) {
                 console.error(error);
@@ -21,7 +21,7 @@ const ModalResults = ({ roomId, problem, participants }) => {
         };
 
         results();
-    }, [roomId]);
+    }, []);
 
     return (
         <>
@@ -38,7 +38,7 @@ const ModalResults = ({ roomId, problem, participants }) => {
                             <span className="font-semibold">{problem}</span>
                         </p>
                         <div className="items-center flex flex-col w-full mt-1">
-                            {finishResults.map((option, index) => (
+                            {finishResults?.map((option) => (
                                 <Options
                                     key={option.id}
                                     opcion={option.title}
