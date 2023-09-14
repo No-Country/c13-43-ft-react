@@ -1,9 +1,16 @@
+// Descripción: Página de contacto con formulario para enviar mensajes. Muestra información de contacto de la empresa.
+// El botón de envío se deshabilita si faltan datos. Incluye un indicador de carga mientras se procesa la solicitud.
+
+// Funcionamiento: Los usuarios completan el formulario, hacen clic en "Enviar", se activa el indicador de carga, se 
+// envían los datos al servidor y se muestra un mensaje de éxito o error.
+
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import ContainerGlobal from "@/containers/ContainerGlobal";
 import Loader from "./Loader";
 import { APIContactUs } from "@/lib/APICalls";
+
 
 const ContactUs = () => {
     const initialFormData = {

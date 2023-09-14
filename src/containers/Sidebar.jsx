@@ -1,3 +1,9 @@
+// Descripción: El componente Sidebar es la barra de navegación lateral de la aplicación web.
+
+// Funcionamiento: Proporciona enlaces a las secciones principales de la aplicación y permite al usuario navegar entre ellas.
+// Al seleccionar un enlace, la barra lateral muestra visualmente la sección activa actual y puede realizar acciones 
+// como cerrar sesión.
+
 'use client'
 import React, { useState } from 'react';
 import Image from 'next/image';
@@ -24,10 +30,6 @@ const Sidebar = () => {
             setActiveIndex(values.indexOf(path.match(regex)[1]))
         }
     }, [path])
-    
-    // console.log(path)
-    // console.log(values.indexOf(path.match(regex)[1]))
-
 
     const imgsM = {
         panel: '/Images/panel/panelM.svg',

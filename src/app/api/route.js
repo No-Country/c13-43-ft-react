@@ -1,7 +1,13 @@
+// Descripción: Estos endpoints permiten realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre la colección 
+// de usuarios en la base de datos. Los endpoints están diseñados para gestionar la información de los usuarios registrados 
+// en la aplicación.
+
+// Funcionamiento: GET --> Para obtener elementos de la DB, PUT: Para actualizar elementos en la DB, DELETE: Para eliminar
+// elementos de la DB.
+
 import { firestoreDB } from "@/lib/firebaseConn";
 import { NextResponse } from "next/server";
 
-//TEST: trae todos los usuarios
 export async function GET(request) {
   try {
     const allUsersRef = await firestoreDB.collection("users").get();

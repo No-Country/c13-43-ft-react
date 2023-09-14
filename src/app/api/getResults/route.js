@@ -1,7 +1,14 @@
+// Descripción: Este archivo contiene un endpoint que permite obtener información sobre una sala específica en la aplicación.
+
+// Funcionamiento: El endpoint recibe una solicitud POST con el ID de la sala en el cuerpo de la solicitud. Luego, 
+// realiza una consulta en la base de datos para obtener los datos de esa sala. Si la sala no existe o no ha expirado, 
+// el endpoint devuelve un mensaje correspondiente. En caso contrario, calcula los porcentajes de votos en cada opción
+// de la sala y redondea los valores a números enteros utilizando Math.floor. Luego, proporciona esta información junto
+//  con el problema de la sala y el número total de participantes en la sala.
+
 import { firestoreDB } from "@/lib/firebaseConn";
 import { NextResponse } from "next/server";
 
-// Endpoint que trae los datos de la última sala vencida
 export async function POST(request) {
     try {
         // const { searchParams } = new URL(request.url);
@@ -58,9 +65,3 @@ export async function POST(request) {
         return NextResponse.error("Error al obtener datos de Firestore");
     }
 }
-
-// ...option,
-// percentage: Math.floor(
-//     (option.timesVoted / totalParticipants) * 100
-// ),
-// totalParticipants,

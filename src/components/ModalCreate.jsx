@@ -1,3 +1,13 @@
+// Descripción: Este componente representa un modal para crear una nueva sala de votación. Permite al usuario ingresar 
+// un nombre para la sala, establecer una fecha límite y agregar opciones de votación.
+
+// Funcionamiento: Cuando el usuario completa el formulario y hace clic en "Crear Sala", se verifica que se hayan 
+// ingresado los detalles necesarios (nombre de la sala, fecha límite y al menos dos opciones de votación). 
+// Si todos los campos requeridos están completos, se muestra un indicador de carga (Loader) y se inicia la creación 
+// de la sala a través de una llamada a la API (handleCreateRoom). Una vez que se crea la sala con éxito, se muestra 
+// un mensaje de confirmación. Si faltan campos o se excede el límite de opciones, se muestran mensajes de error 
+// correspondientes. El usuario también puede agregar y eliminar opciones de votación dinámicamente.
+
 import React, { useState } from "react";
 import { APICreateRoom } from "@/lib/APICalls";
 import { useSession } from "next-auth/react";

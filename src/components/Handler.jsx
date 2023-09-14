@@ -1,3 +1,9 @@
+// Descripción: Componente que representa un interruptor de estado con un diseño visual. Cambia de estado cuando se hace 
+// click.
+
+// Funcionamiento: Al hacer clic en el componente, cambia su estado y muestra una marca de verificación o una cruz 
+// según el estado. Ideal para alternar opciones de selección.
+
 import React from 'react'
 import Image from 'next/image'
 

@@ -1,3 +1,8 @@
+// Descripción: Componente que muestra una imagen principal de forma responsive en una página.
+
+// Funcionamiento: El componente renderiza una imagen que se ajusta al ancho y alto específicos. Ideal para mostrar 
+// imágenes destacadas en una página web.
+
 import React from 'react'
 import Image from 'next/image';
 

@@ -1,3 +1,10 @@
+// Descripción: El componente "ProfileInfo" se encarga de mostrar y gestionar la información del perfil del usuario. Permite 
+// al usuario editar su nombre, contraseña y eliminar su cuenta. También muestra la primera letra del nombre del usuario.
+
+// Funcionamiento: El componente obtiene la información del usuario a través de la sesión activa.
+// Permite al usuario editar su nombre y contraseña utilizando campos de entrada de texto. La edición se habilita al hacer 
+// clic en el botón switch.
+
 "use client"
 import React, { useEffect } from 'react'
 import Image from 'next/image'

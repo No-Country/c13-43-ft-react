@@ -1,3 +1,20 @@
+// Descripción: El componente "Votaciones" representa la sección donde los usuarios pueden ver y gestionar sus votaciones 
+// activas e inactivas.
+
+// Funcionamiento:
+
+// Utiliza el hook useSession de "next-auth/react" para obtener información sobre la sesión actual del usuario, 
+// especialmente su dirección de correo electrónico.
+// Hace una llamada a la API para obtener las salas de votación asociadas al usuario actual utilizando la función APIGetMyRooms.
+// Permite al usuario buscar salas de votación activas o inactivas utilizando un campo de búsqueda.
+// Muestra una lista de las salas de votación en función de los resultados de la búsqueda y proporciona detalles como el estado (activo o inactivo), el título de la votación, el porcentaje de votos para la opción ganadora y más.
+// Los usuarios pueden realizar acciones en cada sala de votación, como eliminarla, compartirla o ver los resultados. 
+// Estas acciones se manejan mediante botones y modales correspondientes.
+// Los resultados de las salas de votación se muestran en un modal separado llamado "ModalResults" cuando el usuario hace clic en el botón de información.
+// El componente también incluye un indicador visual de si una sala de votación está activa o inactiva, y muestra un ícono de "corona" si el usuario creó la sala de votación.
+// El estado de los modales (eliminar sala y compartir sala) se controla mediante los estados deleteModal y shareModal.
+// Se muestra un mensaje si el usuario aún no ha participado en ninguna votación.
+
 "use client";
 import React from "react";
 import Image from "next/image";

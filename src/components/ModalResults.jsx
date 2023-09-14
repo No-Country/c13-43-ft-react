@@ -1,3 +1,13 @@
+// Descripción: Este componente representa un modal que muestra los resultados de una votación en una sala específica. 
+// Los resultados incluyen el problema que se votó y las opciones con sus respectivos porcentajes de votos, 
+// el número de veces que se votaron y la cantidad de participantes en la votación.
+
+// Funcionamiento: Cuando se monta este componente, se hace una llamada a la función APIGetRoomOptions para obtener 
+// los resultados de la sala específica identificada por su roomId. Estos resultados se almacenan en el estado local 
+// finishResults. Los resultados se muestran en el modal, y para cada opción, se utiliza el componente Options para 
+// mostrar el título de la opción, el porcentaje de votos, el número de veces que se votó y la cantidad de participantes 
+// en la votación. Mientras se carga la información, se muestra un indicador de carga (Loader) en pantalla.
+
 "use client";
 import React, { useEffect, useState } from "react";
 import Options from "./Options";
