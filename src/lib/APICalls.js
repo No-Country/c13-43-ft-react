@@ -90,17 +90,14 @@ export const APIGetInRoom = async (roomId) => {
 };
 export const APIGetResultsLastRoom = async (email) => {
     try {
-        const fetching = await fetch(
-            callURL + `getLastRoomResults`,
-            {
-                method: "POST",
-                mode: "cors",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({userEmail: email})
-            }
-        );
+        const fetching = await fetch(callURL + `getLastRoomResults`, {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ userEmail: email }),
+        });
         const response = await fetching.json();
         return response;
     } catch (error) {
@@ -136,7 +133,7 @@ export const APICheckRoomStatus = async (roomId) => {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({roomId})
+            body: JSON.stringify({ roomId }),
         });
         const response = await fetching.json();
         return response;
@@ -151,8 +148,8 @@ export const APIGetRoomOptions = async (roomId) => {
             mode: "cors",
             headers: {
                 "Content-Type": "application/json",
-            }, 
-            body: JSON.stringify({roomId})
+            },
+            body: JSON.stringify({ roomId }),
         });
         const response = await fetching.json();
         return response;
@@ -168,7 +165,7 @@ export const APIGetMyRooms = async (email) => {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({userEmail: email})
+            body: JSON.stringify({ userEmail: email }),
         });
         const response = await fetching.json();
         return response;
@@ -195,6 +192,7 @@ export const APIGetMe = async (email) => {
         console.error(error);
     }
 };
+
 export const APIUpdateMe = async (email, data) => {
     try {
         const fetching = await fetch(callURL + `updateMe`, {
@@ -206,6 +204,33 @@ export const APIUpdateMe = async (email, data) => {
             body: JSON.stringify({
                 userEmail: email,
                 updatedUserData: data,
+            }),
+        });
+        const response = await fetching.json();
+        return response;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+export const APIContactUs = async (
+    contactEmail,
+    contactMessage,
+    contactPhone,
+    contactName
+) => {
+    try {
+        const fetching = await fetch(callURL + `contactUs`, {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                contactEmail,
+                contactMessage,
+                contactPhone,
+                contactName,
             }),
         });
         const response = await fetching.json();
