@@ -13,7 +13,7 @@ const Password = ({ nameLabel, name }) => {
   return (
     <div className="my-8">
       <label
-        className="text-secondaryBlack font-dmsans font-medium"
+        className=" font-dmsans font-medium"
         htmlFor={name}
       >
         {" "}
@@ -21,7 +21,7 @@ const Password = ({ nameLabel, name }) => {
       </label>
       <div className="relative">
         <input
-          className="w-full border-b border-secondaryBlack bg-slate-50 px-2 h-8"
+          className="w-full border-b text-black dark:text-darkBlack border-secondaryBlack bg-slate-50 px-2 h-8"
           type={openEye ? "text" : "password"}
           name={name}
           id={name}

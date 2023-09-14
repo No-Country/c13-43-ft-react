@@ -51,7 +51,7 @@ const ModalRegister = (callback) => {
         <>
             <Loader active={loaderActive}></Loader>
             <main>
-                <h1 className="text-secondaryBlack text-5xl font-bold font-dmsans flex justify-center">
+                <h1 className="text-secondaryBlack  text-5xl font-bold font-dmsans flex justify-center">
                     {" "}
                     Registrate{" "}
                 </h1>

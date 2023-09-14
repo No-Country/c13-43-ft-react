@@ -26,13 +26,13 @@ const ModalConfirmLogout = ({state, changeState}) => {
                 </div>
                 <div className="mt-8 flex justify-center gap-6">
                     <button 
-                        className="font-semibold rounded-full w-45  bg-red-600 px-4 py-2 text-secondaryWhite" 
+                        className="font-semibold rounded-full w-50  bg-red-600 px-4 py-2 text-secondaryWhite" 
                         onClick = {() => changeState(!state)}
                     >
                         CANCELAR
                     </button>
                     <button 
-                        className="font-semibold rounded-full w-45 first-letter: bg-slate-300 px-4 py-2 text-primaryPurple"
+                        className="font-semibold rounded-full w-50 first-letter: bg-slate-300 px-4 py-2 text-primaryPurple"
                         onClick={Logout}
                     >
                         CONFIRMAR
