@@ -84,7 +84,7 @@ const Votaciones = () => {
 
     return (
         <>
-            {/* <Loader active={loaderActive} /> */}
+            <Loader active={loaderActive} />
             <div className="xl:w-3/4 mt-6 font-dmsans mx-4 sm:mx-0 sm:py-5">
                 <h1 className="ml-6 mb-4 text-4xl font-bold">Votaciones</h1>
                 <div className=" flex flex-col bg-secondaryGray pt-6 xl:w-11/12 shadow rounded-4xl">
@@ -157,7 +157,7 @@ const Votaciones = () => {
                                         >
                                             <Image
                                                 src="/Images/TrashIcon.svg"
-                                                alt="corona"
+                                                alt="trash"
                                                 width={20}
                                                 height={20}
                                                 className="cursor-pointer max-w-none"

@@ -15,7 +15,7 @@ const Resultados = () => {
         roomId: "",
         percetageWin: 0,
         winOption: "",
-        participants: "",
+        participants: 0,
         percentageSecond: 0,
         secondOption: "",
         problem: "",
