@@ -99,11 +99,11 @@ const Votaciones = () => {
     return (
         <>
             <Loader active={loaderActive} />
-            <div className="w-full xl:w-3/4 mt-6 font-dmsans mx-4 sm:mx-0 sm:py-5">
+            <div className="w-full xl:w-3/4 mt-6 font-dmsans mx-4 xl:mx-0 sm:py-5 test:flex test:flex-col test:items-center test:w-2/3 xl:block">
                 <h1 className="ml-6 mb-4 text-4xl font-bold text-center xl:text-start">Votaciones</h1>
                 {!rooms.length ? <div className="flex justify-center items-center bg-secondaryGray dark:bg-darkNav pt-6 xl:w-11/12 shadow rounded-4xl h-85">
                     <p>Aún no has participado en una votación.</p>
-                </div> : <div className="flex flex-col bg-secondaryGray dark:bg-darkNav  pt-6 xl:w-11/12 shadow rounded-4xl">
+                </div> : <div className="flex flex-col bg-secondaryGray dark:bg-darkNav  pt-6 test:w-4/5 shadow rounded-4xl">
                     <div className="pb-10 flex flex-col items-center">
                         <form className="bg-primaryOrange rounded-full flex items-center h-8 justify-around px-2 w-1/2 shadow">
                             <input
@@ -147,11 +147,9 @@ const Votaciones = () => {
                                             : "bg-red-500"
                                         } rounded-full`}
                                 ></div>
-                                <p className="text-xs text-start w-full">
+                                <p className="text-xs text-start w-full font-semibold">
                                     {`${sala.roomId} - ${sala.problem
-                                        } | ${winnerPercent(
-                                            sala.options
-                                        )}% Votó: ${winnerOption(sala.options)}`}
+                                        }`}
                                 </p>
                                 <div className="flex justify-end w-full gap-2 items-center">
                                     {sala.createdBy == session.user.email ? (
