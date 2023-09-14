@@ -5,14 +5,14 @@ export const ModalVoteDone = ({ roomCode }) => {
   return (
     <main className="p-6">
       <div className="flex items-center justify-center">
-        <Image src="/Images/check.png" alt="check" width={50} height={50} />
+        <Image src="/Images/check.png" alt="check" width={50} height={50} className="mb-6" />
       </div>
-      <h1 className="text-primaryPurple text-3xl text-center font-bold font-dmsans flex justify-center my-6">
+      <h1 className="text-primaryPurple font-dmsans font-bold text-3xl mb-4 text-center">
         {" "}
-        Votación realizada con exito{" "}
+        Votación realizada con éxito{" "}
       </h1>
       <span className="flex justify-center">
-        Votaste en la sala<b>&nbsp; {roomCode} </b>
+        Votaste en la sala:<b>&nbsp; {roomCode} </b>
       </span>
     </main>
   );
