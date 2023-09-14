@@ -1,3 +1,10 @@
+// Descripción: El componente "ProfileConfig" es responsable de mostrar la configuración del perfil del usuario. 
+// Permite al usuario realizar cambios en las notificaciones, recibir notificaciones por correo electrónico y 
+// habilitar o deshabilitar el modo oscuro.
+
+// Funcionamiento: El componente muestra una serie de opciones de configuración en forma de listas. Cada opción tiene una 
+// etiqueta de texto y un interruptor (representado por el componente "Handler") que el usuario puede activar o desactivar. 
+
 "use client"
 import React from 'react'
 import Handler from './Handler'

@@ -1,3 +1,12 @@
+// Descripción: Este endpoint se utiliza para notificar a los creadores y participantes de las salas que han expirado y 
+// aún no han recibido votos. El objetivo es asegurarse de que todos los interesados sean conscientes de la expiración de 
+// la sala.
+
+// Funcionamiento: El endpoint comienza realizando una consulta a la colección "rooms" en Firestore para obtener todas 
+// las salas existentes. Luego, itera a través de cada sala y verifica varias condiciones
+// Finalmente, el endpoint devuelve una respuesta JSON que contiene la lista de salas que han sido notificadas y 
+// marcadas como vencidas. Esto permite al cliente conocer las salas afectadas por esta notificación.
+
 import { firestoreDB } from "@/lib/firebaseConn";
 import { NextResponse } from "next/server";
 import sgMail from "@/lib/SendgridConn";

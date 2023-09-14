@@ -1,5 +1,21 @@
+// Nombre del Componente: GoogleButton
+
+// Descripción: Este componente representa un botón que permite a los usuarios iniciar sesión con su cuenta de Google. 
+// Cuando se hace clic en el botón, se llama a la función handleClickLogin, que inicia el proceso de inicio de sesión 
+// con Google utilizando la biblioteca o función signIn.
+
+// Funcionamiento:
+
+// Cuando se hace clic en el botón "Entrar con Google", se activa el evento onClick y se llama a la función
+// handleClickLogin.
+
+// La función handleClickLogin utiliza la función signIn para iniciar sesión con Google y redirigir al usuario 
+// a la página de inicio de sesión con un código de redirección específico ("/login/4128582").
+
+
 import React from "react";
 import { signIn } from "next-auth/react";
+
 
 export const GoogleButton = () => {
     const handleClickLogin = () => {

@@ -1,3 +1,11 @@
+// Descripción: Componente de barra lateral móvil que muestra enlaces de navegación y una opción para cerrar sesión.
+
+// Funcionamiento: Este componente renderiza una barra lateral de navegación en dispositivos móviles. Muestra enlaces a 
+// diferentes secciones, como "Panel", "Votaciones" y "Perfil", y una opción para "Salir". Al hacer clic en un enlace, se 
+// cierra el menú (setIsMobileMenuOpen(false)). Al hacer clic en "Salir", se muestra un modal de confirmación 
+// (ModalConfirmLogout) y, si se confirma, se ejecuta la función handleClickSignOut para cerrar la sesión del usuario y 
+// redirigirlo a la página de inicio ("/"). Ideal para la navegación y cierre de sesión en dispositivos móviles.
+
 "use client"
 import React, { useState } from 'react';
 import Link from "next/link";

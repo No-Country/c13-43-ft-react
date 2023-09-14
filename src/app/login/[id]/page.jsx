@@ -1,3 +1,6 @@
+// Descripción: Es la página principal de la aplicación cuando un usuario está logeado, muestra secciones interactivas para
+// su uso y además provee contenido informativo dinámico según el estado del usuario.
+
 "use client";
 import React from "react";
 import Atajos from "@/containers/Atajos";

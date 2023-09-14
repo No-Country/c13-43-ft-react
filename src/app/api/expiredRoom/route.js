@@ -1,3 +1,10 @@
+// Descripción: Este archivo contiene un endpoint que verifica el estado de una sala en la aplicación, indicando si la sala 
+// está activa o ha expirado.
+
+// Funcionamiento: Este endpoint espera recibir el identificador único de una sala en el cuerpo de una solicitud POST. 
+// Luego, verifica el estado de la sala en la base de datos y responde con un mensaje que indica si la sala está activa
+// o ha expirado. Si la sala no existe, se considera que ha expirado.
+
 import { firestoreDB } from "@/lib/firebaseConn";
 import { NextResponse } from "next/server";
 

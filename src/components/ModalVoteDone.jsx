@@ -1,3 +1,14 @@
+// Descripción: Este componente representa un modal que se muestra cuando un usuario ha completado una 
+// votación en una sala. Muestra un ícono de verificación, un mensaje de confirmación y la información de la 
+//  sala en la que se realizó la votación.
+
+// Funcionamiento: Cuando se muestra este componente, se presenta un mensaje de confirmación de que la votación 
+// se ha completado con éxito. También se muestra un ícono de verificación verde para indicar que la operación se ha 
+// completado con éxito. Además, se muestra la información de la sala en la que se realizó la votación, incluido el 
+// código de la sala. Es una confirmación visual para el usuario de que su voto se ha registrado con éxito en la sala 
+// especificada.
+
+
 import Image from "next/image";
 import React from "react";
 

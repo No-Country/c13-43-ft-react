@@ -1,3 +1,11 @@
+// Descripción: Componente modal que permite al usuario elegir una opción de voto para una votación en una sala específica.
+
+// Funcionamiento: Este componente muestra un modal que se abre cuando el usuario es invitado a votar en una sala. 
+// Muestra la información de la sala y las opciones de voto disponibles. El usuario debe seleccionar una opción y hacer 
+// click en "Enviar votación". Se valida que se haya seleccionado una opción, y si es así, se registra el voto utilizando 
+// la función APIVote. El componente muestra un indicador de carga (Loader) durante la operación y maneja errores si no se
+// selecciona una opción. Ideal para la participación en votaciones en una aplicación.
+
 "use client";
 import React, { useEffect, useState } from "react";
 import { VoteOptions } from "./VoteOptions";

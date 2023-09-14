@@ -1,3 +1,10 @@
+// Descripción: Componente modal que permite al usuario copiar un código o texto.
+
+// Funcionamiento: Este componente muestra un título, contenido y un código que el usuario puede copiar haciendo click en 
+// un botón con un ícono de copia. Cuando se hace click en el botón, el código se copia al portapapeles del usuario y se 
+// muestra un mensaje de éxito o error. Ideal para proporcionar una forma conveniente de copiar información 
+// en la aplicación.
+
 import React from "react";
 import Image from "next/image";
 

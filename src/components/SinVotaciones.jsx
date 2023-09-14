@@ -1,3 +1,12 @@
+// Descripción: El componente "SinVotaciones" muestra un mensaje cuando el usuario no tiene votaciones disponibles o 
+// recientes.
+
+// Funcionamiento:
+
+// Muestra una imagen de ilustración con un icono de "sin votaciones".
+// Muestra un título que indica "Sin votaciones".
+// Muestra un mensaje que indica que el usuario no ha creado ninguna votación o no tiene votaciones recientes.
+
 import Image from "next/image";
 import React from "react";
 

@@ -1,3 +1,12 @@
+// Descripción: Este componente representa un modal que se muestra cuando los cambios se han guardado con éxito 
+// en una aplicación. Muestra un ícono de verificación (una marca de verificación verde), un mensaje de confirmación 
+// y una descripción que indica que los cambios se han guardado con éxito.
+
+// Funcionamiento: Cuando se muestra este componente, se presenta un mensaje de confirmación de que los cambios se han
+//  guardado con éxito. También se muestra un ícono de verificación verde para indicar que la operación se ha completado 
+//  con éxito. Es una confirmación visual para el usuario de que sus cambios se han guardado correctamente 
+//  en la aplicación.
+
 import React from 'react'
 import Image from 'next/image'
 

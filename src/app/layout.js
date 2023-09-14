@@ -1,3 +1,6 @@
+// Descripción: Este layout es el componente principal de la aplicación, provee el contexto a toda la aplicación para su 
+// uso general en los diferentes componentes ligados a la sesión de usuario.
+
 import Navbar from "@/components/Navbar"
 import AuthProvider from "@/context/AuthProvider"
 import '@/styles/globals.css'

@@ -1,3 +1,12 @@
+// Descripción: Este componente representa un modal que permite al usuario eliminar su cuenta. Al confirmar la 
+// eliminación, se elimina la cuenta del usuario y se muestra un mensaje de confirmación.
+
+// Funcionamiento: Cuando el usuario confirma la eliminación de su cuenta haciendo clic en "CONFIRMAR", se muestra 
+// un indicador de carga (Loader) y se realiza una llamada a la API para eliminar la cuenta del usuario utilizando 
+// la función handleDelete. Si la eliminación de la cuenta es exitosa, se muestra un mensaje de confirmación 
+// (ModalCorrectDelete) y el usuario es redirigido a la página de inicio de sesión (signOut). Si el usuario cancela 
+// la acción, el modal se cierra haciendo clic en "CANCELAR".
+
 import React from 'react'
 import Loader from './Loader'
 import { signOut, useSession } from 'next-auth/react'
