@@ -6,9 +6,9 @@ export const ModalVoteFail = () => {
         <main className="p-6">
             <div className="flex items-center justify-center">
                 <Image
-                    src="/Images/closeIcon.png"
-                    width={25}
-                    height={25}
+                    src="/Images/exclamation.svg"
+                    width={50}
+                    height={50}
                     alt="cerrar"
                 />
             </div>

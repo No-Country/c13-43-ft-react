@@ -7,10 +7,12 @@ import ModalGeneral from "@/containers/ModalGeneral";
 import ModalEliminarSala from "./ModalEliminarSala";
 import ModalCopiar from "./ModalCopiar";
 import Loader from "./Loader";
+import ModalResults from "./ModalResults";
 //con session traer el email del usuario
 //Con un api Call traer mis room en principio y si se llega traer las que he participado
 
 const Votaciones = () => {
+    const [modalResultsStates, setModalResultsStates] = React.useState({});
     const { data: session } = useSession();
     const [rooms, setRooms] = React.useState([]);
     const [code, setCode] = React.useState(0);
@@ -19,30 +21,29 @@ const Votaciones = () => {
     const [shareModal, setShareModal] = React.useState(false);
     const [loaderActive, setLoaderActive] = React.useState(false);
     const [search, setSearch] = React.useState("");
+    const [modalResults, setModalResults] = React.useState(false);
 
-    const historiaPromise = APIGetMyRooms(session.user.email);  
-  
-  React.useEffect(() => {
+    const historiaPromise = APIGetMyRooms(session.user.email);
 
-    const votants = async() =>{
-      try {
-        const historiaPromise = APIGetMyRooms(session.user.email)
-        setLoaderActive(true)
-        historiaPromise.then((historia) => {
-          setRooms(historia.combinedRooms)
-      
-          if(historia.combinedRooms) {
-            setLoaderActive(false)
-          }
-        })
-      } catch (error) {
-          console.error(error)
-      }
-  }
+    React.useEffect(() => {
+        const votants = async () => {
+            try {
+                const historiaPromise = APIGetMyRooms(session.user.email);
+                setLoaderActive(true);
+                historiaPromise.then((historia) => {
+                    setRooms(historia.combinedRooms);
 
-  votants()
-  }, [session?.user?.email])
+                    if (historia.combinedRooms) {
+                        setLoaderActive(false);
+                    }
+                });
+            } catch (error) {
+                console.error(error);
+            }
+        };
 
+        votants();
+    }, [session?.user?.email]);
 
     const filteredRooms = rooms.filter((room) =>
         room?.problem.toLocaleLowerCase().includes(search.toLocaleLowerCase())
@@ -84,9 +85,11 @@ const Votaciones = () => {
     return (
         <>
             {/* <Loader active={loaderActive} /> */}
-            <div className="xl:w-3/4 mt-6 font-dmsans mx-4 sm:mx-0 sm:py-5">
-                <h1 className="ml-6 mb-4 text-4xl font-bold">Votaciones</h1>
-                <div className=" flex flex-col bg-secondaryGray pt-6 xl:w-11/12 shadow rounded-4xl">
+            <div className="w-full xl:w-3/4 mt-6 font-dmsans mx-4 sm:mx-0 sm:py-5">
+                <h1 className="ml-6 mb-4 text-4xl font-bold text-center xl:text-start">Votaciones</h1>
+                {!rooms.length ? <div className="flex justify-center items-center bg-secondaryGray pt-6 xl:w-11/12 shadow rounded-4xl h-85">
+                    <p>Aún no has participado en una votación.</p>
+                </div> : <div className="flex flex-col bg-secondaryGray pt-6 xl:w-11/12 shadow rounded-4xl">
                     <div className="pb-10 flex flex-col items-center">
                         <form className="bg-primaryOrange rounded-full flex items-center h-8 justify-around px-2 w-1/2 shadow">
                             <input
@@ -125,18 +128,16 @@ const Votaciones = () => {
                                 key={index}
                             >
                                 <div
-                                    className={`w-4 h-3 mx-4 ${
-                                        !sala.expired
+                                    className={`w-4 h-3 mx-4 ${!sala.expired
                                             ? "bg-green-500"
                                             : "bg-red-500"
-                                    } rounded-full`}
+                                        } rounded-full`}
                                 ></div>
                                 <p className="text-xs text-start w-full">
-                                    {`${sala.roomId} - ${
-                                        sala.problem
-                                    } | ${winnerPercent(
-                                        sala.options
-                                    )}% Votó: ${winnerOption(sala.options)}`}
+                                    {`${sala.roomId} - ${sala.problem
+                                        } | ${winnerPercent(
+                                            sala.options
+                                        )}% Votó: ${winnerOption(sala.options)}`}
                                 </p>
                                 <div className="flex justify-end w-1/4 gap-4 items-center">
                                     {sala.createdBy == session.user.email ? (
@@ -173,10 +174,41 @@ const Votaciones = () => {
                                         />
                                     </button>
                                 </div>
+                                <ModalGeneral
+                                    state={
+                                        modalResultsStates[sala.roomId] || false
+                                    } // Usar el estado correspondiente a la sala
+                                    changeState={(newState) =>
+                                        setModalResultsStates({
+                                            ...modalResultsStates,
+                                            [sala.roomId]: newState, // Actualizar el estado específico de la sala
+                                        })
+                                    }
+                                >
+                                    <ModalResults
+                                        roomId={sala.roomId}
+                                        problem={sala.problem}
+                                        participants={sala.participants.length}
+                                    />
+                                </ModalGeneral>
+                                <button
+                                    onClick={() => {
+                                        setModalResultsStates({
+                                            ...modalResultsStates,
+                                            [sala.roomId]: true,
+                                        });
+                                    }}
+                                >
+                                    <Image
+                                        src="/Images/info.svg"
+                                        width={30}
+                                        height={30}
+                                    />
+                                </button>
                             </div>
                         ))}
                     </div>
-                </div>
+                </div>}
                 <ModalGeneral state={deleteModal} changeState={setDeleteModal}>
                     <ModalEliminarSala
                         code={code}
