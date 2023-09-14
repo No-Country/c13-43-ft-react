@@ -56,21 +56,21 @@ const Login = () => {
             <Loader active={loaderActive}></Loader>
             <main className="flex justify-between items-center mx-2 md:mx-0 font-dmsans flex-col md:flex-row md:py-8 mb-4 sm:mb-0 md:h-100">
                 <section className="my-10 w-full text-center md:w-2/5 md:text-left mx-auto">
-                    <h1 className="text-secondaryBlack text-5xl font-bold font-dmsans flex justify-center">
+                    <h1 className=" text-5xl font-bold font-dmsans flex justify-center">
                         Iniciar sesión
                     </h1>
                     <div className="relative mx-8">
                         <form onSubmit={handleSubmit}>
                             <div className="my-4 pt-4">
                                 <label
-                                    className="text-secondaryBlack font-dmsans font-medium"
+                                    className=" font-dmsans font-medium"
                                     htmlFor="email"
                                 >
                                     {" "}
                                     EMAIL{" "}
                                 </label>
                                 <input
-                                    className="w-full border-b border-secondaryBlack bg-slate-50 px-2 h-8"
+                                    className="w-full border-b text-black dark:text-darkBlack border-secondaryBlack dark:border-secondaryWhite bg-slate-50 px-2 h-8"
                                     type="email"
                                     name="email"
                                     id="email"
@@ -96,11 +96,11 @@ const Login = () => {
                             <GoogleButton />
                         </div>
                         <div className="flex gap-4 my-7">
-                            <hr className="flex-grow border-secondaryBlack mt-3" />
-                            <span className="text-secondaryBlack font-dmsans font-medium">
+                            <hr className="flex-grow border-secondaryBlack dark:border-secondaryWhite mt-3" />
+                            <span className=" font-dmsans font-medium">
                                 OR
                             </span>
-                            <hr className="flex-grow border-secondaryBlack mt-3" />
+                            <hr className="flex-grow border-secondaryBlack dark:border-secondaryWhite mt-3" />
                         </div>
                         <button
                             className="text-primaryPurple font-dmsans font-medium border-primaryPurple border rounded-full w-full py-2"

@@ -1,12 +1,12 @@
 "use client"
 import React from 'react'
 import Handler from './Handler'
+import ThemeButton from "./ThemeButton";
 
 const ProfileConfig = () => {
 
     const [notif, setNotif] = React.useState(false)
     const [email, setEmail] = React.useState(false)
-    const [dark, setDark] = React.useState(false)
 
   return (
     <div className="flex flex-col pr-20 mx-auto mt-16">
@@ -20,7 +20,7 @@ const ProfileConfig = () => {
             <p> AVISAR POR EMAIL </p>
         </div>
         <div className="flex gap-4 my-3 font-semibold text-sm">
-            <Handler state={dark} setState={setDark} />
+            <ThemeButton/>
             <p> DARK MODE </p>
         </div>
     </div>

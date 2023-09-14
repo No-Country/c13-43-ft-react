@@ -190,7 +190,7 @@ const ModalCreate = (callback) => {
                 {Object.keys(options).map((key) => (
                     <div
                         key={key}
-                        className="flex justify-between items-center px-2 text-sm font-semibold rounded-xl bg-secondaryGray shadow py-1"
+                        className="flex justify-between items-center text-secondaryBlack px-2 text-sm font-semibold rounded-xl bg-secondaryGray shadow py-1"
                     >
                         <p> {options[key].title} </p>
                         <span

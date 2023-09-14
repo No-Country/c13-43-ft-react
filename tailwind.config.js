@@ -12,7 +12,8 @@ module.exports = {
         secondaryGray: "#f2f1fa",
         tertiaryGray: "#686868",
         tertiaryWhite: "#FFFFFF",
-        darkBlack: "#0F0E13",
+        darkBlack: "#121212",
+        darkNav: "#333333"
 
       },
       fontSize: {
