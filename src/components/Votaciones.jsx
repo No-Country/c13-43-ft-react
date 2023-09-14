@@ -85,9 +85,11 @@ const Votaciones = () => {
     return (
         <>
             <Loader active={loaderActive} />
-            <div className="xl:w-3/4 mt-6 font-dmsans mx-4 sm:mx-0 sm:py-5">
-                <h1 className="ml-6 mb-4 text-4xl font-bold">Votaciones</h1>
-                <div className=" flex flex-col bg-secondaryGray pt-6 xl:w-11/12 shadow rounded-4xl">
+            <div className="w-full xl:w-3/4 mt-6 font-dmsans mx-4 sm:mx-0 sm:py-5">
+                <h1 className="ml-6 mb-4 text-4xl font-bold text-center xl:text-start">Votaciones</h1>
+                {!rooms.length ? <div className="flex justify-center items-center bg-secondaryGray pt-6 xl:w-11/12 shadow rounded-4xl h-85">
+                    <p>Aún no has participado en una votación.</p>
+                </div> : <div className="flex flex-col bg-secondaryGray pt-6 xl:w-11/12 shadow rounded-4xl">
                     <div className="pb-10 flex flex-col items-center">
                         <form className="bg-primaryOrange rounded-full flex items-center h-8 justify-around px-2 w-1/2 shadow">
                             <input
@@ -126,18 +128,16 @@ const Votaciones = () => {
                                 key={index}
                             >
                                 <div
-                                    className={`w-4 h-3 mx-4 ${
-                                        !sala.expired
+                                    className={`w-4 h-3 mx-4 ${!sala.expired
                                             ? "bg-green-500"
                                             : "bg-red-500"
-                                    } rounded-full`}
+                                        } rounded-full`}
                                 ></div>
                                 <p className="text-xs text-start w-full">
-                                    {`${sala.roomId} - ${
-                                        sala.problem
-                                    } | ${winnerPercent(
-                                        sala.options
-                                    )}% Votó: ${winnerOption(sala.options)}`}
+                                    {`${sala.roomId} - ${sala.problem
+                                        } | ${winnerPercent(
+                                            sala.options
+                                        )}% Votó: ${winnerOption(sala.options)}`}
                                 </p>
                                 <div className="flex justify-end w-1/4 gap-4 items-center">
                                     {sala.createdBy == session.user.email ? (
@@ -208,7 +208,7 @@ const Votaciones = () => {
                             </div>
                         ))}
                     </div>
-                </div>
+                </div>}
                 <ModalGeneral state={deleteModal} changeState={setDeleteModal}>
                     <ModalEliminarSala
                         code={code}
