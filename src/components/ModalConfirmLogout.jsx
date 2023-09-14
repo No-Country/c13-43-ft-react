@@ -20,7 +20,7 @@ const ModalConfirmLogout = ({state, changeState}) => {
         <Loader active={loaderActive} />
         <div className='flex justify-center'>
             <div className='flex flex-col  items-center p-6'>
-                <h1 className='font-bold text-4xl text-primaryPurple'>Cerrar sesión</h1>
+                <h1 className='text-primaryPurple font-dmsans font-bold text-3xl mb-4 text-center'>Cerrar sesión</h1>
                 <div className='items-center flex flex-col p-6 pb-0 pt-0 text-center'>
                     <p> Estás seguro que deseas cerrar sesión? </p>
                 </div>

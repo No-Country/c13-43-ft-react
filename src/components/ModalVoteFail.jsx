@@ -10,9 +10,10 @@ export const ModalVoteFail = () => {
                     width={50}
                     height={50}
                     alt="cerrar"
+                    className="mb-6"
                 />
             </div>
-            <h1 className="text-red-600 text-3xl text-center font-bold font-dmsans flex justify-center my-6">
+            <h1 className="text-red-600 font-dmsans font-bold text-3xl mb-4 text-center">
                 {" "}
                 No puedes volver a votar{" "}
             </h1>

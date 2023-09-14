@@ -21,8 +21,8 @@ export default function ModalEliminarSala({code, title, state, changeState}) {
         <>
             <Loader active={loaderActive} />
             <div className='flex justify-center'>
-                <div className='flex flex-col  items-center p-6 gap-4'>
-                    <h1 className='font-bold text-3xl text-primaryPurple'>Eliminar la sala</h1>
+                <div className='flex flex-col items-center p-6 gap-4'>
+                    <h1 className='text-primaryPurple font-dmsans font-bold text-3xl mb-4 text-center'>Eliminar la sala</h1>
                     <div className='items-center flex flex-col p-6 pb-0 pt-0 text-center'>
                         <p>¿Estás seguro de que deseas eliminar la sala <br /> <span className="font-bold"> {`${code} - ${title}`}</span> ? </p>
                     </div>

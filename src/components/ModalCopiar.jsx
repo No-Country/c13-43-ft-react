@@ -18,8 +18,8 @@ const ModalCopiar = ({ image, title, content, code }) => {
 
     return (
         <div>
-            <Image className="mx-auto" src={image} alt="CheckIcon" width={25} height={25}/>
-            <h2 className="text-center text-2xl my-4 text-primaryPurple font-bold"> {title} </h2>
+            <Image className="mx-auto mb-4" src={image} alt="CheckIcon" width={25} height={25}/>
+            <h2 className="text-primaryPurple font-dmsans font-bold text-3xl mb-4 text-center"> {title} </h2>
             <div className="flex justify-center">
                 <p> { content } &nbsp; </p>
                 <p className="font-bold text-center"> {code} &nbsp; &nbsp; </p>

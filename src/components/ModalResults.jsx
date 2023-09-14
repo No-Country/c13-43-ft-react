@@ -27,9 +27,9 @@ const ModalResults = ({ roomId, problem, participants }) => {
         <>
             <Loader active={loaderActive} />
             <div className="flex justify-center items-center font-dmsans">
-                <div className="flex flex-col items-center p-2 pb-10">
+                <div className="flex flex-col items-center p-2">
                     <div className="items-center flex flex-col p-6 pb-0 pt-0">
-                        <h2 className="text-primaryPurple font-dmsans font-bold text-3xl mb-3">
+                        <h2 className="text-primaryPurple font-dmsans font-bold text-3xl mb-4 text-center">
                             Resultados
                         </h2>
                         <p className="mb-4">

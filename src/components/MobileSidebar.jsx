@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import Link from "next/link";
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import ModalGeneral from '@/containers/ModalGeneral';
 import ModalConfirmLogout from '@/components/ModalConfirmLogout';
 
@@ -9,6 +9,11 @@ const MobileSidebar = ({setIsMobileMenuOpen}) => {
     const { data: session } = useSession();
     const userData = session?.user?.id;
     const [confirmLogout, setConfirmLogout] = useState(false);
+
+    const handleClickSignOut = () => {
+        signOut({ callbackUrl: '/' });
+    };
+    
 
     return (
         <nav className="bg-primaryPurple font-dmsans rounded-b-3xl shadow">
@@ -38,7 +43,7 @@ const MobileSidebar = ({setIsMobileMenuOpen}) => {
                     <Link href={"#"} onClick={() => {
                         setConfirmLogout(true);
                     }}>
-                        <div className="flex justify-center items-center" onClick={() => setIsMobileMenuOpen(false)}>
+                        <div className="flex justify-center items-center" onClick={() => {handleClickSignOut}}>
                             <span className="text-lg font-normal">Salir</span>
                         </div>
                     </Link>
