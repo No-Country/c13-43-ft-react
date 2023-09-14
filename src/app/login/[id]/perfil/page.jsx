@@ -6,15 +6,15 @@ import Loader from '@/components/Loader'
 
 const Perfil = () => {
 
-    const [loaderActive, setLoaderActive] = React.useState(true)
+    // const [loaderActive, setLoaderActive] = React.useState(true)
 
-    setTimeout(() => {
-        setLoaderActive(false)
-    }, 2000);
+    // setTimeout(() => {
+    //     setLoaderActive(false)
+    // }, 2000);
 
     return (
     <>
-        <Loader active={loaderActive} />
+        {/* <Loader active={loaderActive} /> */}
         <div className="profile h-auto mx-auto w-4/5 md:absolute md:right-0 flex flex-col md:flex-row">
             <ProfileInfo />
             <ProfileConfig />

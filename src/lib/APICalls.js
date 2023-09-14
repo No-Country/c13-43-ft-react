@@ -195,7 +195,7 @@ export const APIGetMe = async (email) => {
 
 export const APIUpdateMe = async (email, data) => {
     try {
-        const fetching = await fetch(callURL + `me`, {
+        const fetching = await fetch(callURL + `updateMe`, {
             method: "PUT",
             mode: "cors",
             headers: {
