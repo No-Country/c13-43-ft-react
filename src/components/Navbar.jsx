@@ -149,7 +149,7 @@ const Navbar = () => {
           </ul>
         </nav>
         {isMobileMenuOpen && (
-            <MobileSidebar />
+            <MobileSidebar isMobileMenuOpen = {isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} />
         )}
       </header>
     );
