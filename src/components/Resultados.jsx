@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import ModalResults from "./ModalResults";
@@ -13,10 +13,10 @@ const Resultados = () => {
     const userEmail = session.user?.email;
     const [result, setResult] = useState({
         roomId: "",
-        percetageWin: "",
+        percetageWin: 0,
         winOption: "",
         participants: "",
-        percentageSecond: "",
+        percentageSecond: 0,
         secondOption: "",
         problem: "",
     });
@@ -25,20 +25,20 @@ const Resultados = () => {
         async function fetchLastResults() {
             try {
                 const lastResult = await APIGetResultsLastRoom(userEmail);
+
                 setResult({
                     percetageWin:
                         lastResult?.resultsWithPercentage[0]?.percentage
                             ?.toString()
-                            .slice(0, 4) || "",
-                    winOption:
-                        lastResult?.resultsWithPercentage[0]?.title || "",
-                    participants: lastResult?.totalParticipants || "",
+                            .slice(0, 4) || 0,
+                    winOption: lastResult?.resultsWithPercentage[0]?.title || 0,
+                    participants: lastResult?.totalParticipants,
                     percentageSecond:
                         lastResult?.resultsWithPercentage[1]?.percentage
                             ?.toString()
-                            .slice(0, 4) || "",
+                            .slice(0, 4) || 0,
                     secondOption:
-                        lastResult?.resultsWithPercentage[1]?.title || "",
+                        lastResult?.resultsWithPercentage[1]?.title || 0,
                     problem: lastResult.problem,
                     roomId: lastResult.roomId,
                 });

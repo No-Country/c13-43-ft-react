@@ -7,10 +7,12 @@ import ModalGeneral from "@/containers/ModalGeneral";
 import ModalEliminarSala from "./ModalEliminarSala";
 import ModalCopiar from "./ModalCopiar";
 import Loader from "./Loader";
+import ModalResults from "./ModalResults";
 //con session traer el email del usuario
 //Con un api Call traer mis room en principio y si se llega traer las que he participado
 
 const Votaciones = () => {
+    const [modalResultsStates, setModalResultsStates] = React.useState({});
     const { data: session } = useSession();
     const [rooms, setRooms] = React.useState([]);
     const [code, setCode] = React.useState(0);
@@ -19,30 +21,29 @@ const Votaciones = () => {
     const [shareModal, setShareModal] = React.useState(false);
     const [loaderActive, setLoaderActive] = React.useState(false);
     const [search, setSearch] = React.useState("");
+    const [modalResults, setModalResults] = React.useState(false);
 
     const historiaPromise = APIGetMyRooms(session.user.email);
 
     React.useEffect(() => {
-
         const votants = async () => {
             try {
-                const historiaPromise = APIGetMyRooms(session.user.email)
-                setLoaderActive(true)
+                const historiaPromise = APIGetMyRooms(session.user.email);
+                setLoaderActive(true);
                 historiaPromise.then((historia) => {
-                    setRooms(historia.combinedRooms)
+                    setRooms(historia.combinedRooms);
 
                     if (historia.combinedRooms) {
-                        setLoaderActive(false)
+                        setLoaderActive(false);
                     }
-                })
+                });
             } catch (error) {
-                console.error(error)
+                console.error(error);
             }
-        }
+        };
 
-        votants()
-    }, [session?.user?.email])
-
+        votants();
+    }, [session?.user?.email]);
 
     const filteredRooms = rooms.filter((room) =>
         room?.problem.toLocaleLowerCase().includes(search.toLocaleLowerCase())
@@ -173,6 +174,37 @@ const Votaciones = () => {
                                         />
                                     </button>
                                 </div>
+                                <ModalGeneral
+                                    state={
+                                        modalResultsStates[sala.roomId] || false
+                                    } // Usar el estado correspondiente a la sala
+                                    changeState={(newState) =>
+                                        setModalResultsStates({
+                                            ...modalResultsStates,
+                                            [sala.roomId]: newState, // Actualizar el estado específico de la sala
+                                        })
+                                    }
+                                >
+                                    <ModalResults
+                                        roomId={sala.roomId}
+                                        problem={sala.problem}
+                                        participants={sala.participants.length}
+                                    />
+                                </ModalGeneral>
+                                <button
+                                    onClick={() => {
+                                        setModalResultsStates({
+                                            ...modalResultsStates,
+                                            [sala.roomId]: true,
+                                        });
+                                    }}
+                                >
+                                    <Image
+                                        src="/Images/info.svg"
+                                        width={30}
+                                        height={30}
+                                    />
+                                </button>
                             </div>
                         ))}
                     </div>
