@@ -21,9 +21,6 @@ const Votaciones = () => {
     const [shareModal, setShareModal] = React.useState(false);
     const [loaderActive, setLoaderActive] = React.useState(false);
     const [search, setSearch] = React.useState("");
-    const [modalResults, setModalResults] = React.useState(false);
-
-    const historiaPromise = APIGetMyRooms(session.user.email);
 
     React.useEffect(() => {
         const votants = async () => {
