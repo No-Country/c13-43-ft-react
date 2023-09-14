@@ -73,7 +73,7 @@ export const ModalChooseTime = ({ code, callback }) => {
     return (
         <div>
             <Loader active={loaderActive} />
-            <h1 className="text-primaryPurple text-center text-5xl font-bold font-dmsans flex justify-center">
+            <h1 className="text-primaryPurple font-dmsans font-bold text-3xl mb-4 text-center">
                 {" "}
                 Tiempo de elegir!{" "}
             </h1>
@@ -82,9 +82,6 @@ export const ModalChooseTime = ({ code, callback }) => {
                 Te han invitado a votar: <b> &nbsp; {roomInfo.problem} </b>{" "}
             </p>
             <div className="flex gap-2">
-                <span className="text-secondaryBlack font-dmsans font-medium">
-                    ESTADO
-                </span>
                 <div className="flex justify-center items-center rounded-full bg-slate-300 w-20 gap-2 h-6 cursor-pointer">
                     <div className="w-4 h-4 bg-green-500 rounded-full"></div>
                     <button className="text-xs">Activa</button>

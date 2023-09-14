@@ -96,7 +96,7 @@ const Votaciones = () => {
                                 type="text"
                                 name="busqueda"
                                 placeholder="Buscar sala"
-                                className="busqueda bg-primaryOrange text-secondaryWhite mx-2 placeholder-white text-xs focus:outline-none w-full"
+                                className="busqueda bg-primaryOrange text-secondaryWhite mx-2 placeholder-white text-sm focus:outline-none w-full"
                                 value={search}
                                 onChange={(event) =>
                                     setSearch(event.target.value)
@@ -111,24 +111,24 @@ const Votaciones = () => {
                             />
                         </form>
                     </div>
-                    <div className="flex gap-4 pl-10 py-5">
+                    <div className="flex gap-4 pl-6 py-5">
                         <div className="flex justify-center items-center rounded-full bg-slate-300 gap-2 w-24 h-6 cursor-pointer">
-                            <div className="w-4 h-4 bg-green-500 rounded-full shadow"></div>
+                            <div className="w-3 h-3 bg-green-500 rounded-full shadow"></div>
                             <button className="text-xs">Activas</button>
                         </div>
                         <div className="flex justify-center items-center rounded-full bg-slate-300 gap-2 w-24 h-6 cursor-pointer">
-                            <div className="w-4 h-4 bg-red-500 rounded-full shadow"></div>
+                            <div className="w-3 h-3 bg-red-500 rounded-full shadow"></div>
                             <button className="text-xs">Inactivas</button>
                         </div>
                     </div>
                     <div className="flex flex-col gap-4 px-8 pb-10 h-44 py-2 overflow-y-auto mb-2">
                         {filteredRooms.map((sala, index) => (
                             <div
-                                className="flex gap-8 sm:gap-4 justify-between items-center"
+                                className="flex gap-2 items-center"
                                 key={index}
                             >
                                 <div
-                                    className={`w-4 h-3 mx-4 ${!sala.expired
+                                    className={`w-6 h-3 rounded-full ${!sala.expired
                                             ? "bg-green-500"
                                             : "bg-red-500"
                                         } rounded-full`}
@@ -139,7 +139,7 @@ const Votaciones = () => {
                                             sala.options
                                         )}% Votó: ${winnerOption(sala.options)}`}
                                 </p>
-                                <div className="flex justify-end w-1/4 gap-4 items-center">
+                                <div className="flex justify-end w-full gap-2 items-center">
                                     {sala.createdBy == session.user.email ? (
                                         <button>
                                             <Image
@@ -158,8 +158,8 @@ const Votaciones = () => {
                                             <Image
                                                 src="/Images/TrashIcon.svg"
                                                 alt="trash"
-                                                width={20}
-                                                height={20}
+                                                width={18}
+                                                height={18}
                                                 className="cursor-pointer max-w-none"
                                             />
                                         </button>
@@ -173,6 +173,21 @@ const Votaciones = () => {
                                             className="cursor-pointer max-w-none"
                                         />
                                     </button>
+                                    <button
+                                    onClick={() => {
+                                        setModalResultsStates({
+                                            ...modalResultsStates,
+                                            [sala.roomId]: true,
+                                        });
+                                    }}
+                                >
+                                    <Image
+                                        src="/Images/info.svg"
+                                        width={22}
+                                        height={22}
+                                        className="cursor-pointer max-w-none"
+                                    />
+                                </button>
                                 </div>
                                 <ModalGeneral
                                     state={
@@ -191,20 +206,6 @@ const Votaciones = () => {
                                         participants={sala.participants.length}
                                     />
                                 </ModalGeneral>
-                                <button
-                                    onClick={() => {
-                                        setModalResultsStates({
-                                            ...modalResultsStates,
-                                            [sala.roomId]: true,
-                                        });
-                                    }}
-                                >
-                                    <Image
-                                        src="/Images/info.svg"
-                                        width={30}
-                                        height={30}
-                                    />
-                                </button>
                             </div>
                         ))}
                     </div>

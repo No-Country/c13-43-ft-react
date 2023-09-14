@@ -15,7 +15,7 @@ const Perfil = () => {
     return (
     <>
         {/* <Loader active={loaderActive} /> */}
-        <div className="profile h-auto mx-auto w-4/5 md:absolute md:right-0 flex flex-col md:flex-row">
+        <div className="profile h-auto mx-auto w-4/5 md:absolute md:right-0 flex flex-col md:flex-row mt-20 xl:mt-10">
             <ProfileInfo />
             <ProfileConfig />
         </div>
