@@ -1,7 +1,6 @@
 import React from "react";
 
 const Options = ({ opcion, percentage, timesVoted, participants }) => {
-    console.log(percentage);
     return (
         <div className="w-full mb-5">
             <div className="flex mb-3">
