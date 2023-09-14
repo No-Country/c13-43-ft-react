@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 import MobileNav from "./MobileNav";
 import MobileSidebar from "./MobileSidebar";
+import ThemeButton from "./ThemeButton";
 
 
 
@@ -75,6 +76,7 @@ const Navbar = () => {
               <Image src="/menuIcon.svg" alt="MenuIcon" width={30} height={30} />
             </li>
           </ul>
+          <ThemeButton/>
         </nav>
         {isMobileMenuOpen && (
             <MobileNav isHome={isHome} />

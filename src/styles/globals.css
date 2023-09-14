@@ -10,8 +10,8 @@
 }
 
 body {
-    background-color: var(--secondaryWhite);
-    color: var(--secondaryBlack);
+     /* background-color: var(--secondaryWhite); */
+    /* color: var(--secondaryBlack); */ 
 }
 
 /* body {
