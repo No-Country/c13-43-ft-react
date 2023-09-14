@@ -21,9 +21,9 @@ export const APICreateUser = async (name, email, password) => {
         console.error(error);
     }
 };
-export const APIDeleteUser = async (userEmail) => {
+export const APIDeleteUser = async (email) => {
     try {
-        const fetching = await fetch(callURL + `deleteUser/${userEmail}`, {
+        const fetching = await fetch(callURL + `deleteUser?email=${email}`, {
             method: "DELETE",
             mode: "cors",
             headers: {
@@ -197,7 +197,7 @@ export const APIGetMe = async (email) => {
 };
 export const APIUpdateMe = async (email, data) => {
     try {
-        const fetching = await fetch(callURL + `me`, {
+        const fetching = await fetch(callURL + `updateMe`, {
             method: "PUT",
             mode: "cors",
             headers: {
