@@ -65,7 +65,7 @@ const ModalRegister = (callback) => {
                             NOMBRE Y APELLIDO{" "}
                         </label>
                         <input
-                            className="w-full border-b border-secondaryBlack bg-slate-50 outline-none "
+                            className="w-full border-b border-secondaryBlack bg-slate-50 px-2 h-8"
                             type="text"
                             name="nombre"
                             id="nombre"
@@ -81,7 +81,7 @@ const ModalRegister = (callback) => {
                             EMAIL{" "}
                         </label>
                         <input
-                            className="w-full border-b border-secondaryBlack bg-slate-50 outline-none "
+                            className="w-full border-b border-secondaryBlack bg-slate-50 px-2 h-8"
                             type="email"
                             name="email"
                             id="emailModal"
