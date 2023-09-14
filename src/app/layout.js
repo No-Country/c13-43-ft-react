@@ -5,6 +5,7 @@ import { getServerSession } from "next-auth"
 import { NextAuthOptions } from "./api/auth/[...nextauth]/options"
 import Providers from "./providers"
 
+export const dynamic = 'force-dynamic'
 
 export default async function RootLayout({ children }) {
   const session = await getServerSession(NextAuthOptions)

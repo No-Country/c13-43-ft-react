@@ -1,11 +1,12 @@
 import { firestoreDB } from "@/lib/firebaseConn";
 import { NextResponse } from "next/server";
 //Trae tanto las salas creadas por mi, activas e inactivas. asi como tambien las que he participado
-export async function GET(request) {
+export async function POST(request) {
     try {
-        const { searchParams } = new URL(request.url);
-        const userEmail = searchParams.get("userEmail");
-
+        // const { searchParams } = new URL(request.url);
+        // const userEmail = searchParams.get("userEmail");
+        const body = await request.json();
+        const { userEmail } = body;
         // Consulta para obtener salas creadas por el usuario
         const createdRoomsQuery = await firestoreDB
             .collection("rooms")

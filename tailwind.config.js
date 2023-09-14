@@ -33,6 +33,7 @@ module.exports = {
         '49': '49%',
       },
       height: {
+        '85': '21.5rem',
         '544': '30rem'
       },
       spacing: {

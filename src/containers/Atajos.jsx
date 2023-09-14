@@ -8,78 +8,91 @@ import { ModalEnterRoom } from "@/components/ModalEnterRoom";
 import { ModalChooseTime } from "@/components/ModalChooseTime";
 import { ModalVoteDone } from "@/components/ModalVoteDone";
 import ModalCopiar from "@/components/ModalCopiar";
+import { ModalVoteFail } from "@/components/ModalVoteFail";
 
 const Atajos = () => {
-  const [stateModalCreate, setStateModalCreate] = React.useState(false);
-  const [enterRoom, setEnterRoom] = useState(false);
-  const [createRoom, setCreateRoom] = useState(false);
-  const [chooseTime, setChooseTime] = useState(false);
-  const [voteDone, setVoteDone] = useState(false);
-  const [creadoExitoso, setCreadoExitoso] = useState(false);
-  const [code, setCode] = useState("");
-  const [shareCode, setShareCode] = useState("");
+    const [stateModalCreate, setStateModalCreate] = React.useState(false);
+    const [enterRoom, setEnterRoom] = useState(false);
+    const [chooseTime, setChooseTime] = useState(false);
+    const [voteDone, setVoteDone] = useState(false);
+    const [voteFail, setVoteFail] = useState(false);
+    const [creadoExitoso, setCreadoExitoso] = useState(false);
+    const [code, setCode] = useState("");
+    const [shareCode, setShareCode] = useState("");
 
-  const closeModalCreate = (callbackCode) => {
-    setStateModalCreate(!stateModalCreate);
-    setShareCode(callbackCode);
-    setCreadoExitoso(!creadoExitoso);
-  };
+    const closeModalCreate = (callbackCode) => {
+        setStateModalCreate(!stateModalCreate);
+        setShareCode(callbackCode);
+        setCreadoExitoso(!creadoExitoso);
+    };
 
-  const closeEnterRoomModal = (callbackCode) => {
-    setEnterRoom(!enterRoom);
-    setCode(callbackCode);
-    setChooseTime(!chooseTime);
-  };
+    const closeEnterRoomModal = (callbackCode) => {
+        setEnterRoom(!enterRoom);
+        setCode(callbackCode);
+        setChooseTime(!chooseTime);
+    };
 
-  const closeChooseTimeModal = () => {
-    setChooseTime(!chooseTime);
-    setVoteDone(!voteDone);
-  };
+    const closeChooseTimeModal = (todoOk) => {
+        setChooseTime(!chooseTime);
+        console.log(todoOk);
+        if (todoOk) {
+            setVoteDone(!voteDone);
+        } else {
+            setVoteFail(!voteFail);
+        }
+    };
 
-  return (
-    <div className="w-fit box-border p-4 flex-col  rounded-3x1">
-      <h2 className="font-dmsans text-secondaryBlack text-3xl mt-1.5 mb-4 font-semibold">
-        Atajos
-      </h2>
-      <div className="flex-col items-center justify-center">
-        <OptionCard
-          action={() => setEnterRoom(!enterRoom)}
-          text={"Entrar a sala"}
-          image={"/Images/atajos/atajo-1.png"}
-        />
-        <OptionCard
-          text={"Crear sala"}
-          image={"/Images/atajos/atajo-2.png"}
-          action={() => setStateModalCreate(!stateModalCreate)}
-        />
-      </div>
+    return (
+        <div className="w-fit box-border p-4 flex-col  rounded-3x1">
+            <h2 className="font-dmsans text-secondaryBlack text-3xl mt-1.5 mb-4 font-semibold">
+                Atajos
+            </h2>
+            <div className="flex-col items-center justify-center">
+                <OptionCard
+                    action={() => setEnterRoom(!enterRoom)}
+                    text={"Entrar a sala"}
+                    image={"/Images/atajos/atajo-1.png"}
+                />
+                <OptionCard
+                    text={"Crear sala"}
+                    image={"/Images/atajos/atajo-2.png"}
+                    action={() => setStateModalCreate(!stateModalCreate)}
+                />
+            </div>
 
-      <ModalGeneral state={stateModalCreate} changeState={setStateModalCreate}>
-        <ModalCreate callback={closeModalCreate} />
-      </ModalGeneral>
+            <ModalGeneral
+                state={stateModalCreate}
+                changeState={setStateModalCreate}
+            >
+                <ModalCreate callback={closeModalCreate} />
+            </ModalGeneral>
 
-      <ModalGeneral state={creadoExitoso} changeState={setCreadoExitoso}>
-        <ModalCopiar
-          image={"/Images/CheckIcon.png"}
-          title={"Sala creada con éxito!"}
-          content={"Tu código de sala es:"}
-          code={shareCode}
-        />
-      </ModalGeneral>
+            <ModalGeneral state={creadoExitoso} changeState={setCreadoExitoso}>
+                <ModalCopiar
+                    image={"/Images/CheckIcon.png"}
+                    title={"Sala creada con éxito!"}
+                    content={"Tu código de sala es:"}
+                    code={shareCode}
+                />
+            </ModalGeneral>
 
-      <ModalGeneral state={enterRoom} changeState={setEnterRoom}>
-        <ModalEnterRoom callback={closeEnterRoomModal} />
-      </ModalGeneral>
+            <ModalGeneral state={enterRoom} changeState={setEnterRoom}>
+                <ModalEnterRoom callback={closeEnterRoomModal} />
+            </ModalGeneral>
 
-      <ModalGeneral state={chooseTime} changeState={setChooseTime}>
-        <ModalChooseTime code={code} callback={closeChooseTimeModal} />
-      </ModalGeneral>
+            <ModalGeneral state={chooseTime} changeState={setChooseTime}>
+                <ModalChooseTime code={code} callback={closeChooseTimeModal} />
+            </ModalGeneral>
 
-      <ModalGeneral state={voteDone} changeState={setVoteDone}>
-        <ModalVoteDone roomCode={code} />
-      </ModalGeneral>
-    </div>
-  );
+            <ModalGeneral state={voteDone} changeState={setVoteDone}>
+                <ModalVoteDone roomCode={code} />
+            </ModalGeneral>
+
+            <ModalGeneral state={voteFail} changeState={setVoteFail}>
+                <ModalVoteFail />
+            </ModalGeneral>
+        </div>
+    );
 };
 
 export default Atajos;

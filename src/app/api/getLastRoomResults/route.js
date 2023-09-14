@@ -3,11 +3,12 @@ import { NextResponse } from "next/server";
 import { compararFechas } from "@/lib/Tools";
 
 // Endpoint que trae los datos de la última sala vencida
-export async function GET(request) {
+export async function POST(request) {
     try {
-        const { searchParams } = new URL(request.url);
-        const userEmail = searchParams.get("userEmail");
-
+        // const { searchParams } = new URL(request.url);
+        // const userEmail = searchParams.get("userEmail");
+        const body = await request.json();
+        const { userEmail } = body;
         // Consulta para verificar si el usuario ha creado salas
         const createdRoomsQuery = await firestoreDB
             .collection("rooms")
@@ -49,7 +50,7 @@ export async function GET(request) {
 
         let last = lastExpiredRoom.at(-1);
 
-        if (last !== null) {
+        if (last !== undefined) {
             // Extraer los resultados de las opciones y los votos
             const resultsData = Object.values(last.options);
 
@@ -60,10 +61,20 @@ export async function GET(request) {
             const totalParticipants = last.participants.length;
 
             // Calcular el porcentaje de votos en cada opción
-            const resultsWithPercentage = resultsData.map((option) => ({
-                ...option,
-                percentage: (option.timesVoted / totalParticipants) * 100,
-            }));
+            const resultsWithPercentage = resultsData.map((option) => {
+                if (option.timesVoted === 0) {
+                    return {
+                        ...option,
+                        percentage: 0,
+                    };
+                } else {
+                    return {
+                        ...option,
+                        percentage:
+                            (option.timesVoted / totalParticipants) * 100,
+                    };
+                }
+            });
 
             // Tomar la opción más votada y la segunda más votada
             const firstOption = resultsData[0];

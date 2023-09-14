@@ -79,7 +79,7 @@ const Navbar = () => {
           <ThemeButton/>
         </nav>
         {isMobileMenuOpen && (
-            <MobileNav isHome={isHome} />
+            <MobileNav isHome={isHome} isMobileMenuOpen = {isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} />
         )}
       </header>
     );
@@ -113,7 +113,7 @@ const Navbar = () => {
           </ul>
         </nav>
         {isMobileMenuOpen && (
-            <MobileNav isHome={!isHome} />
+            <MobileNav isHome={!isHome} isMobileMenuOpen = {isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} />
         )}
       </header>
     );
@@ -151,7 +151,7 @@ const Navbar = () => {
           </ul>
         </nav>
         {isMobileMenuOpen && (
-            <MobileSidebar />
+            <MobileSidebar isMobileMenuOpen = {isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} />
         )}
       </header>
     );
