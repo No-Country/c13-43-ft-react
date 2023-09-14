@@ -61,10 +61,20 @@ export async function POST(request) {
             const totalParticipants = last.participants.length;
 
             // Calcular el porcentaje de votos en cada opción
-            const resultsWithPercentage = resultsData.map((option) => ({
-                ...option,
-                percentage: (option.timesVoted / totalParticipants) * 100,
-            }));
+            const resultsWithPercentage = resultsData.map((option) => {
+                if (option.timesVoted === 0) {
+                    return {
+                        ...option,
+                        percentage: 0,
+                    };
+                } else {
+                    return {
+                        ...option,
+                        percentage:
+                            (option.timesVoted / totalParticipants) * 100,
+                    };
+                }
+            });
 
             // Tomar la opción más votada y la segunda más votada
             const firstOption = resultsData[0];
