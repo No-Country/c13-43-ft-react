@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useEffect } from 'react'
 import Image from 'next/image'
 import { useSession } from "next-auth/react";
 import ModalGeneral from '@/containers/ModalGeneral';
@@ -7,6 +7,7 @@ import ModalEliminarCuenta from './ModalEliminarCuenta';
 import ModalSuccessChanges from './ModalSuccessChanges';
 import Loader from './Loader';
 import Handler from './Handler';
+import { APIGetMe, APIUpdateMe } from '@/lib/APICalls';
 
 
 const ProfileInfo = () => {
@@ -17,17 +18,38 @@ const ProfileInfo = () => {
     const [successfulSave, setSuccessfulSave] = React.useState(false)
     const [eliminarCuenta, setEliminarCuenta] = React.useState(false)
     const [loaderActive, setLoaderActive] = React.useState(false)
-
+    const email = session.user?.email;
     const availableEdit = {
         true: "h-10 p-2 rounded-lg my-2 border border-blue-500 bg-white text-gray-900 focus:outline-none focus:ring focus:border-blue-500",
         false: "h-10 p-2 rounded-lg my-2 border border-gray-300 bg-gray-100 text-gray-600 cursor-not-allowed"
     }
 
     const [formData, setFormData] = React.useState({
-        name: session.user.name,
-        email: session.user.email,
-        password: '*******',
+        name: '',
+        password: '',
     })
+
+    useEffect( () => {
+        const dbDatos =async () =>{
+            try {
+                setLoaderActive( true )
+                const dataMe = await APIGetMe( email );
+                const dbName = Object.values( dataMe )[1].name;
+                const dbPassword = Object.values( dataMe )[1].password;
+                console.log(Object.values( dataMe )[1]);
+                setFormData({
+                    name: dbName,
+                    password: dbPassword
+                })
+                setLoaderActive( false );
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        dbDatos();
+    
+    }, [email])
+    
 
     const handleChange = (event) => {
         const {name, value} = event.target
@@ -37,15 +59,15 @@ const ProfileInfo = () => {
         })
     }
 
-    const handleSubmit = (event) => {
-
-        console.log('Hola')
-        event.preventDefault()
-        setLoaderActive(true)
-        setTimeout(() => {
-            setLoaderActive(false)
-            setSuccessfulSave(!successfulSave)
-        }, 2000);
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        setLoaderActive(true);
+        const update= await APIUpdateMe(email, formData);
+        if (update.message){
+            setLoaderActive(false);
+            setSuccessfulSave(!successfulSave);
+        }
+        setLoaderActive(false);
     }
 
   return (
@@ -72,7 +94,7 @@ const ProfileInfo = () => {
                         className={availableEdit['false']} 
                         readOnly
                         name = "email"
-                        value= {formData.email} 
+                        value= { email } 
                         onChange={handleChange} 
                     />
                     <hr className="flex-grow border-secondaryBlack mb-2" />

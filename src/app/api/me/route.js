@@ -5,7 +5,7 @@ export async function POST(request) {
     try {
         const body = await request.json();
         const { userEmail } = body;
-        console.log(userEmail);
+        //console.log(userEmail);
         // Realiza una consulta en Firestore para encontrar el usuario con el correo electrónico proporcionado
         const querySnapshot = await firestoreDB
             .collection("users")
@@ -19,7 +19,6 @@ export async function POST(request) {
 
         // Solo debería haber un usuario con ese correo electrónico, así que obtén su información
         const userData = querySnapshot.docs[0].data();
-
         return NextResponse.json({
             userId: querySnapshot.docs[0].id,
             userData,

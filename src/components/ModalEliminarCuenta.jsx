@@ -11,19 +11,16 @@ const ModalEliminarCuenta = ({state, changeState}) => {
     const [loaderActive, setLoaderActive] = React.useState(false)
     const [correctDelete, setCorrectDelete] = React.useState(false)
 
-    const handleDelete = () => {
+    const handleDelete = async() => {
         setLoaderActive(true)
-        setTimeout(() => {     
-            setLoaderActive(false)
-            setCorrectDelete(true)    
-            
-            setTimeout(() => {   
-                setCorrectDelete(false)             
-                APIDeleteUser(session.user.email)
-                changeState(!state)
-                signOut({ callbackUrl: '/'});
-            }, 2000);
-        }, 2000);
+        const deleteUser = await APIDeleteUser( session.user?.email );   
+        if(deleteUser.userDeleted){
+            changeState( !state );
+            setCorrectDelete( true );   
+            setLoaderActive( false );
+            signOut({ callbackUrl: '/'});
+        }
+        setLoaderActive( false );
     }
 
   return (
