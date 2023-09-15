@@ -98,7 +98,7 @@ const Resultados = () => {
                                 Participantes
                             </span>
                         </div>
-                        <div className="flex flex-col shadow p-3 rounded-lg">
+                        <div className="flex flex-col shadow p-3 dark:border dark:border-darkNav rounded-lg">
                             <span className="text-3xl md:text-4xl text-primaryPurple font-bold">
                                 {result.percentageSecond}%
                             </span>
