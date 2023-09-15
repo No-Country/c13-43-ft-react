@@ -16,7 +16,7 @@ const ModalGeneral = ({ children, state, changeState }) => {
     <>
       {state && (
         <div className="w-screen h-screen flex items-center justify-center fixed top-0 left-0 backdrop-blur-sm z-10">
-          <main className="mx-4 sm:mx-0 min-h-fit min-w-fit w-full sm:max-h-100 sm:w-2/5 h-auto relative rounded-3xl shadow bg-secondaryWhite dark:bg-darkBlack dark:border dark:border-white  py-4 sm:py-10">
+          <main className="mx-4 sm:mx-0 min-h-fit min-w-fit w-full sm:w-4/5 md:w-3/5 xl:w-2/5 h-auto relative rounded-3xl shadow bg-secondaryWhite dark:bg-darkBlack dark:border dark:border-white  py-4 sm:py-2">
             <button
               className="absolute top-0 pt-3 pr-3 right-0 cursor-pointer"
               onClick={() => changeState(!state)}

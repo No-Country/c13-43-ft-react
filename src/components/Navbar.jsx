@@ -15,7 +15,6 @@ import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 import MobileNav from "./MobileNav";
 import MobileSidebar from "./MobileSidebar";
-import ThemeButton from "./ThemeButton";
 
 
 
@@ -83,9 +82,6 @@ const Navbar = () => {
             <li className="absolute top-7 right-12 block md:hidden cursor-pointer" onClick={toggleMobileMenu}>
               <Image src="/menuIcon.svg" alt="MenuIcon" width={30} height={30} />
             </li>
-            <li>
-            <ThemeButton/>
-            </li>
           </ul>
           
         </nav>
@@ -120,9 +116,6 @@ const Navbar = () => {
             </li>
             <li className="absolute top-7 right-12 block md:hidden cursor-pointer" onClick={toggleMobileMenu}>
               <Image src="/menuIcon.svg" alt="MenuIcon" width={30} height={30} />
-            </li>
-            <li className="hidden md:block">
-            <ThemeButton/>
             </li>
           </ul>
         </nav>

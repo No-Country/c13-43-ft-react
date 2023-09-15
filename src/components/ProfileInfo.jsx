@@ -80,13 +80,18 @@ const ProfileInfo = () => {
   return (
     <>
         <Loader active={loaderActive} />
-        <div className='relative mx-auto profile flex justify-center w-auto p-0 md:w-1/2 md:px-4'>
-            <div className="header flex w-full justify-between p-4">
-                <form onSubmit={handleSubmit} className="flex flex-col w-3/4">
+        <div className='flex justify-center w-full p-0 test:w-1/2 md:px-4 font-dmsans'>
+            <div className="flex w-full justify-between mx-8">
+                <form onSubmit={handleSubmit} className="flex flex-col w-full">
                     <h1 className="font-bold text-3xl my-3"> Perfil </h1>
-                    <h2 className="font-bold text-xl my-2"> Editar perfil </h2>
-                    <label htmlFor="name" className="font-semibold text-sm"> NOMBRE Y APELLIDO </label>
-                    <input 
+                    <div className='flex justify-between items-center'>
+                        <h2 className="font-bold text-xl my-2"> Editar perfil </h2>
+                          <div className="right-24 top-24 xl:right-36 cursor-pointer">
+                              <Handler state={edit} setState={setEdit} />
+                          </div>
+                    </div>
+                      <label htmlFor="name" className="font-semibold text-sm"> NOMBRE Y APELLIDO </label>
+                      <input 
                         type="text" 
                         className={availableEdit[`${edit}`]} 
                         readOnly={!edit}
@@ -122,25 +127,15 @@ const ProfileInfo = () => {
                     > 
                         ELIMINAR CUENTA 
                     </button>
-                    <button 
-                        type="submit" 
-                        className="absolute px-8 md:w-auto w-3/4 h-8 -bottom-6  md:-bottom-0 md:-right-2/3 text-secondaryWhite rounded-3xl bg-green-500"
-                    > 
-                        GUARDAR CAMBIOS 
-                    </button>
-                </form>
-                <div className="relative flex justify-center items-center mr-4 md:mr-0 header-right w-16 h-16 rounded-full border"> 
-                    <p className="font-semibold text-primaryPurple text-2xl"> {session.user.name.substring(0,2).toUpperCase()} </p>
-                    <div 
-                        className="absolute cursor-pointer flex justify-center items-center bottom-0 left-0 bg-gray-300 w-5 h-5 rounded-full"
-                        onClick = {() => console.log("Aqui se debería poder subir una imagen")}
+                    <div className='flex justify-center mt-6'>
+                        <button
+                            type="submit"
+                            className="text-secondaryWhite rounded-4xl bg-green-500 py-3 px-10"
                         >
-                        <Image src="/Images/Pencil.png" alt="edit" width={13} height={13} />
+                            GUARDAR CAMBIOS
+                        </button>
                     </div>
-                </div>
-            </div>
-            <div className="absolute right-24 top-24 md:right-40 cursor-pointer">
-                <Handler state={edit} setState={setEdit} />
+                </form>
             </div>
             <ModalGeneral state={eliminarCuenta} changeState={setEliminarCuenta}>
                 <ModalEliminarCuenta state={eliminarCuenta} changeState={setEliminarCuenta} />

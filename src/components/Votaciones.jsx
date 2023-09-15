@@ -99,7 +99,7 @@ const Votaciones = () => {
     return (
         <>
             <Loader active={loaderActive} />
-            <div className="w-full xl:w-3/4 mt-6 font-dmsans mx-4 xl:mx-0 sm:py-5 test:flex test:flex-col test:items-center test:w-2/3 xl:block">
+            <div className="w-full xl:w-3/5 mt-6 font-dmsans mx-4 xl:mx-0 sm:py-5 test:flex test:flex-col test:items-center test:w-2/3 xl:block xl:ml-40">
                 <h1 className="ml-6 mb-4 text-4xl font-bold text-center xl:text-start">Votaciones</h1>
                 {!rooms.length ? <div className="flex flex-col items-center justify-center bg-secondaryGray dark:bg-darkNav pt-6 test:w-4/5 shadow rounded-4xl h-90 sm:h-85">
                     <p>Aún no has participado en una votación.</p>
@@ -128,11 +128,11 @@ const Votaciones = () => {
                     <div className="flex gap-4 pl-6 py-5">
                         <div className="flex justify-center items-center rounded-full bg-slate-300 dark:bg-darkBlack  gap-2 w-24 h-6 cursor-pointer">
                             <div className="w-3 h-3 bg-green-500 rounded-full shadow"></div>
-                            <button className="text-xs">Activas</button>
+                            <button className="text-xs text-semibold">Activas</button>
                         </div>
                         <div className="flex justify-center items-center rounded-full bg-slate-300 dark:bg-darkBlack gap-2 w-24 h-6 cursor-pointer">
                             <div className="w-3 h-3 bg-red-500 rounded-full shadow"></div>
-                            <button className="text-xs">Inactivas</button>
+                            <button className="text-xs text-semibold">Inactivas</button>
                         </div>
                     </div>
                     <div className="flex flex-col gap-4 px-8 pb-10 h-44 py-2 overflow-y-auto mb-2">
@@ -143,13 +143,12 @@ const Votaciones = () => {
                             >
                                 <div
                                     className={`w-6 h-3 rounded-full ${!sala.expired
-                                            ? "bg-green-500"
-                                            : "bg-red-500"
+                                        ? "bg-green-500"
+                                        : "bg-red-500"
                                         } rounded-full`}
                                 ></div>
-                                <p className="text-xs text-start w-full font-semibold">
-                                    {`${sala.roomId} - ${sala.problem
-                                        }`}
+                                <p className="text-xs text-start w-full"><span className="font-semibold">{`${sala.roomId}`} -</span>
+                                    {`${sala.problem}`}
                                 </p>
                                 <div className="flex justify-end w-full gap-2 items-center">
                                     {sala.createdBy == session.user.email ? (
@@ -186,20 +185,20 @@ const Votaciones = () => {
                                         />
                                     </button>
                                     <button
-                                    onClick={() => {
-                                        setModalResultsStates({
-                                            ...modalResultsStates,
-                                            [sala.roomId]: true,
-                                        });
-                                    }}
-                                >
-                                    <Image
-                                        src="/Images/info.svg"
-                                        width={22}
-                                        height={22}
-                                        className="cursor-pointer max-w-none"
-                                    />
-                                </button>
+                                        onClick={() => {
+                                            setModalResultsStates({
+                                                ...modalResultsStates,
+                                                [sala.roomId]: true,
+                                            });
+                                        }}
+                                    >
+                                        <Image
+                                            src="/Images/info.svg"
+                                            width={22}
+                                            height={22}
+                                            className="cursor-pointer max-w-none"
+                                        />
+                                    </button>
                                 </div>
                                 <ModalGeneral
                                     state={

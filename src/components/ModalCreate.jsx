@@ -1,11 +1,11 @@
-// Descripción: Este componente representa un modal para crear una nueva sala de votación. Permite al usuario ingresar 
+// Descripción: Este componente representa un modal para crear una nueva sala de votación. Permite al usuario ingresar
 // un nombre para la sala, establecer una fecha límite y agregar opciones de votación.
 
-// Funcionamiento: Cuando el usuario completa el formulario y hace clic en "Crear Sala", se verifica que se hayan 
-// ingresado los detalles necesarios (nombre de la sala, fecha límite y al menos dos opciones de votación). 
-// Si todos los campos requeridos están completos, se muestra un indicador de carga (Loader) y se inicia la creación 
-// de la sala a través de una llamada a la API (handleCreateRoom). Una vez que se crea la sala con éxito, se muestra 
-// un mensaje de confirmación. Si faltan campos o se excede el límite de opciones, se muestran mensajes de error 
+// Funcionamiento: Cuando el usuario completa el formulario y hace clic en "Crear Sala", se verifica que se hayan
+// ingresado los detalles necesarios (nombre de la sala, fecha límite y al menos dos opciones de votación).
+// Si todos los campos requeridos están completos, se muestra un indicador de carga (Loader) y se inicia la creación
+// de la sala a través de una llamada a la API (handleCreateRoom). Una vez que se crea la sala con éxito, se muestra
+// un mensaje de confirmación. Si faltan campos o se excede el límite de opciones, se muestran mensajes de error
 // correspondientes. El usuario también puede agregar y eliminar opciones de votación dinámicamente.
 
 import React, { useState } from "react";
@@ -13,10 +13,26 @@ import { APICreateRoom } from "@/lib/APICalls";
 import { useSession } from "next-auth/react";
 import Loader from "@/components/Loader";
 
+function getNow() {
+    const fechaActual = new Date(); // Esto crea un objeto Date con la fecha y hora actual.
+
+    // Ahora formateamos la fecha en el formato deseado.
+    const año = fechaActual.getFullYear();
+    const mes = (fechaActual.getMonth() + 1).toString().padStart(2, "0"); // Los meses comienzan desde 0 (enero es 0).
+    const dia = fechaActual.getDate().toString().padStart(2, "0");
+    const hora = fechaActual.getHours().toString().padStart(2, "0");
+    const minutos = fechaActual.getMinutes().toString().padStart(2, "0");
+
+    const fechaFormateada = `${año}-${mes}-${dia}T${hora}:${minutos}`;
+
+    return fechaFormateada;
+}
+
 const ModalCreate = (callback) => {
     const { data: session } = useSession();
     const userEmail = session.user.email;
-    const now = new Date().toISOString().substring(0, 16);
+    const now = getNow();
+
     //Estado de las opciones
     const [options, setOptions] = React.useState({});
     //state que setea el title de la option
@@ -46,7 +62,10 @@ const ModalCreate = (callback) => {
         const email = userEmail;
         const problem = roomData.problem;
         const options = roomData.options;
-        const expires = roomData.expires;
+        const expires = new Date(roomData.expires)
+            .toISOString()
+            .substring(0, 16);
+
         const response = await APICreateRoom(email, problem, options, expires);
         setLoaderActive(false);
         callback.callback(response.shareCode);
@@ -228,7 +247,7 @@ const ModalCreate = (callback) => {
                 <div className="submit flex justify-center mt-2">
                     <button
                         type="submit"
-                        className="bg-primaryPurple text-secondaryWhite font-bold rounded-3xl w-3/5 sm:w-2/5 px-4 py-2"
+                        className="bg-primaryPurple text-secondaryWhite font-semibold rounded-3xl w-3/5 sm:w-2/5 px-4 py-2"
                     >
                         {" "}
                         Crear Sala{" "}
