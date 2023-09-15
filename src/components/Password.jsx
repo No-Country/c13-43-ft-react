@@ -1,3 +1,12 @@
+// Descripción: El componente "Password" se utiliza para crear un campo de entrada de contraseña con un botón de alternar 
+// para mostrar u ocultar la contraseña en texto claro. Recibe como propiedades el nombre de la etiqueta de contraseña 
+// y el nombre del campo.
+
+// Funcionamiento: El componente renderiza un campo de entrada de contraseña con una etiqueta que muestra el nombre 
+// proporcionado en la propiedad "nameLabel". El campo de contraseña puede alternar entre mostrar y ocultar la contraseña 
+// en texto claro utilizando un ícono de ojo. Cuando el usuario hace clic en el ícono de ojo, cambia entre mostrar y 
+// ocultar la contraseña. Esto proporciona flexibilidad y seguridad al ingresar contraseñas en un formulario.
+
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";

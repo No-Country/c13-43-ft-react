@@ -1,3 +1,10 @@
+// Descripción: Este archivo contiene una función que maneja las solicitudes POST relacionadas con la creación de una 
+// nueva sala en la aplicación. La función genera un número de sala único y luego crea una nueva entrada de sala en la base de datos con la información proporcionada en la solicitud.
+
+// Funcionamiento: La función comienza generando un número de sala único utilizando la función generarNumeroAleatorio. 
+// Luego, verifica si ese número de sala es único en la base de datos utilizando la función isRoomIdUnique. Si el número de
+// sala no es único, se generará otro número hasta que se encuentre un número de sala único.
+
 import { NextResponse } from "next/server";
 import { firestoreDB } from "@/lib/firebaseConn";
 

@@ -1,3 +1,11 @@
+// Descripción: Componente modal de confirmación para cerrar sesión de usuario.
+
+// Funcionamiento: Cuando el usuario decide cerrar sesión, se muestra este modal de confirmación. Se le pregunta si está 
+// seguro de que desea cerrar sesión. El usuario puede cancelar la acción o confirmarla haciendo clic en "CANCELAR" o 
+// "CONFIRMAR". Si se confirma, se activa un indicador de carga (Loader) durante la operación de cierre de sesión y luego 
+// se redirige al usuario a la página de inicio ("/") después de 3 segundos. Ideal para confirmar acciones importantes en 
+// la aplicación, como el cierre de sesión.
+
 import React from 'react'
 import { signOut } from 'next-auth/react';
 import Loader from './Loader';

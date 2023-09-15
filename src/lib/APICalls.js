@@ -1,3 +1,7 @@
+// Descripción: Son funciones que se utilizan para facilitar los llamados a las APIs asociadas a los endpoints que
+// garantizan el funcionamiento correcto de la aplicación, se utilizan desde el front para hacer peticiones via APIs
+
+
 const callURL = "/api/";
 
 //APICalls de User

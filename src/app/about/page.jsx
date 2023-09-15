@@ -1,3 +1,7 @@
+// Descripción: En términos de código, la página utiliza componentes como "Participants" para mostrar la información de 
+// cada miembro del equipo. Estos componentes se generan dinámicamente a partir de una matriz de datos que contiene 
+// detalles sobre cada miembro del equipo, como nombre, rol, enlace a LinkedIn y una imagen de perfil.
+
 import Participants from "@/components/Participants";
 import React from "react";
 import ContainerGlobal from "@/containers/ContainerGlobal";

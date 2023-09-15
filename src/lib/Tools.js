@@ -1,4 +1,5 @@
-//Pendiente
+// Descripción: Son funciones que permiten realizar funcionalidades dentro de los componentes de la aplicación, para mejorar la 
+// limpieza y legibilidad de código se abstraen de los componentes y se crea el componente que las almacena.
 
 import bcrypt from "bcrypt";
 export async function hashPassword(password) {

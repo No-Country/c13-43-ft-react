@@ -1,3 +1,13 @@
+// Descripción: Componente de tarjeta de opción para mostrar información o acciones relacionadas con una opción de votación
+// en la aplicación.
+
+Funcionamiento:
+
+// La tarjeta de opción consta de dos secciones:
+// Sección de Imagen: Muestra una imagen o ícono representativo de la opción en un fondo redondeado.
+// Sección de Texto: Muestra el título y los detalles de la opción en un fondo diferente.
+// La tarjeta es clicle, por lo que cuando un usuario hace clic en ella, se ejecuta la función action.
+
 "use client"
 import React from 'react'
 import Image from 'next/image';

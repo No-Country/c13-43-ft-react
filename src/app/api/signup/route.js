@@ -1,3 +1,11 @@
+// Descripción: Este endpoint se utiliza para crear un nuevo usuario en la base de datos. Los datos del usuario, 
+// como su dirección de correo electrónico, contraseña (ya hasheada por el frontend), nombre, estado de administrador 
+// (isAdmin), y una imagen de perfil, se proporcionan en el cuerpo de la solicitud POST.
+
+// Funcionamiento: El endpoint comienza por verificar si ya existe un usuario con la dirección de correo electrónico
+// proporcionada. Si se encuentra un usuario con la misma dirección de correo electrónico, se devuelve un mensaje de error
+// indicando que ya existe un usuario con ese correo electrónico.
+
 //email
 //pass(ya este hasheada por el front)
 //nombre
@@ -7,6 +15,7 @@
 //password
 //isAdmin
 //userName
+
 import { firestoreDB } from "@/lib/firebaseConn";
 import { NextResponse } from "next/server";
 import avatar from "../../../../public/Images/avatar/uno.png";
