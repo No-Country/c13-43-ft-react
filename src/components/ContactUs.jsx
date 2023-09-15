@@ -60,9 +60,9 @@ const ContactUs = () => {
             <main className="flex justify-center items-center font-dmsans">
                 <div className="flex flex-col-reverse md:flex-row gap-20 mx-4 sm:mx-0 w-full">
                     <div className="flex justify-center md:w-1/2">
-                        <form className=" bg-secondaryGray flex flex-col gap-4 w-full sm:w-3/4 md:w-5/6 p-8 rounded-2xl shadow-xl">
+                        <form className=" bg-secondaryGray dark:bg-darkNav flex flex-col gap-4 w-full sm:w-3/4 md:w-5/6 p-8 rounded-2xl shadow-xl">
                             <input
-                                className="py-2 px-4 rounded-3xl text-tertiaryGray placeholder-tertiaryGray"
+                                className="py-2 px-4 rounded-3xl text-secondaryWhite placeholder-tertiaryGray"
                                 type="text"
                                 placeholder="Nombre y Apellido"
                                 value={formData.contactName}
@@ -74,7 +74,7 @@ const ContactUs = () => {
                                 }
                             />
                             <input
-                                className="py-2 px-4 rounded-3xl text-tertiaryGray placeholder-tertiaryGray"
+                                className="py-2 px-4 rounded-3xl text-secondaryWhite placeholder-tertiaryGray"
                                 type="text"
                                 placeholder="Example@mail.com"
                                 value={formData.contactEmail}
@@ -86,7 +86,7 @@ const ContactUs = () => {
                                 }
                             />
                             <input
-                                className="py-2 px-4 rounded-3xl text-tertiaryGray placeholder-tertiaryGray"
+                                className="py-2 px-4 rounded-3xl text-secondaryWhite placeholder-tertiaryGray"
                                 type="text"
                                 placeholder="(123) 456 7890"
                                 value={formData.contactPhone}
@@ -98,7 +98,7 @@ const ContactUs = () => {
                                 }
                             />
                             <textarea
-                                className="py-2 px-4 rounded-xl text-tertiaryGray placeholder-tertiaryGray"
+                                className="py-2 px-4 rounded-xl text-secondaryWhite placeholder-tertiaryGray"
                                 name=""
                                 id=""
                                 cols="35"
