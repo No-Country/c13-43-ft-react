@@ -21,7 +21,7 @@ const Password = ({ nameLabel, name }) => {
       </label>
       <div className="relative">
         <input
-          className="w-full border-b text-black dark:text-darkBlack border-secondaryBlack bg-slate-50 px-2 h-8"
+          className="w-full border-b dark:border-secondaryWhite rounded-lg text-black dark:bg-darkNav dark:text-secondaryWhite border-secondaryBlack bg-slate-50 px-2 h-10"
           type={openEye ? "text" : "password"}
           name={name}
           id={name}
@@ -33,7 +33,7 @@ const Password = ({ nameLabel, name }) => {
           src={openEye ? ojo.open : ojo.close}
           alt="image"
           onClick={() => setOpenEye(!openEye)}
-          className="inline-block absolute right-0 bottom-2 cursor-pointer"
+          className="inline-block absolute right-4 top-2 cursor-pointer"
         />
       </div>
     </div>

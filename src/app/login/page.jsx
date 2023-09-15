@@ -70,7 +70,7 @@ const Login = () => {
                                     EMAIL{" "}
                                 </label>
                                 <input
-                                    className="w-full border-b text-black dark:text-darkBlack border-secondaryBlack dark:border-secondaryWhite bg-slate-50 px-2 h-8"
+                                    className="w-full border-b dark:bg-darkNav h-10 rounded-lg text-black dark:text-darkBlack border-secondaryBlack dark:text-secondaryWhite dark:border-secondaryWhite bg-slate-50 px-2"
                                     type="email"
                                     name="email"
                                     id="email"

@@ -49,8 +49,15 @@ const Navbar = () => {
           <ul className="flex w-3/4">
             <li>
               <Image
-                className="max-w-none"
+                className="max-w-none dark:hidden "
                 src="/Images/logoColor.png"
+                alt="choiceLogo"
+                width={120}
+                height={70}
+              />
+              <Image
+                className="max-w-none dark:block hidden"
+                src="/Images/logoPanel.png"
                 alt="choiceLogo"
                 width={120}
                 height={70}
@@ -75,7 +82,7 @@ const Navbar = () => {
             <li className="absolute top-7 right-12 block md:hidden cursor-pointer" onClick={toggleMobileMenu}>
               <Image src="/menuIcon.svg" alt="MenuIcon" width={30} height={30} />
             </li>
-            <li>
+            <li className="hidden md:block">
             <ThemeButton/>
             </li>
           </ul>
@@ -92,8 +99,16 @@ const Navbar = () => {
         <nav className="flex justify-between px-6 sm:px-12 items-center bg-white dark:bg-darkNav  shadow-md h-20">
           <ul className="flex w-3/4">
             <li>
-              <Image
+            <Image
+                className="max-w-none dark:hidden "
                 src="/Images/logoColor.png"
+                alt="choiceLogo"
+                width={120}
+                height={70}
+              />
+              <Image
+                className="max-w-none dark:block hidden"
+                src="/Images/logoPanel.png"
                 alt="choiceLogo"
                 width={120}
                 height={70}
@@ -143,8 +158,15 @@ const Navbar = () => {
         <nav className="flex justify-end h-20 w-screen bg-primaryPurple">
           <ul className="flex justify-between items-center w-full relative px-6">
           <li>
+          <Image
+                className="max-w-none dark:hidden "
+                src="/Images/logoColor.png"
+                alt="choiceLogo"
+                width={120}
+                height={70}
+              />
               <Image
-                className="max-w-none"
+                className="max-w-none dark:block hidden"
                 src="/Images/logoPanel.png"
                 alt="choiceLogo"
                 width={120}
