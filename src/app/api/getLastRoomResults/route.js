@@ -1,15 +1,22 @@
+// Descripción: Este archivo contiene un endpoint que permite obtener información sobre la última sala vencida creada por 
+// un usuario en la aplicación.
+
+// Funcionamiento: El endpoint recibe una solicitud POST con el correo electrónico del usuario en el cuerpo de la solicitud.
+// Luego, realiza una consulta en la base de datos para encontrar las salas creadas por ese usuario. Si el usuario ha creado
+// salas, el endpoint busca la última sala vencida entre las que ha creado y proporciona información sobre ella. 
+// Esta información se utiliza para presentar estadísticas sobre la sala vencida más reciente del usuario, como las opciones
+// más votadas y el número total de participantes. Si el usuario no tiene salas vencidas, se devuelve un mensaje indicando
+// que no hay salas vencidas creadas por el usuario.
+
 import { firestoreDB } from "@/lib/firebaseConn";
 import { NextResponse } from "next/server";
 import { compararFechas } from "@/lib/Tools";
 
-// Endpoint que trae los datos de la última sala vencida
 export async function POST(request) {
     try {
-        // const { searchParams } = new URL(request.url);
-        // const userEmail = searchParams.get("userEmail");
         const body = await request.json();
         const { userEmail } = body;
-        // Consulta para verificar si el usuario ha creado salas
+
         const createdRoomsQuery = await firestoreDB
             .collection("rooms")
             .where("createdBy", "==", userEmail)

@@ -1,3 +1,11 @@
+// Descripción: Este endpoint permite a un usuario votar por una opción en una sala específica. La sala debe estar activa, 
+// no haber expirado y el usuario no debe haber votado previamente.
+
+// Funcionamiento: El endpoint recibe una solicitud con la información necesaria para registrar el voto. Realiza diversas 
+// validaciones, si todas las validaciones son exitosas, el endpoint actualiza la base de datos con el voto del usuario, 
+// incrementando el contador de votos para la opción elegida y agregando al usuario a la lista de participantes. Luego, 
+// responde con un mensaje de confirmación indicando que el voto se ha registrado con éxito.
+
 import { NextResponse } from "next/server";
 import { firestoreDB } from "@/lib/firebaseConn";
 import { compararFechas } from "@/lib/Tools";

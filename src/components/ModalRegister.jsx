@@ -1,5 +1,15 @@
+// Descripción: Este componente representa un modal de registro donde los usuarios pueden crear una nueva cuenta 
+// proporcionando su nombre, dirección de correo electrónico y contraseña.
+
+// Funcionamiento: Cuando un usuario completa el formulario de registro y hace clic en "REGISTRAR", se realiza una serie 
+// de validaciones. Primero, se verifica si las contraseñas proporcionadas en los campos "CONTRASEÑA" y "REPETIR CONTRASEÑA"
+//  son iguales. Si las contraseñas coinciden, se llama a la función APICreateUser para crear la cuenta del usuario 
+//  utilizando el nombre, correo electrónico y contraseña proporcionados. Si la cuenta se crea con éxito, el usuario se 
+//  autentica automáticamente utilizando la función signIn con el método de autenticación "credentials". Si hay algún error
+//   durante el proceso de registro o si las contraseñas no coinciden, se muestra un mensaje de error correspondiente. 
+//   Un indicador de carga (Loader) se muestra mientras se procesa el registro.
+
 "use client";
-//import bcrypt from "bcrypt";
 import React from "react";
 import Password from "./Password";
 import { useState } from "react";
@@ -51,21 +61,21 @@ const ModalRegister = (callback) => {
         <>
             <Loader active={loaderActive}></Loader>
             <main>
-                <h1 className="text-secondaryBlack text-5xl font-bold font-dmsans flex justify-center">
+                <h1 className="text-5xl font-bold font-dmsans flex justify-center">
                     {" "}
                     Registrate{" "}
                 </h1>
                 <form onSubmit={handleSubmit}>
                     <div className="my-6">
                         <label
-                            className="text-secondaryBlack font-dmsans font-medium"
+                            className=" font-dmsans font-medium"
                             htmlFor="nombre"
                         >
                             {" "}
                             NOMBRE Y APELLIDO{" "}
                         </label>
                         <input
-                            className="w-full border-b border-secondaryBlack bg-slate-50 px-2 h-8"
+                            className="w-full border-b dark:border-secondaryWhite rounded-lg text-black dark:bg-darkNav dark:text-secondaryWhite border-secondaryBlack bg-slate-50 px-2 h-8"
                             type="text"
                             name="nombre"
                             id="nombre"
@@ -74,14 +84,14 @@ const ModalRegister = (callback) => {
 
                     <div className="my-6">
                         <label
-                            className="text-secondaryBlack font-dmsans font-medium"
+                            className=" font-dmsans font-medium"
                             htmlFor="emailModal"
                         >
                             {" "}
                             EMAIL{" "}
                         </label>
                         <input
-                            className="w-full border-b border-secondaryBlack bg-slate-50 px-2 h-8"
+                            className="w-full border-b dark:border-secondaryWhite rounded-lg text-black dark:bg-darkNav dark:text-secondaryWhite  border-secondaryBlack bg-slate-50 px-2 h-8"
                             type="email"
                             name="email"
                             id="emailModal"

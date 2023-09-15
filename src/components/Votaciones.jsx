@@ -1,3 +1,20 @@
+// Descripción: El componente "Votaciones" representa la sección donde los usuarios pueden ver y gestionar sus votaciones 
+// activas e inactivas.
+
+// Funcionamiento:
+
+// Utiliza el hook useSession de "next-auth/react" para obtener información sobre la sesión actual del usuario, 
+// especialmente su dirección de correo electrónico.
+// Hace una llamada a la API para obtener las salas de votación asociadas al usuario actual utilizando la función APIGetMyRooms.
+// Permite al usuario buscar salas de votación activas o inactivas utilizando un campo de búsqueda.
+// Muestra una lista de las salas de votación en función de los resultados de la búsqueda y proporciona detalles como el estado (activo o inactivo), el título de la votación, el porcentaje de votos para la opción ganadora y más.
+// Los usuarios pueden realizar acciones en cada sala de votación, como eliminarla, compartirla o ver los resultados. 
+// Estas acciones se manejan mediante botones y modales correspondientes.
+// Los resultados de las salas de votación se muestran en un modal separado llamado "ModalResults" cuando el usuario hace clic en el botón de información.
+// El componente también incluye un indicador visual de si una sala de votación está activa o inactiva, y muestra un ícono de "corona" si el usuario creó la sala de votación.
+// El estado de los modales (eliminar sala y compartir sala) se controla mediante los estados deleteModal y shareModal.
+// Se muestra un mensaje si el usuario aún no ha participado en ninguna votación.
+
 "use client";
 import React from "react";
 import Image from "next/image";
@@ -82,11 +99,11 @@ const Votaciones = () => {
     return (
         <>
             <Loader active={loaderActive} />
-            <div className="w-full xl:w-3/4 mt-6 font-dmsans mx-4 sm:mx-0 sm:py-5">
+            <div className="w-full xl:w-3/4 mt-6 font-dmsans mx-4 xl:mx-0 sm:py-5 test:flex test:flex-col test:items-center test:w-2/3 xl:block">
                 <h1 className="ml-6 mb-4 text-4xl font-bold text-center xl:text-start">Votaciones</h1>
-                {!rooms.length ? <div className="flex justify-center items-center bg-secondaryGray pt-6 xl:w-11/12 shadow rounded-4xl h-85">
+                {!rooms.length ? <div className="flex flex-col items-center justify-center bg-secondaryGray dark:bg-darkNav pt-6 test:w-4/5 shadow rounded-4xl h-90 sm:h-85">
                     <p>Aún no has participado en una votación.</p>
-                </div> : <div className="flex flex-col bg-secondaryGray pt-6 xl:w-11/12 shadow rounded-4xl">
+                </div> : <div className="flex flex-col bg-secondaryGray dark:bg-darkNav pt-6 test:w-4/5 shadow rounded-4xl pb-20 sm:pb-0">
                     <div className="pb-10 flex flex-col items-center">
                         <form className="bg-primaryOrange rounded-full flex items-center h-8 justify-around px-2 w-1/2 shadow">
                             <input
@@ -109,11 +126,11 @@ const Votaciones = () => {
                         </form>
                     </div>
                     <div className="flex gap-4 pl-6 py-5">
-                        <div className="flex justify-center items-center rounded-full bg-slate-300 gap-2 w-24 h-6 cursor-pointer">
+                        <div className="flex justify-center items-center rounded-full bg-slate-300 dark:bg-darkBlack  gap-2 w-24 h-6 cursor-pointer">
                             <div className="w-3 h-3 bg-green-500 rounded-full shadow"></div>
                             <button className="text-xs">Activas</button>
                         </div>
-                        <div className="flex justify-center items-center rounded-full bg-slate-300 gap-2 w-24 h-6 cursor-pointer">
+                        <div className="flex justify-center items-center rounded-full bg-slate-300 dark:bg-darkBlack gap-2 w-24 h-6 cursor-pointer">
                             <div className="w-3 h-3 bg-red-500 rounded-full shadow"></div>
                             <button className="text-xs">Inactivas</button>
                         </div>
@@ -130,11 +147,9 @@ const Votaciones = () => {
                                             : "bg-red-500"
                                         } rounded-full`}
                                 ></div>
-                                <p className="text-xs text-start w-full">
+                                <p className="text-xs text-start w-full font-semibold">
                                     {`${sala.roomId} - ${sala.problem
-                                        } | ${winnerPercent(
-                                            sala.options
-                                        )}% Votó: ${winnerOption(sala.options)}`}
+                                        }`}
                                 </p>
                                 <div className="flex justify-end w-full gap-2 items-center">
                                     {sala.createdBy == session.user.email ? (

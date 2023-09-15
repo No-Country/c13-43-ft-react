@@ -1,3 +1,11 @@
+// Descripción: Componente modal que permite al usuario elegir una opción de voto para una votación en una sala específica.
+
+// Funcionamiento: Este componente muestra un modal que se abre cuando el usuario es invitado a votar en una sala. 
+// Muestra la información de la sala y las opciones de voto disponibles. El usuario debe seleccionar una opción y hacer 
+// click en "Enviar votación". Se valida que se haya seleccionado una opción, y si es así, se registra el voto utilizando 
+// la función APIVote. El componente muestra un indicador de carga (Loader) durante la operación y maneja errores si no se
+// selecciona una opción. Ideal para la participación en votaciones en una aplicación.
+
 "use client";
 import React, { useEffect, useState } from "react";
 import { VoteOptions } from "./VoteOptions";
@@ -77,13 +85,13 @@ export const ModalChooseTime = ({ code, callback }) => {
                 {" "}
                 Tiempo de elegir!{" "}
             </h1>
-            <p className="text-secondaryBlack text-center font-dmsans flex justify-center my-4">
+            <p className="text-center font-dmsans flex justify-center my-4">
                 {" "}
                 Te han invitado a votar: <b> &nbsp; {roomInfo.problem} </b>{" "}
             </p>
             <div className="flex gap-2">
                 <div className="flex justify-center items-center rounded-full bg-slate-300 w-20 gap-2 h-6 cursor-pointer">
-                    <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+                    <div className="w-4 h-4 bg-green-500 dark:bg-darkBlack rounded-full"></div>
                     <button className="text-xs">Activa</button>
                 </div>
             </div>

@@ -1,3 +1,13 @@
+// Descripción: Este archivo define la configuración de NextAuth.js para la autenticación de usuarios en una aplicación 
+// Next.js. Configura los proveedores de autenticación, como Google y Credenciales, y personaliza los callbacks para 
+// el inicio de sesión, JWT y sesiones de usuario.
+
+// Funcionamiento: Este archivo establece las reglas y comportamientos para autenticar a los usuarios en la aplicación. 
+// Define cómo se autentican los usuarios utilizando Google o un formulario personalizado, y cómo se manejan los datos de 
+// usuario durante la sesión. También establece la seguridad mediante una clave secreta para firmar y verificar los tokens 
+// JWT utilizados en la autenticación. En resumen, proporciona la configuración esencial para habilitar la autenticación 
+// de usuarios en la aplicación Next.js.
+
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { firestoreDB } from "@/lib/firebaseConn";

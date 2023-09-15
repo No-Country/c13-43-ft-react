@@ -1,4 +1,5 @@
-//Pendiente
+// Descripción: Son funciones que permiten realizar funcionalidades dentro de los componentes de la aplicación, para mejorar la
+// limpieza y legibilidad de código se abstraen de los componentes y se crea el componente que las almacena.
 
 import bcrypt from "bcrypt";
 export async function hashPassword(password) {
@@ -15,7 +16,9 @@ export function compararFechas(fecha1, fecha2) {
     var date1 = new Date(fecha1).toISOString();
     var date2 = new Date(fecha2).toISOString();
 
+    console.log(date1, date2);
     // Comparar las fechas
+    console.log(date1 > date2);
     return date1 > date2;
 }
 
@@ -33,8 +36,8 @@ export function createNotificationMessage(email, roomId) {
         html: `
             <h1>La votación ha terminado!</h1>
             <h3>Ya tenemos los resultados de la encuesta: ${roomId}</h3>
-            <h3>Mensaje:</h3>
-            <p>Agrega el enlace aquí para que la persona pueda ingresar desde este correo electrónico</p>
+            <h3>Ingresa Aquí:</h3>
+            <a href="https://nocountry-deploy.vercel.app/login" target="_blank">Ver resultados</a>
         `,
     };
     return message;
