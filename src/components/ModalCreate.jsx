@@ -16,7 +16,7 @@ import Loader from "@/components/Loader";
 const ModalCreate = (callback) => {
     const { data: session } = useSession();
     const userEmail = session.user.email;
-    const now = new Date().toISOString().substring(0, 16);
+    const now = new Date()
     //Estado de las opciones
     const [options, setOptions] = React.useState({});
     //state que setea el title de la option
@@ -161,7 +161,7 @@ const ModalCreate = (callback) => {
                 </label>
                 <input
                     type="datetime-local"
-                    // min={now}
+                    min={now.toISOString().substring(0, 16)}
                     className="px-2 rounded-lg bg-none text-sm h-8"
                     id="expires"
                     name="expires"
@@ -228,7 +228,7 @@ const ModalCreate = (callback) => {
                 <div className="submit flex justify-center mt-2">
                     <button
                         type="submit"
-                        className="bg-primaryPurple text-secondaryWhite font-bold rounded-3xl w-3/5 sm:w-2/5 px-4 py-2"
+                        className="bg-primaryPurple text-secondaryWhite font-semibold rounded-3xl w-3/5 sm:w-2/5 px-4 py-2"
                     >
                         {" "}
                         Crear Sala{" "}
