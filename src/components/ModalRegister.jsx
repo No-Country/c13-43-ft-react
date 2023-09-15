@@ -61,21 +61,21 @@ const ModalRegister = (callback) => {
         <>
             <Loader active={loaderActive}></Loader>
             <main>
-                <h1 className="text-secondaryBlack  text-5xl font-bold font-dmsans flex justify-center">
+                <h1 className="text-5xl font-bold font-dmsans flex justify-center">
                     {" "}
                     Registrate{" "}
                 </h1>
                 <form onSubmit={handleSubmit}>
                     <div className="my-6">
                         <label
-                            className="text-secondaryBlack font-dmsans font-medium"
+                            className=" font-dmsans font-medium"
                             htmlFor="nombre"
                         >
                             {" "}
                             NOMBRE Y APELLIDO{" "}
                         </label>
                         <input
-                            className="w-full border-b border-secondaryBlack bg-slate-50 px-2 h-8"
+                            className="w-full border-b dark:border-secondaryWhite rounded-lg text-black dark:bg-darkNav dark:text-secondaryWhite border-secondaryBlack bg-slate-50 px-2 h-8"
                             type="text"
                             name="nombre"
                             id="nombre"
@@ -84,14 +84,14 @@ const ModalRegister = (callback) => {
 
                     <div className="my-6">
                         <label
-                            className="text-secondaryBlack font-dmsans font-medium"
+                            className=" font-dmsans font-medium"
                             htmlFor="emailModal"
                         >
                             {" "}
                             EMAIL{" "}
                         </label>
                         <input
-                            className="w-full border-b border-secondaryBlack bg-slate-50 px-2 h-8"
+                            className="w-full border-b dark:border-secondaryWhite rounded-lg text-black dark:bg-darkNav dark:text-secondaryWhite  border-secondaryBlack bg-slate-50 px-2 h-8"
                             type="email"
                             name="email"
                             id="emailModal"

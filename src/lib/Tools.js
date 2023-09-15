@@ -1,4 +1,4 @@
-// Descripción: Son funciones que permiten realizar funcionalidades dentro de los componentes de la aplicación, para mejorar la 
+// Descripción: Son funciones que permiten realizar funcionalidades dentro de los componentes de la aplicación, para mejorar la
 // limpieza y legibilidad de código se abstraen de los componentes y se crea el componente que las almacena.
 
 import bcrypt from "bcrypt";
@@ -16,7 +16,9 @@ export function compararFechas(fecha1, fecha2) {
     var date1 = new Date(fecha1).toISOString();
     var date2 = new Date(fecha2).toISOString();
 
+    console.log(date1, date2);
     // Comparar las fechas
+    console.log(date1 > date2);
     return date1 > date2;
 }
 

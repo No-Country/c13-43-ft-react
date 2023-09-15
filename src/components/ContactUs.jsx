@@ -60,9 +60,9 @@ const ContactUs = () => {
             <main className="flex justify-center items-center font-dmsans">
                 <div className="flex flex-col-reverse md:flex-row gap-20 mx-4 sm:mx-0 w-full">
                     <div className="flex justify-center md:w-1/2">
-                        <form className=" bg-secondaryGray flex flex-col gap-4 w-full sm:w-3/4 md:w-5/6 p-8 rounded-2xl shadow-xl">
+                        <form className=" bg-secondaryGray dark:bg-darkNav flex flex-col gap-4 w-full sm:w-3/4 md:w-5/6 p-8 rounded-2xl shadow-xl">
                             <input
-                                className="py-2 px-4 rounded-3xl text-tertiaryGray placeholder-tertiaryGray"
+                                className="py-2 px-4 rounded-3xl text-secondaryWhite placeholder-tertiaryGray"
                                 type="text"
                                 placeholder="Nombre y Apellido"
                                 value={formData.contactName}
@@ -74,7 +74,7 @@ const ContactUs = () => {
                                 }
                             />
                             <input
-                                className="py-2 px-4 rounded-3xl text-tertiaryGray placeholder-tertiaryGray"
+                                className="py-2 px-4 rounded-3xl text-secondaryWhite placeholder-tertiaryGray"
                                 type="text"
                                 placeholder="Example@mail.com"
                                 value={formData.contactEmail}
@@ -86,7 +86,7 @@ const ContactUs = () => {
                                 }
                             />
                             <input
-                                className="py-2 px-4 rounded-3xl text-tertiaryGray placeholder-tertiaryGray"
+                                className="py-2 px-4 rounded-3xl text-secondaryWhite placeholder-tertiaryGray"
                                 type="text"
                                 placeholder="(123) 456 7890"
                                 value={formData.contactPhone}
@@ -98,7 +98,7 @@ const ContactUs = () => {
                                 }
                             />
                             <textarea
-                                className="py-2 px-4 rounded-xl text-tertiaryGray placeholder-tertiaryGray"
+                                className="py-2 px-4 rounded-xl text-secondaryWhite placeholder-tertiaryGray"
                                 name=""
                                 id=""
                                 cols="35"
@@ -145,40 +145,19 @@ const ContactUs = () => {
                             </p>
                             <div className="flex flex-col gap-5">
                                 <div className="flex gap-2 items-center">
-                                    <Image
-                                        className="h-fit"
-                                        src="/Images/contact/Email.png"
-                                        width={20}
-                                        height={20}
-                                        alt="Mail.png"
-                                    />
-                                    <span className="text-lg">
-                                        contact@votechoice.com
-                                    </span>
+                                    <Image className='h-fit dark:hidden' src="/Images/contact/Email.png" width={20} height={20} alt="Mail.png" />
+                                    <Image className='h-fit hidden dark:block' src="/Images/contact/EmailWhite.png" width={20} height={20} alt="Mail.png" />
+                                    <span className="text-lg"> contact@votechoice.com </span>
                                 </div>
                                 <div className="flex gap-2 items-center">
-                                    <Image
-                                        className="h-fit"
-                                        src="/Images/contact/Phone.png"
-                                        width={20}
-                                        height={20}
-                                        alt="Phone.png"
-                                    />
-                                    <span className="text-lg">
-                                        (123) 456 - 789
-                                    </span>
+                                    <Image className='h-fit dark:hidden' src="/Images/contact/Phone.png" width={20} height={20} alt="Phone.png" />
+                                    <Image className='h-fit hidden dark:block' src="/Images/contact/PhoneWhite.png" width={20} height={20} alt="Phone.png" />
+                                    <span className="text-lg"> (123) 456 - 789 </span>
                                 </div>
                                 <div className="flex gap-2 items-center">
-                                    <Image
-                                        className="h-fit"
-                                        src="/Images/contact/Mark.png"
-                                        width={20}
-                                        height={20}
-                                        alt="Mark.png"
-                                    />
-                                    <span className="text-lg">
-                                        794 Lorem Ipsum St, 94102
-                                    </span>
+                                    <Image className='h-fit dark:hidden' src="/Images/contact/Mark.png" width={20} height={20}  alt="Mark.png" />
+                                    <Image className='h-fit hidden dark:block' src="/Images/contact/MarkWhite.png" width={20} height={20}  alt="Mark.png" />
+                                    <span className="text-lg"> 794 Lorem Ipsum St, 94102 </span>
                                 </div>
                             </div>
                         </div>
