@@ -1,3 +1,10 @@
+// Descripción: Elemento de lista para paneles de navegación. Puede cambiar su apariencia según esté activo o inactivo.
+// Muestra imagen, nombre y enlace (opcional) o función de clic (opcional).
+
+// Funcionamiento: El componente muestra un elemento de lista que se destaca si está activo. Puede tener una imagen, 
+// un nombre y puede actuar como enlace a una URL o ejecutar una función al hacer clic. Ideal para paneles de navegación 
+// y menús interactivos.
+
 "use client";
 import React from "react";
 import Image from "next/image";

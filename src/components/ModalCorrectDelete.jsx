@@ -1,3 +1,10 @@
+// Descripción: Componente modal que confirma la eliminación exitosa de una cuenta de usuario.
+
+// Funcionamiento: Este componente muestra un mensaje de confirmación después de que la cuenta del usuario se haya 
+// eliminado con éxito. Muestra una marca de verificación verde y un mensaje que indica que la cuenta ha sido eliminada.
+// También muestra el correo electrónico de la cuenta que se eliminó. Ideal para proporcionar retroalimentación después
+// de una acción importante en la aplicación, como la eliminación de una cuenta.
+
 import React from 'react'
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';

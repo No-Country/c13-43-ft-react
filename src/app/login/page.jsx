@@ -1,3 +1,7 @@
+// El componente "Login" de la aplicación web es una página que permite a los usuarios iniciar sesión en sus cuentas. 
+// En esta página, los usuarios pueden ingresar su dirección de correo electrónico y contraseña o mediante un formulario
+// de registro para acceder a la plataforma. También tienen la opción de iniciar sesión utilizando sus cuentas de Google.
+
 "use client";
 import ImagePrincipal from "@/components/ImagePrincipal";
 import Password from "@/components/Password";

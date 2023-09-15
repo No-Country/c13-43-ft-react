@@ -1,3 +1,12 @@
+// Descripción: El componente "Participants" se utiliza para mostrar información detallada sobre un participante en una 
+// sección de presentación de miembros de un equipo o grupo. Recibe como propiedades el nombre del participante, 
+// su rol en el equipo, un enlace a su perfil de LinkedIn, la columna de inicio en la cuadrícula y una imagen de su retrato.
+
+// Funcionamiento: El componente renderiza la información del participante, incluyendo su nombre, rol y un enlace a su 
+// perfil de LinkedIn. También muestra la imagen de retrato del participante en un formato circular. La posición en la 
+// cuadrícula se controla mediante las propiedades "colStart" y "rowStart", lo que permite organizar visualmente a los 
+// participantes en la sección de presentación del equipo o grupo.
+
 import React from 'react';
 import Image from 'next/image';
 

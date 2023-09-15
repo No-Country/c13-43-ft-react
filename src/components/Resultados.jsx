@@ -1,3 +1,12 @@
+// Descripción: El componente "Resultados" muestra los resultados de la votación más reciente del usuario.
+
+// Funcionamiento: El componente obtiene la información de los resultados de la última votación del usuario mediante 
+// una llamada a la API.
+// Muestra el porcentaje y el nombre de la opción ganadora, así como el número de participantes.
+// También muestra el porcentaje y el nombre de la segunda opción más votada.
+// Proporciona un botón para ver más detalles de los resultados.
+// Si el usuario no tiene votaciones anteriores, se muestra un mensaje indicando que no hay resultados disponibles.
+
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";

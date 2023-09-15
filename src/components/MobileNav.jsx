@@ -1,3 +1,15 @@
+// Descripción: Componente de navegación móvil que muestra enlaces a diferentes secciones de la aplicación.
+
+// Funcionamiento: Este componente renderiza una barra de navegación en dispositivos móviles. Muestra enlaces a las 
+// secciones principales de la aplicación, como "Inicio", "Nosotros", "Contacto" y "Empezar" (si es la página de inicio).
+// Al hacer clic en un enlace, el menú se cierra (setIsMobileMenuOpen(false)). El componente también incluye un botón de 
+// cambio de tema ("ThemeButton") en la parte superior. Ideal para la navegación móvil en la aplicación.
+
+
+
+
+
+
 import React from "react";
 import Link from "next/link";
 import ThemeButton from "./ThemeButton";

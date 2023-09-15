@@ -1,3 +1,10 @@
+// Descripción: Componente que representa la página de inicio de la aplicación. Muestra un encabezado, descripción y un botón
+//  "Empezar" que redirige al inicio de sesión.
+
+// Funcionamiento: Este componente muestra información de bienvenida, describiendo la plataforma de votación simplificada. 
+// El botón "Empezar" redirige a la página de inicio de sesión. La imagen principal se encuentra a la derecha en pantallas 
+// grandes y arriba en pantallas pequeñas. Ideal para la página de inicio de una aplicación.
+
 import Link from "next/link";
 import React from "react";
 import ImagePrincipal from "./ImagePrincipal";

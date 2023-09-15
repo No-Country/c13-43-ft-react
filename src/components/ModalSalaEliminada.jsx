@@ -1,3 +1,11 @@
+// Descripción: Este componente representa un modal que se muestra cuando una sala ha sido eliminada con éxito. 
+// Muestra un ícono de verificación verde ("green check"), un mensaje de confirmación y el código de la sala eliminada.
+
+// code: El código de la sala que ha sido eliminada.
+// Funcionamiento: Cuando se muestra este componente, se presenta un mensaje de confirmación de que la sala ha sido 
+// eliminada con éxito, junto con el código de la sala eliminada. También se muestra un ícono de verificación verde 
+// para indicar que la operación se ha completado con éxito.
+
 import React from 'react' 
 import Image from "next/image";
 

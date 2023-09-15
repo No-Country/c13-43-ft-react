@@ -1,3 +1,11 @@
+// Descripción: Este componente representa la barra de navegación superior que se muestra en la parte superior de la 
+// mayoría de las páginas de la aplicación web. Dependiendo de la página actual y del estado de autenticación 
+// del usuario, la barra de navegación cambia su contenido y estilo.
+
+// Funcionamiento: La barra de navegación es adaptable y cambia su contenido y estilo según la página actual y el tamaño 
+// de la pantalla. También es consciente de la sesión de usuario y muestra opciones adicionales cuando el usuario está 
+// autenticado.
+
 "use client";
 
 import React, { useState, useEffect } from "react";

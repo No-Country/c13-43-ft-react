@@ -1,3 +1,11 @@
+// Descripción: Este componente representa un modal que permite al usuario eliminar una sala. Al confirmar la eliminación,
+//  se elimina la sala y se muestra un mensaje de confirmación.
+
+// Funcionamiento: Cuando el usuario confirma la eliminación de la sala haciendo clic en "CONFIRMAR", se muestra un
+//  indicador de carga (Loader) y se realiza una llamada a la API para eliminar la sala utilizando la función handleDelete.
+//   Si la eliminación de la sala es exitosa, se muestra un mensaje de confirmación (ModalSalaEliminada) y la página se
+//    recarga para reflejar los cambios. Si el usuario cancela la acción, el modal se cierra haciendo clic en "CANCELAR".
+
 import React from 'react'
 import ModalSalaEliminada from "./ModalSalaEliminada";
 import ModalGeneral from '@/containers/ModalGeneral';
