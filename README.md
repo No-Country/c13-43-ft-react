@@ -37,7 +37,7 @@ VoteChoice es tu solución perfecta. Con nuestra aplicación, puedes:
     <td>
       <div align="center">
         <a href="https://www.linkedin.com/" target="_blank" rel="author">
-          <img width="110" src="https://media.licdn.com/dmsV"/>
+          <img width="110" src="public/Images/Ale.jpg"/>
         </a>
         <h4 style="margin-top: 1rem;">Alejandro Álvarez</h4>
         <h6 style="margin-top: 1rem;">Frontend</h6>
@@ -46,7 +46,7 @@ VoteChoice es tu solución perfecta. Con nuestra aplicación, puedes:
     <td>
       <div align="center">
         <a href="https://www.linkedin.com/" target="_blank" rel="author">
-          <img width="110" src="https://media.licdn.com/dms"/>
+          <img width="110" src="public/Images/Laura.jpg"/>
         </a>
         <h4 style="margin-top: 1rem;"> Laura Bernal </h4>
         <h6 style="margin-top: 1rem;">Frontend</h6>
@@ -55,7 +55,7 @@ VoteChoice es tu solución perfecta. Con nuestra aplicación, puedes:
     <td>
       <div align="center">
         <a href="https://www.linkedin.com/" target="_blank" rel="author">
-          <img width="110" src="https://media.licdn.com/"/>
+          <img width="110" src="public/Images/Pablo.jpg"/>
         </a>
         <h4 style="margin-top: 1rem;"> Pablo Murillo </h4>
         <h6 style="margin-top: 1rem;">Fullstack</h6>
@@ -64,7 +64,7 @@ VoteChoice es tu solución perfecta. Con nuestra aplicación, puedes:
     <td>
       <div align="center">
         <a href="https://www.linkedin.com/" target="_blank" rel="author">
-          <img width="110" src="https://media.licdn.com/dms"/>
+          <img width="110" src="public/Images/Martin.jpg"/>
         </a>
         <h4 style="margin-top: 1rem;">Martín Cosimano</h4>
         <h6 style="margin-top: 1rem;">Fullstack</h6>
@@ -73,7 +73,7 @@ VoteChoice es tu solución perfecta. Con nuestra aplicación, puedes:
     <td>
       <div align="center">
         <a href="https://www.linkedin.com/" target="_blank" rel="author">
-          <img width="110" src="https://media.licdn.com/dms"/>
+          <img width="110" src="public/Images/Cande.jpg"/>
         </a>
         <h4 style="margin-top: 1rem;">Candelaria Gonzalez</h4>
         <h6 style="margin-top: 1rem;">Fullstack</h6>
@@ -82,7 +82,7 @@ VoteChoice es tu solución perfecta. Con nuestra aplicación, puedes:
     <td>
       <div align="center">
         <a href="https://www.linkedin.com/" target="_blank" rel="author">
-          <img width="110" src="https://media.licdn.com/dms"/>
+          <img width="110" src="hpublic/Images/Carla.jpg"/>
         </a>
         <h4 style="margin-top: 1rem;">Carla Toledo</h4>
         <h6 style="margin-top: 1rem;">Diseñador UX/UI</h6>
@@ -91,7 +91,7 @@ VoteChoice es tu solución perfecta. Con nuestra aplicación, puedes:
     <td>
       <div align="center">
         <a href="https://www.linkedin.com/" target="_blank" rel="author">
-          <img width="110" src="https://media.licdn.com/dms/"/>
+          <img width="110" src="public/Images/Orle.jpg"/>
         </a>
         <h4 style="margin-top: 1rem;">Orlemar Abreu</h4>
         <h6 style="margin-top: 1rem;">Tester</h6>
