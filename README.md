@@ -38,7 +38,7 @@ VoteChoice es tu solución perfecta. Con nuestra aplicación, puedes:
       <div align="center">
         <img width="110" src="public/Images/about/Ale.jpg"/>
         <a href="https://www.linkedin.com/in/alejandro-alvarez-65030a240/" target="_blank" rel="author">
-        <h4 style="margin-top: 1rem;">Alejandro Álvarez</h4>
+        <p style="margin-top: 1rem;">Alejandro Álvarez</p>
         </a>
         <h6 style="margin-top: 1rem;">Frontend</h6>
       </div>
