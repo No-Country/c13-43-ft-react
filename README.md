@@ -47,7 +47,7 @@ VoteChoice es tu solución perfecta. Con nuestra aplicación, puedes:
       <div align="center">
           <img width="110" src="public/Images/about/Laura.jpg"/>
         <a href="https://www.linkedin.com/in/ingeniera-laura-bernal/" target="_blank" rel="author">
-        <h4 style="margin-top: 1rem;"> Laura Bernal </h4>
+        <p style="margin-top: 1rem;"> Laura Bernal </p>
         </a>
         <h6 style="margin-top: 1rem;">Frontend</h6>
       </div>
@@ -56,7 +56,7 @@ VoteChoice es tu solución perfecta. Con nuestra aplicación, puedes:
       <div align="center">
           <img width="110" src="public/Images/about/Pablo.jpg"/>
         <a href="https://www.linkedin.com/in/pablo-nicolas-murillo/" target="_blank" rel="author">
-        <h4 style="margin-top: 1rem;"> Pablo Murillo </h4>
+        <p style="margin-top: 1rem;"> Pablo Murillo </p>
         </a>
         <h6 style="margin-top: 1rem;">Fullstack</h6>
       </div>
@@ -65,7 +65,7 @@ VoteChoice es tu solución perfecta. Con nuestra aplicación, puedes:
       <div align="center">
           <img width="110" src="public/Images/about/Martin.jpg"/>
         <a href="https://www.linkedin.com/in/martin-cosimano/" target="_blank" rel="author">
-        <h4 style="margin-top: 1rem;">Martín Cosimano</h4>
+        <p style="margin-top: 1rem;">Martín Cosimano</p>
         </a>
         <h6 style="margin-top: 1rem;">Fullstack</h6>
       </div>
@@ -74,7 +74,7 @@ VoteChoice es tu solución perfecta. Con nuestra aplicación, puedes:
       <div align="center">
           <img width="110" src="public/Images/about/Cande.jpg"/>
         <a href="https://www.linkedin.com/in/candelariagonzalezdev/" target="_blank" rel="author">
-        <h4 style="margin-top: 1rem;">Candelaria Gonzalez</h4>
+        <p style="margin-top: 1rem;">Candelaria Gonzalez</p>
         </a>
         <h6 style="margin-top: 1rem;">Fullstack</h6>
       </div>
@@ -83,7 +83,7 @@ VoteChoice es tu solución perfecta. Con nuestra aplicación, puedes:
       <div align="center">
           <img width="110" src="hpublic/Images/about/Carla.jpg"/>
         <a href="https://www.linkedin.com/in/carla-m-toledo/" target="_blank" rel="author">
-        <h4 style="margin-top: 1rem;">Carla Toledo</h4>
+        <p style="margin-top: 1rem;">Carla Toledo</p>
         </a>
         <h6 style="margin-top: 1rem;">Diseñador UX/UI</h6>
       </div>
@@ -92,7 +92,7 @@ VoteChoice es tu solución perfecta. Con nuestra aplicación, puedes:
       <div align="center">
           <img width="110" src="public/Images/about/Orle.jpg"/>
         <a href="https://www.linkedin.com/in/orlemar-abreu/" target="_blank" rel="author">
-        <h4 style="margin-top: 1rem;">Orlemar Abreu</h4>
+        <p style="margin-top: 1rem;">Orlemar Abreu</p>
         </a>
         <h6 style="margin-top: 1rem;">Tester</h6>
       </div>
