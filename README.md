@@ -32,6 +32,9 @@ VoteChoice es tu solución perfecta. Con nuestra aplicación, puedes:
 
 ## 👷 Miembros del equipo
 
+
+## 👷 Team members
+
 <table>
   <tr>
     <td>
