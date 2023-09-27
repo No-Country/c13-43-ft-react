@@ -36,69 +36,70 @@ VoteChoice es tu solución perfecta. Con nuestra aplicación, puedes:
   <tr>
     <td>
       <div align="center">
-        <img width="110" src="public/Images/about/Ale.jpg"/>
         <a href="https://www.linkedin.com/in/alejandro-alvarez-65030a240/" target="_blank" rel="author">
-        <p style="margin-top: 1rem;">Alejandro Álvarez</p>
+          <img width="110" height="90" src="https://res.cloudinary.com/dx5ndnahy/image/upload/v1695649987/votechoice/Ale_xteelt.jpg"/>
         </a>
+        <h4 style="margin-top: 1rem;">Alejandro Álvarez</h4>
         <h6 style="margin-top: 1rem;">Frontend</h6>
       </div>
     </td>
     <td>
       <div align="center">
-          <img width="110" src="public/Images/about/Laura.jpg"/>
         <a href="https://www.linkedin.com/in/ingeniera-laura-bernal/" target="_blank" rel="author">
-        <p style="margin-top: 1rem;"> Laura Bernal </p>
+          <img width="110" height="90" src="https://res.cloudinary.com/dx5ndnahy/image/upload/v1695649988/votechoice/Laura_c5ovnu.jpg"/>
         </a>
+        <h4 style="margin-top: 1rem;">Laura Bernal</h4>
         <h6 style="margin-top: 1rem;">Frontend</h6>
       </div>
     </td>
     <td>
       <div align="center">
-          <img width="110" src="public/Images/about/Pablo.jpg"/>
         <a href="https://www.linkedin.com/in/pablo-nicolas-murillo/" target="_blank" rel="author">
-        <p style="margin-top: 1rem;"> Pablo Murillo </p>
+          <img width="110" height="90" src="https://res.cloudinary.com/dx5ndnahy/image/upload/v1695649989/votechoice/Pablo_mitdie.jpg"/>
         </a>
+        <h4 style="margin-top: 1rem;">Pablo Murillo</h4>
         <h6 style="margin-top: 1rem;">Fullstack</h6>
       </div>
     </td>
     <td>
       <div align="center">
-          <img width="110" src="public/Images/about/Martin.jpg"/>
         <a href="https://www.linkedin.com/in/martin-cosimano/" target="_blank" rel="author">
-        <p style="margin-top: 1rem;">Martín Cosimano</p>
+          <img width="110" height="90" src="https://res.cloudinary.com/dx5ndnahy/image/upload/v1695649989/votechoice/Martin_unm2zs.png"/>
         </a>
-        <h6 style="margin-top: 1rem;">Fullstack</h6>
+        <h4 style="margin-top: 1rem;">Martín Cosimano</h4>
+        <h6 style="margin-top: 1rem;">Frontend</h6>
       </div>
     </td>
     <td>
       <div align="center">
-          <img width="110" src="public/Images/about/Cande.jpg"/>
         <a href="https://www.linkedin.com/in/candelariagonzalezdev/" target="_blank" rel="author">
-        <p style="margin-top: 1rem;">Candelaria Gonzalez</p>
+          <img width="110" height="90" src="https://res.cloudinary.com/dx5ndnahy/image/upload/v1695649987/votechoice/Cande_ajodrk.jpg"/>
         </a>
+        <h4 style="margin-top: 1rem;">Candelaria Gonzalez</h4>
         <h6 style="margin-top: 1rem;">Fullstack</h6>
       </div>
     </td>
     <td>
       <div align="center">
-          <img width="110" src="hpublic/Images/about/Carla.jpg"/>
         <a href="https://www.linkedin.com/in/carla-m-toledo/" target="_blank" rel="author">
-        <p style="margin-top: 1rem;">Carla Toledo</p>
+          <img width="110" height="90" src="https://res.cloudinary.com/dx5ndnahy/image/upload/v1695649988/votechoice/Carla_deiibj.jpg"/>
         </a>
+        <h4 style="margin-top: 1rem;">Carla Toledo</h4>
         <h6 style="margin-top: 1rem;">Diseñador UX/UI</h6>
       </div>
     </td>
     <td>
       <div align="center">
-          <img width="110" src="public/Images/about/Orle.jpg"/>
         <a href="https://www.linkedin.com/in/orlemar-abreu/" target="_blank" rel="author">
-        <p style="margin-top: 1rem;">Orlemar Abreu</p>
+          <img width="110" height="90" src="https://res.cloudinary.com/dx5ndnahy/image/upload/v1695649989/votechoice/Orle_bpvyo1.jpg"/>
         </a>
+        <h4 style="margin-top: 1rem;">Orlemar Abreu</h4>
         <h6 style="margin-top: 1rem;">Tester</h6>
       </div>
     </td>
   </tr>
 </table>
+
 
 
 
