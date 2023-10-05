@@ -5,13 +5,23 @@
 
 :root{
     --violeta: #6009AE; 
+    --secondaryWhite: #F8F8F8;
+    --secondaryBlack: #121212
 }
 
 body {
-    background-color: #F8F8F8;
+     /* background-color: var(--secondaryWhite); */
+    /* color: var(--secondaryBlack); */ 
 }
 
+/* body {
+    background-color: var(--secondaryBlack);
+    color: var(--secondaryWhite);
+} */
+
 .container-global {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
     margin-inline: auto;
     width: min(90%,70.5rem);
 }
@@ -32,8 +42,4 @@ body {
 .close,
 .panelLi.active .open{
     display: none;
-}
-
-.modalGeneral{
-    max-height: 35rem;
 }
